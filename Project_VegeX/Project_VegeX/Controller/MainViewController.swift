@@ -9,12 +9,18 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    
+    // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
+        
     }
-
-
+    
+    // MARK: - Helpers
+    
+    
 }
 

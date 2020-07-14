@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import SnapKit
 
 class MainViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    
+    let label = UILabel()
+    
+    // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
+        view.addSubview(label)
+        label.text = "테스트"
+        label.snp.makeConstraints {
+            $0.centerY.centerX.equalToSuperview()
+        }
     }
-
-
+    
+    // MARK: - Helpers
+    
+    
 }
 

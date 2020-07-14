@@ -18,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = MainViewController()
+        window?.frame = UIScreen.main.bounds
+        window?.backgroundColor = .systemBackground
         window?.makeKeyAndVisible()
     }
 

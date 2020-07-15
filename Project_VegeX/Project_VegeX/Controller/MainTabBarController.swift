@@ -60,7 +60,16 @@ class MainTabBarController: UITabBarController {
             $0.tabBarItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             let appearance = UITabBarAppearance()
             appearance.stackedLayoutAppearance.selected.iconColor = UIColor(rgb: 0x71A08A)
-            self.tabBar.tintColor = UIColor(rgb: 0x71A08A)
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor(rgb: 0x71A08A)
+            ]
+            
+            appearance.stackedLayoutAppearance.normal.iconColor = UIColor(rgb: 0x303033)
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor(rgb: 0x303033)
+            ]
+            
+            tabBar.isTranslucent = false
             tabBar.standardAppearance = appearance
         }
     }

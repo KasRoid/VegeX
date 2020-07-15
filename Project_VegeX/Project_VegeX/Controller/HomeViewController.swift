@@ -9,18 +9,6 @@
 import UIKit
 import MobileCoreServices
 
-enum ChallengeType: Int, CaseIterable {
-    case processing
-    case popular
-    
-    var description: String {
-        switch self {
-        case .processing: return "진행중"
-        case .popular: return "인기"
-        }
-    }
-}
-
 class HomeViewController: UIViewController {
     
     // MARK: - Properties
@@ -46,15 +34,15 @@ class HomeViewController: UIViewController {
         let label = UILabel()
         label.text = "천지운 님, 반가워요!"
         label.textColor = UIColor(rgb: 0x156941)
-        label.font = .systemFont(ofSize: 16)
+        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 16)
         return label
     }()
     
     private let myPointLabel: UILabel = {
         let label = UILabel()
-        label.text = "1,500point"
+        label.text = "건강한 습관 15일째"
         label.textColor = UIColor(rgb: 0x156941)
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 20)
         return label
     }()
     
@@ -99,9 +87,21 @@ class HomeViewController: UIViewController {
         return view
     }()
     
-    private lazy var challengeButton: UILabel = {
+    private lazy var tutorialLabel: UILabel = {
         let label = UILabel()
-        label.text = "전체 보기 >"
+        label.text = "전체 보기"
+        label.font = .systemFont(ofSize: 14)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTutorialEvent))
+        label.addGestureRecognizer(tapGesture)
+        
+        label.isUserInteractionEnabled = true
+        return label
+    }()
+    
+    private lazy var challengeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "전체 보기"
         label.font = .systemFont(ofSize: 14)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleChallengeEvent))
@@ -143,6 +143,11 @@ class HomeViewController: UIViewController {
     
     // MARK: - Selectors
     
+    @objc func handleTutorialEvent() {
+        let controller = TutorialListViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     @objc func handleChallengeEvent() {
         let controller = ChallengeTitleViewController()
         navigationController?.pushViewController(controller, animated: true)
@@ -156,6 +161,7 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.rowHeight = 120
         tableView.isScrollEnabled = false
+        tableView.allowsSelection = false
         
         tableView.register(ChallengeCustomCell.self,
                            forCellReuseIdentifier: ChallengeCustomCell.identifier)
@@ -188,16 +194,19 @@ class HomeViewController: UIViewController {
             $0.width.equalToSuperview()
         }
         
-        let dailyMissionTitleView = makeHeaderView(titleText: "일일미션")
+        let dailyMissionTitleView = makeHeaderView(titleText: "튜토리얼", detailLabel: tutorialLabel)
         homeScrollView.addSubview(dailyMissionTitleView)
         dailyMissionTitleView.snp.makeConstraints {
             $0.top.equalTo(topView.snp.bottom).offset(24)
             $0.leading.equalToSuperview().offset(defaultPadding)
             $0.trailing.equalToSuperview().offset(-defaultPadding)
-            $0.height.equalTo(21)
+            $0.height.equalTo(20)
         }
         
-        let dailyMissionView = makeDailyMissionView(missionTitle: "집에 가는 길에 2정류장 걸어가기", time: "-2시간 30분", point: 20)
+        let dailyMissionView = makeDailyMissionView(
+            missionTitle: "1단계",
+            missoinSubTitle: "채식 대한 오해와 진실",
+            imageName: "saladIcon")
         homeScrollView.addSubview(dailyMissionView)
         dailyMissionView.snp.makeConstraints {
             $0.top.equalTo(dailyMissionTitleView.snp.bottom).offset(8)
@@ -207,9 +216,9 @@ class HomeViewController: UIViewController {
         }
         
         
-        let challengeTitleView = makeHeaderView(titleText: "챌린지",
-                                                subTitleText: "건강한 습관을 위한 도전",
-                                                detailLabel: challengeButton)
+        let challengeTitleView = makeHeaderView(titleText: "프로젝트",
+                                                detailLabel: challengeLabel,
+                                                subTitleText: "사람들과 함께 건강해져요")
         homeScrollView.addSubview(challengeTitleView)
         challengeTitleView.snp.makeConstraints {
             $0.top.equalTo(dailyMissionView.snp.bottom).offset(24)
@@ -235,26 +244,40 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func makeHeaderView(titleText: String, subTitleText: String? = nil, detailLabel: UILabel? = nil) -> UIView {
+    func makeHeaderView(titleText: String, detailLabel: UILabel, subTitleText: String? = nil) -> UIView {
         let customView = UIView()
         
         let titleLabel = UILabel()
         titleLabel.text = titleText
-        titleLabel.font = .boldSystemFont(ofSize: 18)
+        titleLabel.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 18)
         titleLabel.textColor = .label
         
-        guard let subTitleText = subTitleText,
-            let button = detailLabel else {
-                customView.addSubview(titleLabel)
-                titleLabel.snp.makeConstraints {
-                    $0.top.leading.bottom.equalToSuperview()
-                }
-                return customView
+        let allowImageView = UIImageView(image: UIImage(named: "right-allow"))
+        allowImageView.snp.makeConstraints {
+            $0.width.height.equalTo(20)
+        }
+        
+        let viewMoveStack = UIStackView(arrangedSubviews: [detailLabel, allowImageView])
+        viewMoveStack.axis = .horizontal
+        viewMoveStack.spacing = 0
+        viewMoveStack.distribution = .fillProportionally
+        
+        customView.addSubview(viewMoveStack)
+        viewMoveStack.snp.makeConstraints {
+            $0.trailing.bottom.equalToSuperview()
+        }
+        
+        guard let subTitleText = subTitleText else {
+            customView.addSubview(titleLabel)
+            titleLabel.snp.makeConstraints {
+                $0.top.leading.bottom.equalToSuperview()
+            }
+            return customView
         }
         
         let subTitleLabel = UILabel()
         subTitleLabel.text = subTitleText
-        subTitleLabel.font = .systemFont(ofSize: 14)
+        subTitleLabel.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 14)
         subTitleLabel.textColor = .label
         
         let labelStack = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
@@ -266,15 +289,10 @@ class HomeViewController: UIViewController {
         labelStack.snp.makeConstraints {
             $0.top.leading.bottom.equalToSuperview()
         }
-        
-        customView.addSubview(button)
-        button.snp.makeConstraints {
-            $0.trailing.bottom.equalToSuperview()
-        }
         return customView
     }
     
-    func makeDailyMissionView(missionTitle: String, time: String, point: Int) -> UIView {
+    func makeDailyMissionView(missionTitle: String, missoinSubTitle: String, imageName: String) -> UIView {
         let missionView = UIView()
         missionView.layer.cornerRadius = 10
         missionView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -283,50 +301,44 @@ class HomeViewController: UIViewController {
         missionView.layer.shadowOpacity = 0.5
         missionView.backgroundColor = .white
         
-        let missionLabel = UILabel()
-        missionLabel.text = missionTitle
-        missionLabel.font = .systemFont(ofSize: 24)
-        missionLabel.numberOfLines = 2
-        missionLabel.textColor = .black
-        missionLabel.lineBreakMode = .byWordWrapping
         
-        let timeImageView = UIImageView(image: UIImage(named: "time"))
-        timeImageView.tintColor = UIColor(rgb: 0x303033)
-        timeImageView.snp.makeConstraints { $0.width.height.equalTo(12) }
-        
-        let timeLabel = UILabel()
-        timeLabel.text = time
-        timeLabel.font = .systemFont(ofSize: 11)
-        timeLabel.textColor = UIColor(rgb: 0x303033)
-        
-        let timeStack = UIStackView(arrangedSubviews: [timeImageView, timeLabel])
-        timeStack.axis = .horizontal
-        timeStack.spacing = 4
-        timeStack.distribution = .fillProportionally
-        
-        let pointLabel = UILabel()
-        pointLabel.text = "\(point)point"
-        pointLabel.textColor = UIColor(rgb: 0xFF9D77)
-        pointLabel.font = .boldSystemFont(ofSize: 14)
-        
-        let padding: CGFloat = 16
-        
-        missionView.addSubview(missionLabel)
-        missionLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(padding)
-            $0.width.equalTo(164)
+        let iconImageView = UIImageView(image: UIImage(named: imageName))
+        missionView.addSubview(iconImageView)
+        iconImageView.snp.makeConstraints {
+            $0.width.height.equalTo(64)
+            $0.top.equalToSuperview().offset(28)
+            $0.leading.equalToSuperview().offset(32)
         }
         
-        missionView.addSubview(timeStack)
-        timeStack.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(padding)
-            $0.trailing.equalToSuperview().offset(-padding)
+        let titleLabel = UILabel()
+        titleLabel.text = missionTitle
+        titleLabel.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 20)
+        titleLabel.textColor = .black
+        
+        let subTitleLabel = UILabel()
+        subTitleLabel.text = missoinSubTitle
+        subTitleLabel.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 18)
+        subTitleLabel.textColor = .black
+        
+        let titleStack = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
+        titleStack.axis = .vertical
+        titleStack.spacing = 4
+        titleStack.distribution = .fillProportionally
+        
+        missionView.addSubview(titleStack)
+        titleStack.snp.makeConstraints {
+            $0.centerY.equalTo(iconImageView)
+            $0.leading.equalTo(iconImageView.snp.trailing).offset(20)
         }
         
-        missionView.addSubview(pointLabel)
-        pointLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(padding)
-            $0.bottom.equalToSuperview().offset(-padding)
+        let statusImageView = UIImageView(image: UIImage(named: "processing"))
+        
+        missionView.addSubview(statusImageView)
+        statusImageView.snp.makeConstraints {
+            $0.width.equalTo(45)
+            $0.height.equalTo(20)
+            $0.top.equalToSuperview().offset(12)
+            $0.trailing.equalToSuperview().offset(-12)
         }
         
         return missionView
@@ -373,41 +385,14 @@ extension HomeViewController: ChallengeCustomCellDelegate {
     func handleRegister(_ cell: ChallengeCustomCell) {
         let imagePicker = UIImagePickerController()
         
-        let choiceAlert = UIAlertController(
-            title: "인증 사진 등록",
-            message: nil,
-            preferredStyle: .actionSheet)
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
+        imagePicker.sourceType = .camera
+        imagePicker.mediaTypes = [kUTTypeImage] as [String]
         
-        let cameraAction = UIAlertAction(
-            title: "카메라 촬영",
-            style: .default) { action in
-                guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
-                imagePicker.sourceType = .camera
-                imagePicker.mediaTypes = [kUTTypeImage] as [String]
-                
-                if UIImagePickerController.isFlashAvailable(for: .rear) {
-                    imagePicker.cameraFlashMode = .auto
-                }
-                
-                self.present(imagePicker, animated: true)
+        if UIImagePickerController.isFlashAvailable(for: .rear) {
+            imagePicker.cameraFlashMode = .auto
         }
         
-        let albumAction = UIAlertAction(
-            title: "앨범 가져오기",
-            style: .default) { action in
-                imagePicker.sourceType = .savedPhotosAlbum
-                imagePicker.mediaTypes = [kUTTypeImage] as [String]
-                self.present(imagePicker, animated: true)
-        }
-        
-        let cancelAction = UIAlertAction(
-            title: "취소",
-            style: .cancel, handler: nil)
-        
-        choiceAlert.addAction(cameraAction)
-        choiceAlert.addAction(albumAction)
-        choiceAlert.addAction(cancelAction)
-        
-        present(choiceAlert, animated: true)
+        present(imagePicker, animated: true)
     }
 }

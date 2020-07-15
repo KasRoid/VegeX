@@ -12,6 +12,8 @@ class CustomSegmentControl: UIView {
     
     // MARK: - Properties
     
+    private let defaultPadding: CGFloat = 4
+    
     private var isLeft = true {
         didSet { configureButton() }
     }
@@ -67,54 +69,53 @@ class CustomSegmentControl: UIView {
         addSubview(rightButton)
         
         animationView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(4)
-            $0.bottom.equalToSuperview().offset(-4)
+            $0.top.leading.equalToSuperview().offset(defaultPadding)
+            $0.bottom.equalToSuperview().offset(-defaultPadding)
             $0.width.equalTo(leftButton.snp.width)
         }
         
         leftButton.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(4)
-            $0.bottom.equalToSuperview().offset(-4)
+            $0.top.leading.equalToSuperview().offset(defaultPadding)
+            $0.bottom.equalToSuperview().offset(-defaultPadding)
         }
         
         rightButton.snp.makeConstraints {
             $0.leading.equalTo(leftButton.snp.trailing)
-            $0.top.equalToSuperview().offset(4)
-            $0.bottom.trailing.equalToSuperview().offset(-4)
+            $0.top.equalToSuperview().offset(defaultPadding)
+            $0.bottom.trailing.equalToSuperview().offset(-defaultPadding)
             $0.width.equalTo(leftButton)
         }
     }
     
     func configureButton() {
+        animationView.snp.removeConstraints()
         if isLeft {
-            animationView.snp.removeConstraints()
             UIView.animate(withDuration: 0.3) {
                 self.setButtonState(applyColor: .white,
-                                    applyFont: .boldSystemFont(ofSize: 14),
+                                    applyFont: VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 14),
                                     button: self.leftButton)
                 self.setButtonState(applyColor: .black,
-                                    applyFont: .systemFont(ofSize: 14),
+                                    applyFont: VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 14),
                                     button: self.rightButton)
                 self.animationView.snp.makeConstraints {
-                    $0.top.leading.equalToSuperview().offset(4)
-                    $0.bottom.equalToSuperview().offset(-4)
+                    $0.top.leading.equalToSuperview().offset(self.defaultPadding)
+                    $0.bottom.equalToSuperview().offset(-self.defaultPadding)
                     $0.width.equalTo(self.leftButton.snp.width)
                 }
                 self.layoutIfNeeded()
             }
         } else {
-            animationView.snp.removeConstraints()
             UIView.animate(withDuration: 0.3) {
                 self.setButtonState(applyColor: .white,
-                                    applyFont: .boldSystemFont(ofSize: 14),
+                                    applyFont: VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 14),
                                     button: self.rightButton)
                 self.setButtonState(applyColor: .black,
-                                    applyFont: .systemFont(ofSize: 14),
+                                    applyFont: VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 14),
                                     button: self.leftButton)
                 self.animationView.snp.makeConstraints {
                     $0.leading.equalTo(self.leftButton.snp.trailing)
-                    $0.top.equalToSuperview().offset(4)
-                    $0.bottom.trailing.equalToSuperview().offset(-4)
+                    $0.top.equalToSuperview().offset(self.defaultPadding)
+                    $0.bottom.trailing.equalToSuperview().offset(-self.defaultPadding)
                     $0.width.equalTo(self.leftButton)
                 }
                 self.layoutIfNeeded()

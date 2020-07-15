@@ -93,10 +93,11 @@ extension ChallengeTitleViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChallengeTitleCollectionViewCell.identifier, for: indexPath) as? ChallengeTitleCollectionViewCell else { fatalError("No Cell Info") }
+        let image = collectionViewData[indexPath.item]["Image"]!
         let title = collectionViewData[indexPath.item]["MainTitle"]!
         let missionType = collectionViewData[indexPath.item]["MissionType"]!
         let date = collectionViewData[indexPath.item]["Date"]!
-        cell.configureData(title: title, missionType: missionType, date: date)
+        cell.configureData(image: image, title: title, missionType: missionType, date: date)
         return cell
     }
 }

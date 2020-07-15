@@ -89,8 +89,8 @@ class ChallengeTitleCollectionViewCell: UICollectionViewCell {
     
     
     // MARK: - Helpers
-    func configureData(title: String, missionType: String, date: String) {
-        imageView.image = UIImage(named: title)
+    func configureData(image: String, title: String, missionType: String, date: String) {
+        imageView.image = UIImage(named: image)
         missionTypeLabel.text = missionType
         mainTitleLabel.text = title
         dateLabel.text = date

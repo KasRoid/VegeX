@@ -19,7 +19,7 @@ class TripleMenuBarView: UIView {
         let label = UILabel()
         label.text = firstLabelText
         label.textColor = .vegeTextBlack
-        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 15)
         return label
     }()
     
@@ -27,7 +27,7 @@ class TripleMenuBarView: UIView {
         let label = UILabel()
         label.text = secondLabelText
         label.textColor = .vegeGreen
-        label.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+        label.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 15)
         return label
     }()
     
@@ -35,7 +35,7 @@ class TripleMenuBarView: UIView {
         let label = UILabel()
         label.text = thirdLabelText
         label.textColor = .vegeTextBlack
-        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 15)
         return label
     }()
     
@@ -120,24 +120,24 @@ class TripleMenuBarView: UIView {
         switch labelText {
         case firstLabelText:
             self.firstLabel.textColor = .vegeGreen
-            self.firstLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+            self.firstLabel.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 15)
             [self.secondLabel, self.thirdLabel].forEach {
                 $0.textColor = .vegeTextBlack
-                $0.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+                $0.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 15)
             }
         case secondLabelText:
             self.secondLabel.textColor = .vegeGreen
-            self.secondLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+            self.secondLabel.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 15)
             [self.firstLabel, self.thirdLabel].forEach {
                 $0.textColor = .vegeTextBlack
-                $0.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+                $0.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 15)
             }
         case thirdLabelText:
             self.thirdLabel.textColor = .vegeGreen
-            self.thirdLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+            self.thirdLabel.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 15)
             [self.firstLabel, self.secondLabel].forEach {
                 $0.textColor = .vegeTextBlack
-                $0.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+                $0.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 15)
             }
         default:
             fatalError("Not Proper Menu")

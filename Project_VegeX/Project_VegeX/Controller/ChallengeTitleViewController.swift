@@ -125,7 +125,7 @@ extension ChallengeTitleViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width
         let height = view.frame.height
-        let itemSize = CGSize(width: width, height: height / 5.5)
+        let itemSize = CGSize(width: width, height: height / 5)
         return itemSize
     }
     

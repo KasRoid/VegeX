@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIColor {
+    
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
@@ -24,4 +25,11 @@ extension UIColor {
             blue: rgb & 0xFF
         )
     }
+    
+    // 텍스트에 사용되는 검정색
+    static let vegeTextBlack = UIColor(rgb: 0x303033)
+    // 컨셉컬러 그린
+    static let vegeGreen = UIColor(rgb: 0x156941)
+    // 옅은 회색 배경
+    static let vegeGrayBackground = UIColor(rgb: 0xf1f2f4)
 }

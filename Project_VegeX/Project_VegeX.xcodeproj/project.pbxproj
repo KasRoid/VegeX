@@ -12,6 +12,10 @@
 		425FEDDA24B487BD00F851D2 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FEDD924B487BD00F851D2 /* MainTabBarController.swift */; };
 		425FEDDF24B487BF00F851D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425FEDDE24B487BF00F851D2 /* Assets.xcassets */; };
 		425FEDE224B487BF00F851D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425FEDE024B487BF00F851D2 /* LaunchScreen.storyboard */; };
+		426A926E24BEB81600052E8C /* TripleMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A926D24BEB81600052E8C /* TripleMenuBarView.swift */; };
+		426A927024BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A926F24BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift */; };
+		426A927424BEDCE200052E8C /* DataBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A927324BEDCE200052E8C /* DataBrain.swift */; };
+		426A927624BEE69E00052E8C /* ExtUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A927524BEE69E00052E8C /* ExtUIView.swift */; };
 		AF64577C24BD4C4C000B3296 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64577B24BD4C4C000B3296 /* extension.swift */; };
 		AF64578024BD9228000B3296 /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64577F24BD9228000B3296 /* ChallengeCustomCell.swift */; };
 		AF64578324BDA03C000B3296 /* MagazineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64578224BDA03C000B3296 /* MagazineViewController.swift */; };
@@ -32,6 +36,10 @@
 		425FEDDE24B487BF00F851D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		425FEDE124B487BF00F851D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		425FEDE324B487BF00F851D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		426A926D24BEB81600052E8C /* TripleMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleMenuBarView.swift; sourceTree = "<group>"; };
+		426A926F24BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		426A927324BEDCE200052E8C /* DataBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBrain.swift; sourceTree = "<group>"; };
+		426A927524BEE69E00052E8C /* ExtUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIView.swift; sourceTree = "<group>"; };
 		AF64577B24BD4C4C000B3296 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		AF64577F24BD9228000B3296 /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCustomCell.swift; path = Project_VegeX/Controller/ChallengeCustomCell.swift; sourceTree = SOURCE_ROOT; };
 		AF64578224BDA03C000B3296 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +96,7 @@
 		425FEDE924B4886D00F851D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				426A927324BEDCE200052E8C /* DataBrain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -97,6 +106,8 @@
 			children = (
 				AF64577F24BD9228000B3296 /* ChallengeCustomCell.swift */,
 				AF64578A24BDCCC0000B3296 /* CustomSegmentControl.swift */,
+				426A926D24BEB81600052E8C /* TripleMenuBarView.swift */,
+				426A926F24BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				AF64577B24BD4C4C000B3296 /* extension.swift */,
+				426A927524BEE69E00052E8C /* ExtUIView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -210,7 +222,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF64578B24BDCCC0000B3296 /* CustomSegmentControl.swift in Sources */,
+				426A927424BEDCE200052E8C /* DataBrain.swift in Sources */,
+				426A927024BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift in Sources */,
 				425FEDDA24B487BD00F851D2 /* MainTabBarController.swift in Sources */,
+				426A927624BEE69E00052E8C /* ExtUIView.swift in Sources */,
 				AF64578924BDA142000B3296 /* MyPageViewController.swift in Sources */,
 				425FEDD624B487BD00F851D2 /* AppDelegate.swift in Sources */,
 				AF64578324BDA03C000B3296 /* MagazineViewController.swift in Sources */,
@@ -218,6 +233,7 @@
 				425FEDD824B487BD00F851D2 /* SceneDelegate.swift in Sources */,
 				AF64578524BDA0BF000B3296 /* StoreViewController.swift in Sources */,
 				AF64577C24BD4C4C000B3296 /* extension.swift in Sources */,
+				426A926E24BEB81600052E8C /* TripleMenuBarView.swift in Sources */,
 				AF64578024BD9228000B3296 /* ChallengeCustomCell.swift in Sources */,
 				AF64578724BDA0E2000B3296 /* CommunityViewController.swift in Sources */,
 				AF8B562124BD3D9700CF19FF /* HomeViewController.swift in Sources */,

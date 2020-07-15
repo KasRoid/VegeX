@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol ChallengeCustomCellDelegate: class {
+    func handleRegister(_ cell: ChallengeCustomCell)
+}
+
 class ChallengeCustomCell: UITableViewCell {
     
     // MARK: - Properties
     
     static let identifier = "ChallengeCustomCell"
+    
+    weak var delegate: ChallengeCustomCellDelegate?
     
     private let chaImageView: UIImageView = {
         let iv = UIImageView()
@@ -46,7 +52,7 @@ class ChallengeCustomCell: UITableViewCell {
         return label
     }()
     
-    private let registerButton: UIButton = {
+    private lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.snp.makeConstraints {
             $0.width.equalTo(66)
@@ -54,6 +60,7 @@ class ChallengeCustomCell: UITableViewCell {
         }
         button.setImage(UIImage(named: "registerPicture"), for: .normal)
         button.tintColor = UIColor(rgb: 0x71A08A)
+        button.addTarget(self, action: #selector(handleRegister(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -67,6 +74,12 @@ class ChallengeCustomCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleRegister(_ sender: UIButton) {
+        delegate?.handleRegister(self)
     }
     
     // MARK: - Helpers

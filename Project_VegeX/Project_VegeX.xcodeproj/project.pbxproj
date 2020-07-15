@@ -13,12 +13,13 @@
 		425FEDDF24B487BF00F851D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425FEDDE24B487BF00F851D2 /* Assets.xcassets */; };
 		425FEDE224B487BF00F851D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425FEDE024B487BF00F851D2 /* LaunchScreen.storyboard */; };
 		AF64577C24BD4C4C000B3296 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64577B24BD4C4C000B3296 /* extension.swift */; };
-		AF64577E24BD7636000B3296 /* CustomSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64577D24BD7636000B3296 /* CustomSegment.swift */; };
 		AF64578024BD9228000B3296 /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64577F24BD9228000B3296 /* ChallengeCustomCell.swift */; };
 		AF64578324BDA03C000B3296 /* MagazineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64578224BDA03C000B3296 /* MagazineViewController.swift */; };
 		AF64578524BDA0BF000B3296 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64578424BDA0BF000B3296 /* StoreViewController.swift */; };
 		AF64578724BDA0E2000B3296 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64578624BDA0E2000B3296 /* CommunityViewController.swift */; };
 		AF64578924BDA142000B3296 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64578824BDA142000B3296 /* MyPageViewController.swift */; };
+		AF64578B24BDCCC0000B3296 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64578A24BDCCC0000B3296 /* CustomSegmentControl.swift */; };
+		AF80515F24BE98D500263058 /* ChallengeTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF80515E24BE98D500263058 /* ChallengeTitleViewController.swift */; };
 		AF8B561F24BD37EB00CF19FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AF8B561E24BD37EB00CF19FF /* SnapKit */; };
 		AF8B562124BD3D9700CF19FF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B562024BD3D9700CF19FF /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -32,12 +33,13 @@
 		425FEDE124B487BF00F851D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		425FEDE324B487BF00F851D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF64577B24BD4C4C000B3296 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
-		AF64577D24BD7636000B3296 /* CustomSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomSegment.swift; path = Project_VegeX/Controller/CustomSegment.swift; sourceTree = SOURCE_ROOT; };
 		AF64577F24BD9228000B3296 /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCustomCell.swift; path = Project_VegeX/Controller/ChallengeCustomCell.swift; sourceTree = SOURCE_ROOT; };
 		AF64578224BDA03C000B3296 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
 		AF64578424BDA0BF000B3296 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		AF64578624BDA0E2000B3296 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		AF64578824BDA142000B3296 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		AF64578A24BDCCC0000B3296 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomSegmentControl.swift; path = Project_VegeX/Controller/CustomSegmentControl.swift; sourceTree = SOURCE_ROOT; };
+		AF80515E24BE98D500263058 /* ChallengeTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTitleViewController.swift; sourceTree = "<group>"; };
 		AF8B562024BD3D9700CF19FF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,8 +95,8 @@
 		425FEDEA24B4887B00F851D2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AF64577D24BD7636000B3296 /* CustomSegment.swift */,
 				AF64577F24BD9228000B3296 /* ChallengeCustomCell.swift */,
+				AF64578A24BDCCC0000B3296 /* CustomSegmentControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +110,7 @@
 				AF64578424BDA0BF000B3296 /* StoreViewController.swift */,
 				AF64578624BDA0E2000B3296 /* CommunityViewController.swift */,
 				AF64578824BDA142000B3296 /* MyPageViewController.swift */,
+				AF80515E24BE98D500263058 /* ChallengeTitleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -206,11 +209,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF64578B24BDCCC0000B3296 /* CustomSegmentControl.swift in Sources */,
 				425FEDDA24B487BD00F851D2 /* MainTabBarController.swift in Sources */,
 				AF64578924BDA142000B3296 /* MyPageViewController.swift in Sources */,
 				425FEDD624B487BD00F851D2 /* AppDelegate.swift in Sources */,
 				AF64578324BDA03C000B3296 /* MagazineViewController.swift in Sources */,
-				AF64577E24BD7636000B3296 /* CustomSegment.swift in Sources */,
+				AF80515F24BE98D500263058 /* ChallengeTitleViewController.swift in Sources */,
 				425FEDD824B487BD00F851D2 /* SceneDelegate.swift in Sources */,
 				AF64578524BDA0BF000B3296 /* StoreViewController.swift in Sources */,
 				AF64577C24BD4C4C000B3296 /* extension.swift in Sources */,
@@ -353,14 +357,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DX4KVUBK56;
+				DEVELOPMENT_TEAM = ZLCDRXJTXW;
 				INFOPLIST_FILE = Project_VegeX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.KasRoid.Project-VegeX";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Project_VegeX;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -371,14 +375,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DX4KVUBK56;
+				DEVELOPMENT_TEAM = ZLCDRXJTXW;
 				INFOPLIST_FILE = Project_VegeX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.KasRoid.Project-VegeX";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Project_VegeX;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

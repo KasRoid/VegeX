@@ -11,8 +11,9 @@ import UIKit
 class ChallengeTitleViewController: UIViewController {
     
     // MARK: - Properties
-    lazy var backButton = UIBarButtonItem(image: UIImage(systemName: "lessthan"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
+    lazy var backButton = UIBarButtonItem(image: UIImage(named: "NaviBackBtn"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
     
+    let collectionViewData = DataBrain().challengeTitleVCData
     let menuBar = TripleMenuBarView()
     
     let collectionView: UICollectionView = {
@@ -92,7 +93,10 @@ extension ChallengeTitleViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChallengeTitleCollectionViewCell.identifier, for: indexPath) as? ChallengeTitleCollectionViewCell else { fatalError("No Cell Info") }
-        cell.backgroundColor = .white
+        let title = collectionViewData[indexPath.item]["MainTitle"]!
+        let missionType = collectionViewData[indexPath.item]["MissionType"]!
+        let date = collectionViewData[indexPath.item]["Date"]!
+        cell.configureData(title: title, missionType: missionType, date: date)
         return cell
     }
 }

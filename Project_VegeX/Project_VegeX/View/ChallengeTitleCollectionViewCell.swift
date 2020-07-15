@@ -50,6 +50,7 @@ class ChallengeTitleCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI
     private func configureUI() {
+        backgroundColor = .systemBackground
         setConstraints()
     }
     
@@ -57,6 +58,41 @@ class ChallengeTitleCollectionViewCell: UICollectionViewCell {
         [imageView, missionTypeLabel, mainTitleLabel, dateLabel].forEach {
             addSubview($0)
         }
+        
+        imageView.backgroundColor = .red
+        missionTypeLabel.text = "주간"
+        mainTitleLabel.text = "자전거 출퇴근"
+        dateLabel.text = "2020.07.13 - 07.29"
+        
+        imageView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(12)
+            $0.leading.equalToSuperview().inset(16)
+            $0.trailing.equalToSuperview().inset(239)
+        }
+        
+        missionTypeLabel.snp.makeConstraints {
+            $0.top.equalTo(imageView).inset(10)
+            $0.trailing.equalToSuperview().inset(198.5)
+            $0.bottom.equalToSuperview().inset(101)
+        }
+        
+        mainTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(missionTypeLabel.snp.bottom)
+            $0.leading.equalTo(missionTypeLabel)
+        }
+        
+        dateLabel.snp.makeConstraints {
+            $0.leading.equalTo(missionTypeLabel)
+            $0.bottom.equalTo(imageView).inset(15)
+        }
     }
     
+    
+    // MARK: - Helpers
+    func configureData(title: String, missionType: String, date: String) {
+        imageView.image = UIImage(named: title)
+        missionTypeLabel.text = missionType
+        mainTitleLabel.text = title
+        dateLabel.text = date
+    }
 }

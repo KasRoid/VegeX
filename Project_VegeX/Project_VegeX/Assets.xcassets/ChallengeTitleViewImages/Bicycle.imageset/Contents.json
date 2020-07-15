@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "자전거 출퇴근.png",
+      "filename" : "Bicycle.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "자전거 출퇴근@2x.png",
+      "filename" : "Bicycle@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "자전거 출퇴근@3x.png",
+      "filename" : "Bicycle@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

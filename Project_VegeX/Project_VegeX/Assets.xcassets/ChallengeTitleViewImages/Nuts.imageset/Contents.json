@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "주5회 견과류 먹기.png",
+      "filename" : "Nuts.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "주5회 견과류 먹기@2x.png",
+      "filename" : "Nuts@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "주5회 견과류 먹기@3x.png",
+      "filename" : "Nuts@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

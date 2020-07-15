@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 enum ChallengeType: Int, CaseIterable {
     case processing
@@ -98,25 +99,23 @@ class HomeViewController: UIViewController {
         return view
     }()
     
-    private let challengeButton: UILabel = {
+    private lazy var challengeButton: UILabel = {
         let label = UILabel()
         label.text = "전체 보기 >"
         label.font = .systemFont(ofSize: 14)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleChallengeEvent))
+        label.addGestureRecognizer(tapGesture)
+        
+        label.isUserInteractionEnabled = true
         return label
     }()
     
-    private lazy var challengeSegment: CustomSegment = {
-        var items = [String]()
-        for index in 0..<ChallengeType.allCases.count {
-            let challengeType = ChallengeType(rawValue: index)
-            items.append(challengeType!.description)
-        }
-        
-        let sw = CustomSegment(items: items)
-        sw.layer.borderColor = UIColor.white.cgColor
-        sw.layer.borderWidth = 3.0
-        sw.backgroundColor = .white
-        return sw
+    private let chaSegment: CustomSegmentControl = {
+        let cs = CustomSegmentControl()
+        cs.backgroundColor = .white
+        cs.layer.cornerRadius = 20
+        return cs
     }()
     
     private let tableView = UITableView()
@@ -140,6 +139,13 @@ class HomeViewController: UIViewController {
         homeScrollView.contentSize = CGSize(
             width: view.frame.width,
             height: tableView.frame.maxY + 20)
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleChallengeEvent() {
+        let controller = ChallengeTitleViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     // MARK: - Helpers
@@ -212,8 +218,8 @@ class HomeViewController: UIViewController {
             $0.height.equalTo(42)
         }
         
-        homeScrollView.addSubview(challengeSegment)
-        challengeSegment.snp.makeConstraints {
+        homeScrollView.addSubview(chaSegment)
+        chaSegment.snp.makeConstraints {
             $0.top.equalTo(challengeTitleView.snp.bottom).offset(12)
             $0.leading.equalToSuperview().offset(defaultPadding)
             $0.trailing.equalToSuperview().offset(-defaultPadding)
@@ -222,7 +228,7 @@ class HomeViewController: UIViewController {
         
         homeScrollView.addSubview(tableView)
         tableView.snp.makeConstraints {
-            $0.top.equalTo(challengeSegment.snp.bottom).offset(20)
+            $0.top.equalTo(chaSegment.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(defaultPadding)
             $0.trailing.equalToSuperview().offset(-defaultPadding)
             $0.height.equalTo(128 * 5)
@@ -342,6 +348,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChallengeCustomCell.identifier, for: indexPath) as! ChallengeCustomCell
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
+        cell.delegate = self
         return cell
     }
 }
@@ -357,5 +364,50 @@ extension HomeViewController: UITableViewDelegate {
         let footerView = UIView()
         footerView.backgroundColor = .clear
         return footerView
+    }
+}
+
+// MARK: - ChallengeCustomCellDelegate
+
+extension HomeViewController: ChallengeCustomCellDelegate {
+    func handleRegister(_ cell: ChallengeCustomCell) {
+        let imagePicker = UIImagePickerController()
+        
+        let choiceAlert = UIAlertController(
+            title: "인증 사진 등록",
+            message: nil,
+            preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(
+            title: "카메라 촬영",
+            style: .default) { action in
+                guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
+                imagePicker.sourceType = .camera
+                imagePicker.mediaTypes = [kUTTypeImage] as [String]
+                
+                if UIImagePickerController.isFlashAvailable(for: .rear) {
+                    imagePicker.cameraFlashMode = .auto
+                }
+                
+                self.present(imagePicker, animated: true)
+        }
+        
+        let albumAction = UIAlertAction(
+            title: "앨범 가져오기",
+            style: .default) { action in
+                imagePicker.sourceType = .savedPhotosAlbum
+                imagePicker.mediaTypes = [kUTTypeImage] as [String]
+                self.present(imagePicker, animated: true)
+        }
+        
+        let cancelAction = UIAlertAction(
+            title: "취소",
+            style: .cancel, handler: nil)
+        
+        choiceAlert.addAction(cameraAction)
+        choiceAlert.addAction(albumAction)
+        choiceAlert.addAction(cancelAction)
+        
+        present(choiceAlert, animated: true)
     }
 }

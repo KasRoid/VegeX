@@ -33,14 +33,14 @@ class ChallengeCustomCell: UITableViewCell {
     private let cafegoryLabel: UILabel = {
         let label = UILabel()
         label.text = "주간"
-        label.font = .systemFont(ofSize: 14)
+        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 14)
         return label
     }()
     
     private let contentsLabel: UILabel = {
         let label = UILabel()
         label.text = "주 3회 채식 도시락 싸가기"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 16)
         label.numberOfLines = 0
         return label
     }()
@@ -48,7 +48,7 @@ class ChallengeCustomCell: UITableViewCell {
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.text = "2020.07.13 - 07.29"
-        label.font = .systemFont(ofSize: 12)
+        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 12)
         return label
     }()
     
@@ -87,7 +87,7 @@ class ChallengeCustomCell: UITableViewCell {
     func configureUI() {
         addSubview(chaImageView)
         chaImageView.snp.makeConstraints {
-            $0.top.leading.bottom.equalTo(self)
+            $0.top.leading.bottom.equalToSuperview()
         }
         
         let stack = UIStackView(arrangedSubviews: [cafegoryLabel, contentsLabel])
@@ -104,7 +104,7 @@ class ChallengeCustomCell: UITableViewCell {
         addSubview(dateLabel)
         dateLabel.snp.makeConstraints {
             $0.leading.equalTo(chaImageView.snp.trailing).offset(12)
-            $0.bottom.equalTo(self).offset(-12)
+            $0.bottom.equalToSuperview().offset(-12)
         }
         
         addSubview(registerButton)

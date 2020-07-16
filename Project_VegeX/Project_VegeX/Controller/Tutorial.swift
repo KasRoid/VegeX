@@ -9,8 +9,8 @@
 import Foundation
 
 struct Tutorial {
+    let day: Int
     let title: String
-    let subTitle: String
-    let imageName: String
+    let mission: String
     let isFinish: Bool
 }

@@ -36,22 +36,22 @@ class TutorialListViewController: UICollectionViewController {
     // MARK: - API
     
     func fetchData() {
-        tutorials = [
-            Tutorial(title: "1일차", subTitle: "채식에 대한 오해와 진실",
-                     imageName: "tutorialimage", isFinish: true),
-            Tutorial(title: "2일차", subTitle: "나에게 맞는 채식 타입 알아보기",
-                     imageName: "tutorialimage", isFinish: true),
-            Tutorial(title: "3일차", subTitle: "주변에서 쉽게 구할 수 있는 대체 식재료",
-                     imageName: "tutorialimage", isFinish: true),
-            Tutorial(title: "4일차", subTitle: "비컨뷰티에 대해서 알아보기",
-                     imageName: "tutorialimage", isFinish: false),
-            Tutorial(title: "5일차", subTitle: "한국에서 채식을 한다는 것",
-                     imageName: "tutorialimage", isFinish: false),
-            Tutorial(title: "6일차", subTitle: "채워 넣어야 함.....",
-                     imageName: "tutorialimage", isFinish: false),
-            Tutorial(title: "7일차", subTitle: "비건 상품 고르는 방법",
-                     imageName: "tutorialimage", isFinish: false)
-        ]
+//        tutorials = [
+//            Tutorial(title: "1일차", subTitle: "채식에 대한 오해와 진실",
+//                     imageName: "tutorialimage", isFinish: true),
+//            Tutorial(title: "2일차", subTitle: "나에게 맞는 채식 타입 알아보기",
+//                     imageName: "tutorialimage", isFinish: true),
+//            Tutorial(title: "3일차", subTitle: "주변에서 쉽게 구할 수 있는 대체 식재료",
+//                     imageName: "tutorialimage", isFinish: true),
+//            Tutorial(title: "4일차", subTitle: "비컨뷰티에 대해서 알아보기",
+//                     imageName: "tutorialimage", isFinish: false),
+//            Tutorial(title: "5일차", subTitle: "한국에서 채식을 한다는 것",
+//                     imageName: "tutorialimage", isFinish: false),
+//            Tutorial(title: "6일차", subTitle: "채워 넣어야 함.....",
+//                     imageName: "tutorialimage", isFinish: false),
+//            Tutorial(title: "7일차", subTitle: "비건 상품 고르는 방법",
+//                     imageName: "tutorialimage", isFinish: false)
+//        ]
     }
     
     // MARK: - Helpers

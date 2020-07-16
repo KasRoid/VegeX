@@ -144,7 +144,10 @@ class HomeViewController: UIViewController {
     // MARK: - Selectors
     
     @objc func handleTutorialEvent() {
-        let controller = TutorialListViewController(collectionViewLayout: UICollectionViewFlowLayout())
+//        let controller = TutorialListViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        let controller = TutorialListupViewController()
+        controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }
     

@@ -11,7 +11,7 @@ import UIKit
 class ChallengeTitleViewController: UIViewController {
     
     // MARK: - Properties
-    lazy var backButton = UIBarButtonItem(image: UIImage(named: "NaviBackBtn"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
+    lazy var backButton = UIBarButtonItem(image: UIImage(named: "NewBackButton"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
     
     let collectionViewData = DataBrain().challengeTitleVCData
     let menuBar = TripleMenuBarView()
@@ -30,10 +30,15 @@ class ChallengeTitleViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.tintColor = .vegeTextBlack
+    }
+    
     
     // MARK: - UI
     private func configureUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
         setNavigationController()
         setConstraints()
         setCollectionView()
@@ -105,7 +110,9 @@ extension ChallengeTitleViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension ChallengeTitleViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(TutorialDetailViewController(), animated: true)
+    }
 }
 
 
@@ -125,7 +132,7 @@ extension ChallengeTitleViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width
         let height = view.frame.height
-        let itemSize = CGSize(width: width, height: height / 5.5)
+        let itemSize = CGSize(width: width, height: height / 5)
         return itemSize
     }
     

@@ -18,21 +18,21 @@ class ChallengeTitleCollectionViewCell: UICollectionViewCell {
     let missionTypeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .vegeTextBlack
-        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 14)
         return label
     }()
     
     let mainTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .vegeTextBlack
-        label.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
+        label.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 16)
         return label
     }()
     
     let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .vegeTextBlack
-        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
+        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 12)
         return label
     }()
     

@@ -30,23 +30,10 @@ class MainTabBarController: UITabBarController {
             image: UIImage(named: "home"),
             selectedImage: nil)
         
-        
-        let magazineController = MagazineViewController()
-        magazineController.tabBarItem = UITabBarItem(
-            title: "매거진",
-            image: UIImage(named: "magazine"),
-            selectedImage: nil)
-        
         let storeController = StoreViewController()
         storeController.tabBarItem = UITabBarItem(
             title: "스토어",
             image: UIImage(named: "store"),
-            selectedImage: nil)
-        
-        let communityController = CommunityViewController()
-        communityController.tabBarItem = UITabBarItem(
-            title: "커뮤니티",
-            image: UIImage(named: "community"),
             selectedImage: nil)
         
         let myPageController = MyPageViewController()
@@ -55,7 +42,7 @@ class MainTabBarController: UITabBarController {
             image: UIImage(named: "mypage"),
             selectedImage: nil)
         
-        viewControllers = [naviHome, magazineController, storeController, communityController, myPageController]
+        viewControllers = [naviHome, storeController, myPageController]
         viewControllers?.forEach {
             $0.tabBarItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             let appearance = UITabBarAppearance()

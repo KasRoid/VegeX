@@ -39,16 +39,26 @@ class TutorialDetailViewController: UIViewController {
     
     let startButton = UIButton(type: .system)
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureUI()
+        navigationController?.hidesBarsOnSwipe = true
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setLazyConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,6 +67,10 @@ class TutorialDetailViewController: UIViewController {
         containerView.snp.updateConstraints {
             $0.top.equalToSuperview().offset(-view.safeAreaInsets.top)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     
@@ -100,14 +114,14 @@ class TutorialDetailViewController: UIViewController {
         scrollView.backgroundColor = .clear
         containerView.backgroundColor = .clear
         scrollViewPage.backgroundColor = .white
-
+        
         introLabel.attributedText = applyAttributesInTextForAnswers(text: dataBrain.tutorialDetailVCContent[0]["Intro"]!)
         introLabel.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 16)
         introLabel.numberOfLines = 0
         
         let questions = [q1Label, q2Label, q3Label]
         generateStringForQuestions(questions: questions)
-
+        
         let answers = [a1Label, a2Label, a3Label, a3_1Label]
         generateStringForAnswers(answers: answers)
         
@@ -261,7 +275,6 @@ class TutorialDetailViewController: UIViewController {
     }
     
     @objc private func handleStartButton(_ sender: UIButton) {
-        print(#function)
     }
 }
 

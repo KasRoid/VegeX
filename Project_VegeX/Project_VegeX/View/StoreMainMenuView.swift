@@ -12,6 +12,7 @@ class StoreMainMenuView: UIView {
     
     // MARK: - Properties
     let mainCategoryView = StoreMainCategoryView()
+    let mainBrandView = StoreMainBrandView()
     
 
     // MARK: - Lifecycle
@@ -30,7 +31,7 @@ class StoreMainMenuView: UIView {
     }
     
     private func setConstraints() {
-        [mainCategoryView].forEach {
+        [mainCategoryView, mainBrandView].forEach {
             addSubview($0)
         }
         
@@ -38,7 +39,10 @@ class StoreMainMenuView: UIView {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(120)
         }
-        backgroundColor = .red
+        mainBrandView.snp.makeConstraints {
+            $0.top.equalTo(mainCategoryView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }        
     }
     
 }

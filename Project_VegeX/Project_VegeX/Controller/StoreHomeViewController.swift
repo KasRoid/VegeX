@@ -16,13 +16,9 @@ class StoreHomeViewController: UIViewController {
     let bagImage = UIImage(named: "ShoppingBag")
     
     let storeMenuBar = StoreMenuBarView()
-    let categoryCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        return collectionView
-    }()
-    
+    let storeHomeView = StoreHomeMenuView()
+    let storeMainView = StoreMainMenuView()
+
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -46,16 +42,12 @@ class StoreHomeViewController: UIViewController {
     private func setPropertyAttributes() {
         cartImageView.image = bagImage
         cartImageView.contentMode = .scaleAspectFit
-        
-        categoryCollectionView.register(StoreCategoryCell.self, forCellWithReuseIdentifier: StoreCategoryCell.identifier)
-        categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = self
     }
     
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
-        [searchBar, cartImageView, storeMenuBar].forEach {
+        [searchBar, cartImageView, storeMenuBar, storeHomeView].forEach {
             view.addSubview($0)
         }
         
@@ -75,7 +67,13 @@ class StoreHomeViewController: UIViewController {
         storeMenuBar.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(10)
             $0.leading.trailing.equalTo(safeArea)
-            
+        }
+        
+        storeHomeView.snp.makeConstraints {
+            $0.top.equalTo(storeMenuBar.snp.bottom).offset(15)
+            $0.leading.equalToSuperview()
+            $0.bottom.equalTo(safeArea)
+            $0.width.equalToSuperview()
         }
     }
     
@@ -85,36 +83,4 @@ class StoreHomeViewController: UIViewController {
         print(#function)
     }
     
-}
-
-extension StoreHomeViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: StoreCategoryCell.identifier, for: indexPath) as? StoreCategoryCell else { fatalError() }
-        cell.backgroundColor = .red
-        return cell
-    }
-    
-}
-
-extension StoreHomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 300)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
-    }
 }

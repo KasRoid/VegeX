@@ -85,8 +85,8 @@ class StoreMenuBarView: UIView {
         
         barView.snp.makeConstraints {
             $0.height.equalTo(2)
-            $0.leading.equalTo(self.firstLabel.snp.leading).offset(-(width / 5))
-            $0.trailing.equalTo(self.firstLabel.snp.trailing).offset(width / 5)
+            $0.leading.equalTo(self.firstLabel.snp.leading).offset(-(width / 6.5))
+            $0.trailing.equalTo(self.firstLabel.snp.trailing).offset(width / 6.5)
             $0.bottom.equalToSuperview()
         }
         
@@ -142,16 +142,16 @@ class StoreMenuBarView: UIView {
                 self.barView.snp.removeConstraints()
                 self.barView.snp.makeConstraints {
                     $0.height.equalTo(2)
-                    $0.leading.equalTo(self.firstLabel.snp.leading).offset(-(width / 5))
-                    $0.trailing.equalTo(self.firstLabel.snp.trailing).offset(width / 5)
+                    $0.leading.equalTo(self.firstLabel.snp.leading).offset(-(width / 6.5))
+                    $0.trailing.equalTo(self.firstLabel.snp.trailing).offset(width / 6.5)
                     $0.bottom.equalToSuperview()
                 }
             case self.secondLabelText:
                 self.barView.snp.removeConstraints()
                 self.barView.snp.makeConstraints {
                     $0.height.equalTo(2)
-                    $0.leading.equalTo(self.secondLabel.snp.leading).offset(-(width / 5))
-                    $0.trailing.equalTo(self.secondLabel.snp.trailing).offset(width / 5)
+                    $0.leading.equalTo(self.secondLabel.snp.leading).offset(-(width / 6.5))
+                    $0.trailing.equalTo(self.secondLabel.snp.trailing).offset(width / 6.5)
                     $0.bottom.equalToSuperview()
                 }
             default:

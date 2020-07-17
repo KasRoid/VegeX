@@ -40,6 +40,85 @@ struct DataBrain {
          "A3_1": "채식주의자들도 고기를 먹으면 안 된다고 단정짓고 말하는 경우는 거의 없어요. 환경파괴의 요인인 공장식 축산업이 나쁘다고 저항하는 것이지 고기섭취 자체에 반대하는 것은 아닙니다. 여러분들도 주변에 채식주의자가 있다면 그들에게 관심을 가져보세요. 왜 그들이 그런 선택을 하게 되었는지 이해하실 수 있을 겁니다. 이러한 채식주의자들을 아예 다른 사람이라고 생각하지 마시고 자신이 소중하게 생각하는 가치를 위해 노력하는 사람으로 기억해주세요. 모두 그 가치를 지키기 위해 행동하는 방법이 다르듯이 채식주의자도 조금 다를 뿐입니다."
         ]
     ]
+    
+    let storeHomeCategoryData = ["전체", "식품", "뷰티", ""]
+    
+    let storeHomeProductData = [
+        [
+            "main_image": "VegunPizza",
+            "title":
+            """
+            맛있는데 속도 편안한
+            비건 피자
+            """,
+            "description":
+            """
+            비건베이커리로 유명한 더브레드블루에서
+            야심차게 새로 출시한 비건피자. 2주동안
+            30% 할인된 착한 가격으로 만나보세요.
+            """,
+            
+            "product_image_1": "The_Bread_Blue",
+            "product_title_1": "THE BREAD BLUE",
+            "product_description_1": "호두 깜빠뉴",
+            "product_price_1": "7,900",
+            
+            "product_image_2": "VegeLife",
+            "product_title_2": "채식생활",
+            "product_description_2": "마시는채식 브이퀄귀리 1세트…",
+            "product_price_2": "40% 11,900",
+        ],
+        
+        [
+            "main_image": "TimeLessBeauty",
+            "title":
+            """
+            Timeless Beauty를 추구하는
+            럭셔리 비건 뷰티 디어달리아
+            """,
+            "description":
+            """
+            자연유래 성분만을 고집하는 비건 뷰티 브랜드
+            디어달리아의 베스트셀러 제품들을
+            단 2주간 최대 혜택으로 만나보세요.
+            """,
+            
+            "product_image_1": "DeerDalia",
+            "product_title_1": "디어달리아",
+            "product_description_1": "블루밍 에디션 스킨 파라다이스 소…",
+            "product_price_1": "32,000",
+            
+            "product_image_2": "Hersteller",
+            "product_title_2": "Hersteller",
+            "product_description_2": "리틀 드롭스 카밍 데이즈 15ml",
+            "product_price_2": "24,000",
+        ],
+        
+        [
+            "main_image": "VegunTiger_Main",
+            "title":
+            """
+            잔혹함이 없는 패션
+            비건타이거 기획전
+            """,
+            "description":
+            """
+            비건타이거는 국내 최초의 비건패션브랜드로
+            훌륭한 비동물성 소재로 제작된 아름다운
+            옷들을 선보이고 있습니다.
+            """,
+            
+            "product_image_1": "VegunTiger",
+            "product_title_1": "비건타이거",
+            "product_description_1": "타이거 밴드 원피스_블랙",
+            "product_price_1": "248,000",
+            
+            "product_image_2": "Freitag",
+            "product_title_2": "프라이탁",
+            "product_description_2": "F12 DRAGNET_00187",
+            "product_price_2": "322,000",
+        ]
+    ]
 }
 
 

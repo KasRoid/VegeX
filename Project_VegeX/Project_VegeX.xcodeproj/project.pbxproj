@@ -23,6 +23,10 @@
 		42D8F3B724C08DCB00FC055A /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8F3B624C08DCB00FC055A /* SearchController.swift */; };
 		42F8C99E24C01C1F008EE1B9 /* TutorialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8C99D24C01C1F008EE1B9 /* TutorialDetailViewController.swift */; };
 		42F9DF8024C12F640093404C /* StoreCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F9DF7F24C12F640093404C /* StoreCategoryCell.swift */; };
+		42F9DF8224C138400093404C /* StoreHomeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F9DF8124C138400093404C /* StoreHomeMenuView.swift */; };
+		42F9DF8424C13A180093404C /* StoreMainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F9DF8324C13A180093404C /* StoreMainMenuView.swift */; };
+		42F9DF8624C15F580093404C /* StoreProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F9DF8524C15F580093404C /* StoreProductCell.swift */; };
+		42F9DF8824C175720093404C /* StoreHomeSellingProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F9DF8724C175720093404C /* StoreHomeSellingProductView.swift */; };
 		AF64577C24BD4C4C000B3296 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64577B24BD4C4C000B3296 /* extension.swift */; };
 		AF64578024BD9228000B3296 /* ChallengeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64577F24BD9228000B3296 /* ChallengeCustomCell.swift */; };
 		AF64578324BDA03C000B3296 /* MagazineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64578224BDA03C000B3296 /* MagazineViewController.swift */; };
@@ -66,6 +70,10 @@
 		42D8F3B624C08DCB00FC055A /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		42F8C99D24C01C1F008EE1B9 /* TutorialDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailViewController.swift; sourceTree = "<group>"; };
 		42F9DF7F24C12F640093404C /* StoreCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCategoryCell.swift; sourceTree = "<group>"; };
+		42F9DF8124C138400093404C /* StoreHomeMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHomeMenuView.swift; sourceTree = "<group>"; };
+		42F9DF8324C13A180093404C /* StoreMainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMainMenuView.swift; sourceTree = "<group>"; };
+		42F9DF8524C15F580093404C /* StoreProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProductCell.swift; sourceTree = "<group>"; };
+		42F9DF8724C175720093404C /* StoreHomeSellingProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHomeSellingProductView.swift; sourceTree = "<group>"; };
 		AF64577B24BD4C4C000B3296 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		AF64577F24BD9228000B3296 /* ChallengeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCustomCell.swift; path = Project_VegeX/Controller/ChallengeCustomCell.swift; sourceTree = SOURCE_ROOT; };
 		AF64578224BDA03C000B3296 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
@@ -146,8 +154,12 @@
 			isa = PBXGroup;
 			children = (
 				AF64577F24BD9228000B3296 /* ChallengeCustomCell.swift */,
+				42F9DF8724C175720093404C /* StoreHomeSellingProductView.swift */,
 				42F9DF7F24C12F640093404C /* StoreCategoryCell.swift */,
 				423CFD0D24C11F7200133A86 /* StoreMenuBarView.swift */,
+				42F9DF8524C15F580093404C /* StoreProductCell.swift */,
+				42F9DF8124C138400093404C /* StoreHomeMenuView.swift */,
+				42F9DF8324C13A180093404C /* StoreMainMenuView.swift */,
 				423CFD0924C118A500133A86 /* CustomSearchBarTextField.swift */,
 				423CFD0B24C11D7600133A86 /* CustomSearchBarView.swift */,
 				AF64578A24BDCCC0000B3296 /* CustomSegmentControl.swift */,
@@ -304,8 +316,11 @@
 				42F8C99E24C01C1F008EE1B9 /* TutorialDetailViewController.swift in Sources */,
 				AF84A16F24C0B0B60026DC0B /* TutorialMissionViewController.swift in Sources */,
 				AF7E3EBF24C02B2700D370A0 /* TutorialViewModel.swift in Sources */,
+				42F9DF8824C175720093404C /* StoreHomeSellingProductView.swift in Sources */,
 				42D8F3B724C08DCB00FC055A /* SearchController.swift in Sources */,
 				AF7E3EB824C010C300D370A0 /* TutorialListupViewController.swift in Sources */,
+				42F9DF8224C138400093404C /* StoreHomeMenuView.swift in Sources */,
+				42F9DF8624C15F580093404C /* StoreProductCell.swift in Sources */,
 				AF64578924BDA142000B3296 /* MyPageViewController.swift in Sources */,
 				425FEDD624B487BD00F851D2 /* AppDelegate.swift in Sources */,
 				AF64578324BDA03C000B3296 /* MagazineViewController.swift in Sources */,
@@ -323,6 +338,7 @@
 				AF64577C24BD4C4C000B3296 /* extension.swift in Sources */,
 				426A926E24BEB81600052E8C /* TripleMenuBarView.swift in Sources */,
 				AF64578024BD9228000B3296 /* ChallengeCustomCell.swift in Sources */,
+				42F9DF8424C13A180093404C /* StoreMainMenuView.swift in Sources */,
 				42D8F3B324C08BD200FC055A /* StoreHomeViewController.swift in Sources */,
 				AF64578724BDA0E2000B3296 /* CommunityViewController.swift in Sources */,
 				AF7E3EC524C07B5700D370A0 /* ProductCustomCell.swift in Sources */,

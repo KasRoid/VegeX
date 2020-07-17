@@ -14,6 +14,8 @@ class StoreCategoryCell: UICollectionViewCell {
     // MARK: - Properties
     static let identifier = "StoreCategoryCell"
     
+    let title = UILabel()
+    
     
     // MARK: - Lifecycle
     override init(frame: CGRect) {
@@ -27,7 +29,15 @@ class StoreCategoryCell: UICollectionViewCell {
     
     // MARK: - UI
     private func configureUI() {
+        layer.borderWidth = 1
+        layer.borderColor = UIColor(rgb: 0xDADCE0).cgColor
         
+        title.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 12)
+        
+        addSubview(title)
+        title.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
     }
     
 }

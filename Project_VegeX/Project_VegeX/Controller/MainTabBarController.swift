@@ -31,7 +31,8 @@ class MainTabBarController: UITabBarController {
             selectedImage: nil)
         
         let storeController = StoreViewController()
-        storeController.tabBarItem = UITabBarItem(
+        let naviStore = UINavigationController(rootViewController: storeController)
+        naviStore.tabBarItem = UITabBarItem(
             title: "스토어",
             image: UIImage(named: "store"),
             selectedImage: nil)
@@ -42,10 +43,11 @@ class MainTabBarController: UITabBarController {
             image: UIImage(named: "mypage"),
             selectedImage: nil)
         
-        viewControllers = [naviHome, storeController, myPageController]
+        viewControllers = [naviHome, naviStore, myPageController]
         viewControllers?.forEach {
             $0.tabBarItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             let appearance = UITabBarAppearance()
+            appearance.backgroundColor = .white
             appearance.stackedLayoutAppearance.selected.iconColor = UIColor(rgb: 0x71A08A)
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
                 NSAttributedString.Key.foregroundColor: UIColor(rgb: 0x71A08A)

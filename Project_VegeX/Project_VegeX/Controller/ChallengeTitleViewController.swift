@@ -42,6 +42,7 @@ class ChallengeTitleViewController: UIViewController {
         setNavigationController()
         setConstraints()
         setCollectionView()
+        collectionView.isPagingEnabled = true
     }
     
     private func setNavigationController() {
@@ -93,7 +94,7 @@ class ChallengeTitleViewController: UIViewController {
 extension ChallengeTitleViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return collectionViewData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

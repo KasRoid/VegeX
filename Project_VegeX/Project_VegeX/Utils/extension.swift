@@ -35,6 +35,10 @@ extension UIColor {
     static let vegeGrayBackground = UIColor(rgb: 0xf1f2f4)
     // 테이블 뷰 옅은 회색
     static let vegeTableViewBackgroundColor = UIColor(rgb: 0xF7F7F7)
+    // 필터 버튼 테두리 옅은 회색
+    static let vegeFilterBorderGrayColor = UIColor(rgb: 0xE4E4E4)
+    // 서비스(무료배송) 글자 회색
+    static let vegeServiceLightGray = UIColor(rgb: 0x5D5D5D)
 }
 
 extension UIView {

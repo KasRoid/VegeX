@@ -31,6 +31,8 @@ extension UIColor {
     static let vegeIntroTextColor = UIColor(rgb: 0x6D6D72)
     // 컨셉컬러 그린
     static let vegeGreen = UIColor(rgb: 0x156941)
+    // 옅은 그린 색상
+    static let vegeLightGreen = UIColor(rgb: 0x71A08A)
     // 옅은 회색 배경
     static let vegeGrayBackground = UIColor(rgb: 0xf1f2f4)
     // 테이블 뷰 옅은 회색
@@ -39,6 +41,8 @@ extension UIColor {
     static let vegeFilterBorderGrayColor = UIColor(rgb: 0xE4E4E4)
     // 서비스(무료배송) 글자 회색
     static let vegeServiceLightGray = UIColor(rgb: 0x5D5D5D)
+    // 제품 수량 개수 테두리색(회색)
+    static let vegeAmountBorderColor = UIColor(rgb: 0xDADCE0)
 }
 
 extension UIView {

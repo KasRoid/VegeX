@@ -15,6 +15,11 @@ struct DataBrain {
         ["Image": "LipCare", "MissionType": "주간", "MainTitle": "비건 립밤 쓰기", "Date": "2020.07.13 - 07.29"],
         ["Image": "Nuts", "MissionType": "주간", "MainTitle": "주5회 견과류 먹기", "Date": "2020.07.13 - 07.29"],
         ["Image": "VegeDiet", "MissionType": "주간", "MainTitle": "주3회 채식 식단 먹기", "Date": "2020.07.13 - 07.29"],
+        
+        ["Image": "Bicycle", "MissionType": "주간", "MainTitle": "자전거 출퇴근", "Date": "2020.07.13 - 07.29"],
+        ["Image": "LipCare", "MissionType": "주간", "MainTitle": "비건 립밤 쓰기", "Date": "2020.07.13 - 07.29"],
+        ["Image": "Nuts", "MissionType": "주간", "MainTitle": "주5회 견과류 먹기", "Date": "2020.07.13 - 07.29"],
+        ["Image": "VegeDiet", "MissionType": "주간", "MainTitle": "주3회 채식 식단 먹기", "Date": "2020.07.13 - 07.29"],
     ]
     
     let tutorialDetailVCData: [[String: String]] = [

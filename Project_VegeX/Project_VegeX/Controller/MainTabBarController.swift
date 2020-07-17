@@ -30,7 +30,7 @@ class MainTabBarController: UITabBarController {
             image: UIImage(named: "home"),
             selectedImage: nil)
         
-        let storeController = StoreViewController()
+        let storeController = UINavigationController(rootViewController: StoreHomeViewController())
         storeController.tabBarItem = UITabBarItem(
             title: "스토어",
             image: UIImage(named: "store"),

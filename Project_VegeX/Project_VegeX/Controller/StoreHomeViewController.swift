@@ -18,6 +18,18 @@ class StoreHomeViewController: UIViewController {
     let storeMenuBar = StoreMenuBarView()
     let storeHomeView = StoreHomeMenuView()
     let storeMainView = StoreMainMenuView()
+    
+    var isHome: Bool = true {
+        didSet {
+            if isHome {
+                storeHomeView.isHidden = false
+                storeMainView.isHidden = true
+            } else {
+                storeHomeView.isHidden = true
+                storeMainView.isHidden = false
+            }
+        }
+    }
 
     
     // MARK: - Lifecycle
@@ -30,6 +42,7 @@ class StoreHomeViewController: UIViewController {
     // MARK: - UI
     private func configureUI() {
         view.backgroundColor = .white
+        storeMenuBar.delegate = self
         setNavigationController()
         setPropertyAttributes()
         setConstraints()
@@ -40,6 +53,7 @@ class StoreHomeViewController: UIViewController {
     }
     
     private func setPropertyAttributes() {
+        storeMainView.isHidden = true
         cartImageView.image = bagImage
         cartImageView.contentMode = .scaleAspectFit
     }
@@ -47,7 +61,7 @@ class StoreHomeViewController: UIViewController {
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
-        [searchBar, cartImageView, storeMenuBar, storeHomeView].forEach {
+        [searchBar, cartImageView, storeMenuBar, storeHomeView, storeMainView].forEach {
             view.addSubview($0)
         }
         
@@ -75,6 +89,13 @@ class StoreHomeViewController: UIViewController {
             $0.bottom.equalTo(safeArea)
             $0.width.equalToSuperview()
         }
+        
+        storeMainView.snp.makeConstraints {
+            $0.top.equalTo(storeMenuBar.snp.bottom).offset(15)
+            $0.leading.equalToSuperview()
+            $0.bottom.equalTo(safeArea)
+            $0.width.equalToSuperview()
+        }
     }
     
     
@@ -83,4 +104,17 @@ class StoreHomeViewController: UIViewController {
         print(#function)
     }
     
+}
+
+extension StoreHomeViewController: StoreMenuBarViewDelegate {
+    func didSelectMenu(menu: String) {
+        switch menu {
+        case "Home":
+            isHome = true
+        case "Main":
+            isHome = false
+        default:
+            break
+        }
+    }
 }

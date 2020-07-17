@@ -11,6 +11,8 @@ import UIKit
 class StoreMenuBarView: UIView {
     
     // MARK: - Properties
+    weak var delegate: StoreMenuBarViewDelegate?
+    
     let firstLabelText = "홈"
     let secondLabelText = "스토어"
     
@@ -145,6 +147,7 @@ class StoreMenuBarView: UIView {
                     $0.leading.equalTo(self.firstLabel.snp.leading).offset(-(width / 6.5))
                     $0.trailing.equalTo(self.firstLabel.snp.trailing).offset(width / 6.5)
                     $0.bottom.equalToSuperview()
+                    self.delegate?.didSelectMenu(menu: "Home")
                 }
             case self.secondLabelText:
                 self.barView.snp.removeConstraints()
@@ -153,6 +156,7 @@ class StoreMenuBarView: UIView {
                     $0.leading.equalTo(self.secondLabel.snp.leading).offset(-(width / 6.5))
                     $0.trailing.equalTo(self.secondLabel.snp.trailing).offset(width / 6.5)
                     $0.bottom.equalToSuperview()
+                    self.delegate?.didSelectMenu(menu: "Main")
                 }
             default:
                 fatalError("Wrong Gesture")
@@ -160,5 +164,8 @@ class StoreMenuBarView: UIView {
             self.layoutIfNeeded()
         })
     }
-    
+}
+
+protocol StoreMenuBarViewDelegate: class {
+    func didSelectMenu(menu: String)
 }

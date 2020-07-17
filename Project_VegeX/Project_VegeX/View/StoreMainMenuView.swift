@@ -11,7 +11,7 @@ import UIKit
 class StoreMainMenuView: UIView {
     
     // MARK: - Properties
-    
+    let mainCategoryView = StoreMainCategoryView()
     
 
     // MARK: - Lifecycle
@@ -26,7 +26,19 @@ class StoreMainMenuView: UIView {
     
     // MARK: - Lifecycle
     private func configureUI() {
+        setConstraints()
+    }
+    
+    private func setConstraints() {
+        [mainCategoryView].forEach {
+            addSubview($0)
+        }
         
+        mainCategoryView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(120)
+        }
+        backgroundColor = .red
     }
     
 }

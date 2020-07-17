@@ -143,9 +143,13 @@ class HomeViewController: UIViewController {
     
     // MARK: - Selectors
     
+    @objc func handleMissionEvent() {
+        let controller = TutorialMissionViewController()
+        controller.modalPresentationStyle = .overFullScreen
+        present(controller, animated: true)
+    }
+    
     @objc func handleTutorialEvent() {
-//        let controller = TutorialListViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        
         let controller = TutorialListupViewController()
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
@@ -343,6 +347,10 @@ class HomeViewController: UIViewController {
             $0.top.equalToSuperview().offset(12)
             $0.trailing.equalToSuperview().offset(-12)
         }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMissionEvent))
+        missionView.addGestureRecognizer(tapGesture)
+        missionView.isUserInteractionEnabled = true
         
         return missionView
     }

@@ -42,6 +42,7 @@ class ChallengeTitleViewController: UIViewController {
         setNavigationController()
         setConstraints()
         setCollectionView()
+        collectionView.isPagingEnabled = true
     }
     
     private func setNavigationController() {

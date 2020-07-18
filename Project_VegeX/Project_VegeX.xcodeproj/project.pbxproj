@@ -18,6 +18,8 @@
 		426A926E24BEB81600052E8C /* TripleMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A926D24BEB81600052E8C /* TripleMenuBarView.swift */; };
 		426A927024BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A926F24BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift */; };
 		426A927424BEDCE200052E8C /* DataBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A927324BEDCE200052E8C /* DataBrain.swift */; };
+		42C326CA24C1D78500F2C2B5 /* StoreMainBrandObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C326C924C1D78500F2C2B5 /* StoreMainBrandObjectView.swift */; };
+		42C326CD24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C326CC24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift */; };
 		42D8F3B324C08BD200FC055A /* StoreHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8F3B224C08BD200FC055A /* StoreHomeViewController.swift */; };
 		42D8F3B524C08DB900FC055A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8F3B424C08DB900FC055A /* SearchBar.swift */; };
 		42D8F3B724C08DCB00FC055A /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8F3B624C08DCB00FC055A /* SearchController.swift */; };
@@ -89,6 +91,8 @@
 		426A926D24BEB81600052E8C /* TripleMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleMenuBarView.swift; sourceTree = "<group>"; };
 		426A926F24BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		426A927324BEDCE200052E8C /* DataBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBrain.swift; sourceTree = "<group>"; };
+		42C326C924C1D78500F2C2B5 /* StoreMainBrandObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMainBrandObjectView.swift; sourceTree = "<group>"; };
+		42C326CC24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProjectDetailViewController.swift; sourceTree = "<group>"; };
 		42D8F3B224C08BD200FC055A /* StoreHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHomeViewController.swift; sourceTree = "<group>"; };
 		42D8F3B424C08DB900FC055A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		42D8F3B624C08DCB00FC055A /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -207,9 +211,11 @@
 				42F9DF8324C13A180093404C /* StoreMainMenuView.swift */,
 				42F9DF8924C1A9D10093404C /* StoreMainCategoryView.swift */,
 				42F9DF8B24C1BD550093404C /* StoreMainBrandView.swift */,
+				42C326C924C1D78500F2C2B5 /* StoreMainBrandObjectView.swift */,
 				AF89190724C13E1D004C7E3D /* HomeView */,
 				AF89190A24C13E75004C7E3D /* StoreView */,
 				AF819E0224C2C26100EEFD00 /* MyPageView */,
+				42C326CE24C1FDCB00F2C2B5 /* ChallengeView */,
 				423CFD0924C118A500133A86 /* CustomSearchBarTextField.swift */,
 				423CFD0B24C11D7600133A86 /* CustomSearchBarView.swift */,
 				AF64578A24BDCCC0000B3296 /* CustomSegmentControl.swift */,
@@ -224,6 +230,7 @@
 				425FEDD924B487BD00F851D2 /* MainTabBarController.swift */,
 				AF89190424C13DE1004C7E3D /* HomeVC */,
 				AF89190524C13DF1004C7E3D /* StoreVC */,
+				42C326CB24C1FC9400F2C2B5 /* ChallengeVC */,
 				AF89190624C13DFB004C7E3D /* MyPageVC */,
 			);
 			path = Controller;
@@ -237,6 +244,21 @@
 				425FEDE024B487BF00F851D2 /* LaunchScreen.storyboard */,
 			);
 			path = Supports;
+			sourceTree = "<group>";
+		};
+		42C326CB24C1FC9400F2C2B5 /* ChallengeVC */ = {
+			isa = PBXGroup;
+			children = (
+				42C326CC24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift */,
+			);
+			path = ChallengeVC;
+			sourceTree = "<group>";
+		};
+		42C326CE24C1FDCB00F2C2B5 /* ChallengeView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ChallengeView;
 			sourceTree = "<group>";
 		};
 		AF64578124BD9FD6000B3296 /* Utils */ = {
@@ -437,6 +459,7 @@
 				426A927024BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift in Sources */,
 				AF89190E24C142E6004C7E3D /* BasketView.swift in Sources */,
 				AF89191224C1831D004C7E3D /* ProductAmountView.swift in Sources */,
+				42C326CD24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift in Sources */,
 				AFAAB75824C18D3C00711158 /* ProductBrandMoveView.swift in Sources */,
 				AF819E0A24C301B400EEFD00 /* ShoppingProfileView.swift in Sources */,
 				AF689E1B24C21FBC007E3526 /* ChallengeMissionViewController.swift in Sources */,
@@ -457,6 +480,7 @@
 				AF64578924BDA142000B3296 /* MyPageViewController.swift in Sources */,
 				425FEDD624B487BD00F851D2 /* AppDelegate.swift in Sources */,
 				42F9DF8A24C1A9D10093404C /* StoreMainCategoryView.swift in Sources */,
+				42C326CA24C1D78500F2C2B5 /* StoreMainBrandObjectView.swift in Sources */,
 				AF689E1924C21881007E3526 /* MissionCompleteViewController.swift in Sources */,
 				AF64578324BDA03C000B3296 /* MagazineViewController.swift in Sources */,
 				423CFD0C24C11D7600133A86 /* CustomSearchBarView.swift in Sources */,
@@ -626,7 +650,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZLCDRXJTXW;
+				DEVELOPMENT_TEAM = DX4KVUBK56;
 				INFOPLIST_FILE = Project_VegeX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -646,7 +670,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZLCDRXJTXW;
+				DEVELOPMENT_TEAM = DX4KVUBK56;
 				INFOPLIST_FILE = Project_VegeX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -112,7 +112,12 @@ extension ChallengeTitleViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension ChallengeTitleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(TutorialDetailViewController(), animated: true)
+        if indexPath.item == 0 {
+            navigationController?.pushViewController(TutorialDetailViewController(), animated: true)
+        }
+        if indexPath.item == 1 {
+            navigationController?.pushViewController(ChallengeProjectDetailViewController(), animated: true)
+        }
     }
 }
 

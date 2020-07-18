@@ -119,6 +119,23 @@ struct DataBrain {
             "product_price_2": "322,000",
         ]
     ]
+    
+    let storeMainBrandData = [
+        ["title":"디어달리아", "image": "DeerDalia_Logo"],
+        ["title":"세럼카인드", "image": "SerumKind_Logo"],
+        ["title":"닐스야드", "image": "NealsYard_Logo"],
+        ["title":"올리베리어", "image": "Olivarriet_Logo"],
+        
+        ["title":"멜릭서", "image": "Melixer_Logo"],
+        ["title":"비브", "image": "Beve_Logo"],
+        ["title":"본다이시크", "image": "BondiChic_Logo"],
+        ["title":"아임프롬", "image": "ImFrom_Logo"],
+        
+        ["title":"라운지비", "image": "LoungeB_Logo"],
+        ["title":"허스텔러", "image": "DeerDalia_Logo"],
+        ["title":"아떼", "image": "Athe_Logo"],
+        ["title":"언리시아", "image": "UnleAshia_Logo"],
+    ]
 }
 
 

@@ -218,7 +218,7 @@ class HomeViewController: UIViewController {
         
         let dailyMissionView = makeDailyMissionView(
             missionTitle: "1단계",
-            missoinSubTitle: "채식 대한 오해와 진실",
+            missoinSubTitle: "채식에 대한 오해와 진실",
             imageName: "saladIcon")
         homeScrollView.addSubview(dailyMissionView)
         dailyMissionView.snp.makeConstraints {

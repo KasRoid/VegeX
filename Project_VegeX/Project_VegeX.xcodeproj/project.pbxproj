@@ -18,8 +18,11 @@
 		426A926E24BEB81600052E8C /* TripleMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A926D24BEB81600052E8C /* TripleMenuBarView.swift */; };
 		426A927024BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A926F24BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift */; };
 		426A927424BEDCE200052E8C /* DataBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A927324BEDCE200052E8C /* DataBrain.swift */; };
+		4270FEFB24C30F40009C1678 /* ChallengeProjectReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270FEFA24C30F40009C1678 /* ChallengeProjectReviewView.swift */; };
+		4270FEFD24C314F6009C1678 /* ChallengeProjectCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270FEFC24C314F6009C1678 /* ChallengeProjectCommentTableViewCell.swift */; };
 		42C326CA24C1D78500F2C2B5 /* StoreMainBrandObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C326C924C1D78500F2C2B5 /* StoreMainBrandObjectView.swift */; };
 		42C326CD24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C326CC24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift */; };
+		42C326D124C2EE8400F2C2B5 /* ChallengeProjectDetailInstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C326D024C2EE8400F2C2B5 /* ChallengeProjectDetailInstructionView.swift */; };
 		42D8F3B324C08BD200FC055A /* StoreHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8F3B224C08BD200FC055A /* StoreHomeViewController.swift */; };
 		42D8F3B524C08DB900FC055A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8F3B424C08DB900FC055A /* SearchBar.swift */; };
 		42D8F3B724C08DCB00FC055A /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8F3B624C08DCB00FC055A /* SearchController.swift */; };
@@ -83,8 +86,11 @@
 		426A926D24BEB81600052E8C /* TripleMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleMenuBarView.swift; sourceTree = "<group>"; };
 		426A926F24BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		426A927324BEDCE200052E8C /* DataBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBrain.swift; sourceTree = "<group>"; };
+		4270FEFA24C30F40009C1678 /* ChallengeProjectReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProjectReviewView.swift; sourceTree = "<group>"; };
+		4270FEFC24C314F6009C1678 /* ChallengeProjectCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProjectCommentTableViewCell.swift; sourceTree = "<group>"; };
 		42C326C924C1D78500F2C2B5 /* StoreMainBrandObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMainBrandObjectView.swift; sourceTree = "<group>"; };
 		42C326CC24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProjectDetailViewController.swift; sourceTree = "<group>"; };
+		42C326D024C2EE8400F2C2B5 /* ChallengeProjectDetailInstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProjectDetailInstructionView.swift; sourceTree = "<group>"; };
 		42D8F3B224C08BD200FC055A /* StoreHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHomeViewController.swift; sourceTree = "<group>"; };
 		42D8F3B424C08DB900FC055A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		42D8F3B624C08DCB00FC055A /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -240,6 +246,9 @@
 		42C326CE24C1FDCB00F2C2B5 /* ChallengeView */ = {
 			isa = PBXGroup;
 			children = (
+				42C326D024C2EE8400F2C2B5 /* ChallengeProjectDetailInstructionView.swift */,
+				4270FEFA24C30F40009C1678 /* ChallengeProjectReviewView.swift */,
+				4270FEFC24C314F6009C1678 /* ChallengeProjectCommentTableViewCell.swift */,
 			);
 			path = ChallengeView;
 			sourceTree = "<group>";
@@ -423,6 +432,7 @@
 				AF635E4E24C1E28500A5406C /* MissionPictureCheckViewController.swift in Sources */,
 				42F9DF8024C12F640093404C /* StoreCategoryCell.swift in Sources */,
 				AFAAB76224C1B8F100711158 /* BeautyCustomCell.swift in Sources */,
+				4270FEFD24C314F6009C1678 /* ChallengeProjectCommentTableViewCell.swift in Sources */,
 				426A927024BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift in Sources */,
 				AF89190E24C142E6004C7E3D /* BasketView.swift in Sources */,
 				AF89191224C1831D004C7E3D /* ProductAmountView.swift in Sources */,
@@ -455,6 +465,7 @@
 				423CFD0A24C118A500133A86 /* CustomSearchBarTextField.swift in Sources */,
 				42D8F3B524C08DB900FC055A /* SearchBar.swift in Sources */,
 				AF80515F24BE98D500263058 /* ChallengeTitleViewController.swift in Sources */,
+				4270FEFB24C30F40009C1678 /* ChallengeProjectReviewView.swift in Sources */,
 				AF6860C424BEC79E00F75407 /* TutorialListViewController.swift in Sources */,
 				AF89191024C15C17004C7E3D /* LineThinView.swift in Sources */,
 				425FEDD824B487BD00F851D2 /* SceneDelegate.swift in Sources */,
@@ -469,6 +480,7 @@
 				42D8F3B324C08BD200FC055A /* StoreHomeViewController.swift in Sources */,
 				AFAAB75E24C1A79400711158 /* ReviewCustomCell.swift in Sources */,
 				AF64578724BDA0E2000B3296 /* CommunityViewController.swift in Sources */,
+				42C326D124C2EE8400F2C2B5 /* ChallengeProjectDetailInstructionView.swift in Sources */,
 				AF7E3EC524C07B5700D370A0 /* ProductCustomCell.swift in Sources */,
 				AF7E3EBB24C0184E00D370A0 /* TutorialCustomCell.swift in Sources */,
 				AF8B562124BD3D9700CF19FF /* HomeViewController.swift in Sources */,

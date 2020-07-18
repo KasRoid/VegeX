@@ -136,6 +136,103 @@ struct DataBrain {
         ["title":"아떼", "image": "Athe_Logo"],
         ["title":"언리시아", "image": "UnleAshia_Logo"],
     ]
+    
+    let challengeProjectTitleData = ["image": "Dining_Main", "title": "‘고기 대신’ 제품 6종 활용해서 밥상 차리기", "date": "2020.08.01(토) ~ 08.15(토) (2주) | 주1회"]
+    let challengeProjectSubInfoData = ["challenger": "도전자 수", "challengerNumber": "30명", "tree": "함께 심은 나무", "treeNumber": "8그루"]
+    let challengeProjectButtonData = ["leftButton": "다른 도전자 확인하기", "rightButton": "친구 초대하기"]
+    let challengeProjectDetailData = [
+        [
+            "title": "[브랜드 소개]",
+            "description": "롯데마트가 국내 비건 소비자가 느는 추세에 맞춰 대체육 상품인 ‘고기 대신’ 시리즈를 출시합니다. 고기대신은 콩, 밀에서 추출한 식물성 단백질과 조직을 기반으로 식이섬 유, 전분, 식물성 오일등 자연에서 유래한 재료를 이용하여 진짜 고기의 맛과 질감을 재현한 식물성 대체육입니다. 건강, 환경, 지구의 미래를 생각하는 더 건강하고 맛있는 고단백 식단. 우리 가족을 위해 오늘부터 ‘고기대신’ 하세요!"
+        ],
+        [
+            "title": "[프로젝트 소개]",
+            "description": "롯데마트의 고기대신 6종 중 하나를 활용하여 차린 맛있는 집밥을 인증해주세요!"
+        ],
+        [
+            "title": "[프로젝트 보상]",
+            "description":
+            """
+            그린포인트 +100p
+            베스트 그리너 10명에게는 롯데마트가 ‘고기대신’ 6종 세트를 쏩니다!
+            """
+        ],
+    ]
+    let challengeProjectInstructionData = [
+        [
+            "title": "[이렇게 찍어주세요!]",
+            "image1": "Instruction_01",
+            "image2": "Instruction_02",
+            "description": "다 차려진 [밥상] 혹은 [가스레인지] 위에서 조리 중인 음식 사진 찍기",
+        ],
+        [
+            "title": "[이렇게 하면 안돼요!]",
+            "image1": "Instruction_03",
+            "image2": "Instruction_04",
+            "description": "요리하는 음식이 보여야하고 음식의 사진이 제대로 잘 찍여야 합니다",],
+    ]
+    
+    let challengeProjectInstructionConditionInfo = [
+        """
+    인증 가능 요일: 월-일
+    인증 가능시간: 24시간
+    인증샷 간격: 제한 없음
+    사진첩 사용: 불가능
+    인증샷 공개: 공개
+    """
+    ]
+    
+    let challengeProjectCommentData = [
+        [
+            "image": "",
+            "name": "김희연",
+            "date": "2020.03.13 13:23",
+            "comment":
+            """
+            롯데마트까지 가기 귀찮긴 했지만
+            의미 있는 챌린지였어요.
+            """
+        ],
+        [
+            "image": "",
+            "name": "윤다혜",
+            "date": "2020.03.16 19:53",
+            "comment":
+            """
+            비건 양념 순살 후라이드 맛있었어요! 굿!!!
+            속도 편하고 좋았어요
+            """
+        ],
+        [
+            "image": "",
+            "name": "이지호",
+            "date": "2020.04.01 22:26",
+            "comment":
+            """
+            식비 절약도 되고 건강한 밥 먹어서 좋아요:)
+            재미도 있구요
+            """
+        ],
+        [
+            "image": "",
+            "name": "천지운",
+            "date": "2020.04.03 08:31",
+            "comment":
+            """
+            인증을 자꾸 깜빡해서 문제입니다ㅎㅎㅎㅎ
+            재미있는 도전이였어요
+            """
+        ],
+        [
+            "image": "",
+            "name": "송도영",
+            "date": "2020.04.08 14:33",
+            "comment":
+            """
+            생애 첫 비건 요리인데 생각보다 괜찮았어요
+            """
+        ],
+    ]
 }
 
 

@@ -31,6 +31,7 @@
 		42F9DF8824C175720093404C /* StoreHomeSellingProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F9DF8724C175720093404C /* StoreHomeSellingProductView.swift */; };
 		42F9DF8A24C1A9D10093404C /* StoreMainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F9DF8924C1A9D10093404C /* StoreMainCategoryView.swift */; };
 		42F9DF8C24C1BD550093404C /* StoreMainBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F9DF8B24C1BD550093404C /* StoreMainBrandView.swift */; };
+		AF635E4E24C1E28500A5406C /* MissionPictureCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF635E4D24C1E28500A5406C /* MissionPictureCheckViewController.swift */; };
 		AF64577C24BD4C4C000B3296 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64577B24BD4C4C000B3296 /* extension.swift */; };
 		AF64578324BDA03C000B3296 /* MagazineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64578224BDA03C000B3296 /* MagazineViewController.swift */; };
 		AF64578524BDA0BF000B3296 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64578424BDA0BF000B3296 /* StoreViewController.swift */; };
@@ -41,6 +42,9 @@
 		AF6860C224BEC22300F75407 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6860C124BEC22300F75407 /* HomeViewModel.swift */; };
 		AF6860C424BEC79E00F75407 /* TutorialListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6860C324BEC79E00F75407 /* TutorialListViewController.swift */; };
 		AF6860C824BED6B200F75407 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6860C724BED6B200F75407 /* Tutorial.swift */; };
+		AF689E1724C213D1007E3526 /* TutorialMakeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF689E1624C213D1007E3526 /* TutorialMakeButton.swift */; };
+		AF689E1924C21881007E3526 /* MissionCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF689E1824C21881007E3526 /* MissionCompleteViewController.swift */; };
+		AF689E1B24C21FBC007E3526 /* ChallengeMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF689E1A24C21FBC007E3526 /* ChallengeMissionViewController.swift */; };
 		AF7E3EB824C010C300D370A0 /* TutorialListupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7E3EB724C010C300D370A0 /* TutorialListupViewController.swift */; };
 		AF7E3EBB24C0184E00D370A0 /* TutorialCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7E3EBA24C0184E00D370A0 /* TutorialCustomCell.swift */; };
 		AF7E3EBD24C0187600D370A0 /* TutorialListupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7E3EBC24C0187600D370A0 /* TutorialListupCell.swift */; };
@@ -92,6 +96,7 @@
 		42F9DF8724C175720093404C /* StoreHomeSellingProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHomeSellingProductView.swift; sourceTree = "<group>"; };
 		42F9DF8924C1A9D10093404C /* StoreMainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMainCategoryView.swift; sourceTree = "<group>"; };
 		42F9DF8B24C1BD550093404C /* StoreMainBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMainBrandView.swift; sourceTree = "<group>"; };
+		AF635E4D24C1E28500A5406C /* MissionPictureCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPictureCheckViewController.swift; sourceTree = "<group>"; };
 		AF64577B24BD4C4C000B3296 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		AF64578224BDA03C000B3296 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
 		AF64578424BDA0BF000B3296 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +107,9 @@
 		AF6860C124BEC22300F75407 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AF6860C324BEC79E00F75407 /* TutorialListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialListViewController.swift; sourceTree = "<group>"; };
 		AF6860C724BED6B200F75407 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial.swift; path = Project_VegeX/Controller/Tutorial.swift; sourceTree = SOURCE_ROOT; };
+		AF689E1624C213D1007E3526 /* TutorialMakeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialMakeButton.swift; sourceTree = "<group>"; };
+		AF689E1824C21881007E3526 /* MissionCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCompleteViewController.swift; sourceTree = "<group>"; };
+		AF689E1A24C21FBC007E3526 /* ChallengeMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMissionViewController.swift; sourceTree = "<group>"; };
 		AF7E3EB724C010C300D370A0 /* TutorialListupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialListupViewController.swift; sourceTree = "<group>"; };
 		AF7E3EBA24C0184E00D370A0 /* TutorialCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialCustomCell.swift; sourceTree = "<group>"; };
 		AF7E3EBC24C0187600D370A0 /* TutorialListupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialListupCell.swift; sourceTree = "<group>"; };
@@ -273,9 +281,12 @@
 			children = (
 				AF8B562024BD3D9700CF19FF /* HomeViewController.swift */,
 				AF80515E24BE98D500263058 /* ChallengeTitleViewController.swift */,
+				AF689E1A24C21FBC007E3526 /* ChallengeMissionViewController.swift */,
 				42F8C99D24C01C1F008EE1B9 /* TutorialDetailViewController.swift */,
 				AF7E3EB724C010C300D370A0 /* TutorialListupViewController.swift */,
 				AF84A16E24C0B0B60026DC0B /* TutorialMissionViewController.swift */,
+				AF635E4D24C1E28500A5406C /* MissionPictureCheckViewController.swift */,
+				AF689E1824C21881007E3526 /* MissionCompleteViewController.swift */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
@@ -304,6 +315,7 @@
 				AF89190824C13E5C004C7E3D /* ChallengeCustomCell.swift */,
 				AF7E3EBC24C0187600D370A0 /* TutorialListupCell.swift */,
 				426A926F24BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift */,
+				AF689E1624C213D1007E3526 /* TutorialMakeButton.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -408,6 +420,7 @@
 				AFAAB76024C1B3BB00711158 /* QnaCustomCell.swift in Sources */,
 				AF64578B24BDCCC0000B3296 /* CustomSegmentControl.swift in Sources */,
 				426A927424BEDCE200052E8C /* DataBrain.swift in Sources */,
+				AF635E4E24C1E28500A5406C /* MissionPictureCheckViewController.swift in Sources */,
 				42F9DF8024C12F640093404C /* StoreCategoryCell.swift in Sources */,
 				AFAAB76224C1B8F100711158 /* BeautyCustomCell.swift in Sources */,
 				426A927024BECEBA00052E8C /* ChallengeTitleCollectionViewCell.swift in Sources */,
@@ -415,9 +428,11 @@
 				AF89191224C1831D004C7E3D /* ProductAmountView.swift in Sources */,
 				42C326CD24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift in Sources */,
 				AFAAB75824C18D3C00711158 /* ProductBrandMoveView.swift in Sources */,
+				AF689E1B24C21FBC007E3526 /* ChallengeMissionViewController.swift in Sources */,
 				425FEDDA24B487BD00F851D2 /* MainTabBarController.swift in Sources */,
 				AF6860C824BED6B200F75407 /* Tutorial.swift in Sources */,
 				42F8C99E24C01C1F008EE1B9 /* TutorialDetailViewController.swift in Sources */,
+				AF689E1724C213D1007E3526 /* TutorialMakeButton.swift in Sources */,
 				AFAAB75C24C1A0B800711158 /* ProductTVFooterView.swift in Sources */,
 				AF84A16F24C0B0B60026DC0B /* TutorialMissionViewController.swift in Sources */,
 				AF7E3EBF24C02B2700D370A0 /* TutorialViewModel.swift in Sources */,
@@ -430,6 +445,7 @@
 				425FEDD624B487BD00F851D2 /* AppDelegate.swift in Sources */,
 				42F9DF8A24C1A9D10093404C /* StoreMainCategoryView.swift in Sources */,
 				42C326CA24C1D78500F2C2B5 /* StoreMainBrandObjectView.swift in Sources */,
+				AF689E1924C21881007E3526 /* MissionCompleteViewController.swift in Sources */,
 				AF64578324BDA03C000B3296 /* MagazineViewController.swift in Sources */,
 				423CFD0C24C11D7600133A86 /* CustomSearchBarView.swift in Sources */,
 				AF6860BF24BEC1E600F75407 /* Utils.swift in Sources */,

@@ -12,89 +12,58 @@ class MyPageViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let missionStatusView = UIView()
+    private let defaultPadding: CGFloat = 20
+    private var isHome = true
     
-    private let missionStatusLabel: UILabel = {
-        let label = UILabel()
-        label.text = "1일차 미션 완료!"
-        label.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 32)
-        label.textAlignment = .center
-        label.textColor = .vegeGreen
-        return label
-    }()
+    // Navi View
     
-    private let missionTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "채식 인플루언서 1명 팔로우"
-        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 18)
-        label.textAlignment = .center
-        label.textColor = .vegeTextBlack
-        return label
-    }()
+    private let basketView = BasketView()
     
-    private let missionImageView: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "tutorial_treeicon"))
-        iv.snp.makeConstraints {
-            $0.width.equalTo(132)
-            $0.height.equalTo(96)
-        }
-        return iv
-    }()
+    // Custom View
     
-    private let missionPointLabel: UILabel = {
-        let label = UILabel()
-        label.text = "+20P"
-        label.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 30)
-        label.textAlignment = .center
-        label.textColor = .vegeGreen
-        return label
-    }()
+    private let topMenuBar = StoreMenuBarView()
+    private let profileView = ProfileView()
+    private let challengeStatusBarView = ChallengeStatusBarView()
     
-    private let missionTalkToLabel: UILabel = {
-        let label = UILabel()
-        label.text = "윤다혜님, 시작이 절반이에요 👍"
-        label.font = VegeXFont.AppleSDGothicNeo_Medium.fontData(fontSize: 18)
-        label.textAlignment = .center
-        label.textColor = .vegeTextBlack
-        return label
-    }()
+    private let shoppingMyView = ShoppingProfileView()
+    private let shoppingStatusView = ShoppingStatusView()
     
-    private let missionAlertLabel: UILabel = {
-        let label = UILabel()
-        label.text = "내일 열리는 2일차 튜토리얼을 기대해주세요!"
-        label.font = VegeXFont.AppleSDGothicNeo_Medium.fontData(fontSize: 14)
-        label.textAlignment = .center
-        label.textColor = .vegeTextBlack
-        return label
-    }()
+    // Scroll View
+    private let myProfileScrollView = UIScrollView()
+    private let myShoppingScrollView = UIScrollView()
     
-    private lazy var missionButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("확인", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .vegeLightGreen
-        button.titleLabel?.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 18)
-        button.addTarget(self, action: #selector(handleButtonEvent), for: .touchUpInside)
-        
-        button.snp.makeConstraints {
-            $0.width.equalTo(288)
-            $0.height.equalTo(56)
-        }
-        button.layer.cornerRadius = 56 / 2
-        return button
-    }()
+    private let layout = UICollectionViewFlowLayout()
+    private lazy var myPictureCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    
+    private let myShoppingTableView = UITableView()
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureCollectionView()
+        configureTableView()
     }
     
-    // MARK: - Seletors
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavi()
+    }
     
-    @objc func handleButtonEvent(_ sender: UIButton) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        let lastIndexPath = IndexPath(item: 12 - 1, section: 0)
+        guard let attrs = myPictureCollectionView.layoutAttributesForItem(at: lastIndexPath) else { return }
+        myPictureCollectionView.snp.updateConstraints {
+            $0.height.equalTo(attrs.frame.maxY + 8)
+        }
+        view.layoutIfNeeded()
+        
+        myProfileScrollView.contentSize = CGSize(width: view.frame.width, height: myPictureCollectionView.frame.maxY + 40)
+        
+        myShoppingScrollView.contentSize = CGSize(width: view.frame.width, height: 1000)
     }
     
     // MARK: - Helpers
@@ -102,55 +71,205 @@ class MyPageViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = .white
         
-        view.addSubview(missionStatusView)
-        missionStatusView.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.height.equalTo(450)
-            $0.width.equalTo(288)
+        view.addSubview(topMenuBar)
+        topMenuBar.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(44)
         }
         
-        missionStatusView.addSubview(missionStatusLabel)
-        missionStatusLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.leading.trailing.equalToSuperview()
+        configureShppingView()
+    }
+    
+    func configureShppingView() {
+//        myShoppingScrollView.showsVerticalScrollIndicator = false
+        myShoppingScrollView.backgroundColor = .white
+        view.addSubview(myShoppingScrollView)
+        myShoppingScrollView.snp.makeConstraints {
+            $0.top.equalTo(topMenuBar.snp.bottom)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        missionStatusView.addSubview(missionTitleLabel)
-        missionTitleLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(missionStatusLabel.snp.bottom).offset(8)
+        myShoppingScrollView.addSubview(shoppingMyView)
+        shoppingMyView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(28)
+            $0.leading.trailing.width.equalToSuperview()
+            $0.height.equalTo(148)
+        }
+        
+        myShoppingScrollView.addSubview(shoppingStatusView)
+        shoppingStatusView.snp.makeConstraints {
+            $0.top.equalTo(shoppingMyView.snp.bottom).offset(28)
+            $0.leading.equalToSuperview().offset(defaultPadding)
+            $0.trailing.equalToSuperview().offset(-defaultPadding)
+            $0.height.equalTo(100)
+        }
+        
+        let grayView = UIView()
+        grayView.backgroundColor = .vegeGrayBackground
+
+        myShoppingScrollView.addSubview(grayView)
+        grayView.snp.makeConstraints {
+            $0.top.equalTo(shoppingStatusView.snp.bottom).offset(36)
+            $0.leading.trailing.width.height.equalToSuperview()
+        }
+        
+        grayView.addSubview(myShoppingTableView)
+        myShoppingTableView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.height.equalTo(800)
+        }
+    }
+    
+    func configureHomeView() {
+        myProfileScrollView.showsVerticalScrollIndicator = false
+        myProfileScrollView.backgroundColor = .white
+        view.addSubview(myProfileScrollView)
+        myProfileScrollView.snp.makeConstraints {
+            $0.top.equalTo(topMenuBar.snp.bottom)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        myProfileScrollView.addSubview(profileView)
+        profileView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(defaultPadding)
+            $0.leading.equalToSuperview().offset(defaultPadding)
+            $0.trailing.equalToSuperview().offset(-defaultPadding)
+            $0.height.equalTo(76)
+        }
+        
+        myProfileScrollView.addSubview(challengeStatusBarView)
+        challengeStatusBarView.snp.makeConstraints {
+            $0.top.equalTo(profileView.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(defaultPadding)
+            $0.trailing.equalToSuperview().offset(-defaultPadding)
+            $0.width.equalToSuperview().offset(-defaultPadding * 2)
+            $0.height.equalTo(70)
+        }
+        
+        let lineView = UIView()
+        lineView.backgroundColor = .vegeAmountBorderColor
+        
+        myProfileScrollView.addSubview(lineView)
+        lineView.snp.makeConstraints {
+            $0.top.equalTo(challengeStatusBarView.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
         }
         
-        missionStatusView.addSubview(missionImageView)
-        missionImageView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(missionTitleLabel.snp.bottom).offset(68)
+        let pictureTitleLabel = UILabel()
+        pictureTitleLabel.text = "사진"
+        pictureTitleLabel.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 16)
+        pictureTitleLabel.textColor = .vegeTextBlack
+        
+        myProfileScrollView.addSubview(pictureTitleLabel)
+        pictureTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(lineView.snp.bottom).offset(defaultPadding)
+            $0.leading.equalToSuperview().offset(defaultPadding)
         }
         
-        missionStatusView.addSubview(missionPointLabel)
-        missionPointLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(missionImageView.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview()
+        let pictureExplainLabel = UILabel()
+        pictureExplainLabel.text = "내가 완성한 튜토리얼과 챌린지를 사진별로 기록하고 모아볼 수 있어요."
+        pictureExplainLabel.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 12)
+        pictureExplainLabel.textColor = UIColor(rgb: 0x757575)
+        
+        myProfileScrollView.addSubview(pictureExplainLabel)
+        pictureExplainLabel.snp.makeConstraints {
+            $0.top.equalTo(pictureTitleLabel.snp.bottom).offset(12)
+            $0.leading.equalToSuperview().offset(defaultPadding)
         }
         
-        let textStackView = UIStackView(arrangedSubviews: [missionTalkToLabel, missionAlertLabel])
-        textStackView.spacing = 4
-        textStackView.alignment = .center
-        textStackView.axis = .vertical
-        
-        missionStatusView.addSubview(textStackView)
-        textStackView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(missionPointLabel.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview()
+        myProfileScrollView.addSubview(myPictureCollectionView)
+        myPictureCollectionView.snp.makeConstraints {
+            $0.top.equalTo(pictureExplainLabel.snp.bottom).offset(12)
+            $0.leading.equalToSuperview().offset(defaultPadding)
+            $0.trailing.equalToSuperview().offset(-defaultPadding)
+            $0.height.equalTo(300)
         }
+    }
+    
+    func configureNavi() {
+        navigationItem.title = nil
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.layoutIfNeeded()
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.isHidden = false
         
-        missionStatusView.addSubview(missionButton)
-        missionButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(textStackView.snp.bottom).offset(48)
-        }
+        let basketBarButton = UIBarButtonItem(customView: basketView)
+        basketBarButton.tintColor = .black
+        
+        navigationItem.rightBarButtonItem = basketBarButton
+    }
+    
+    func configureCollectionView() {
+        myPictureCollectionView.backgroundColor = .white
+        myPictureCollectionView.dataSource = self
+        myPictureCollectionView.delegate = self
+        myPictureCollectionView.showsVerticalScrollIndicator = false
+        myPictureCollectionView.isScrollEnabled = false
+        
+        myPictureCollectionView.register(PictureCustomCell.self, forCellWithReuseIdentifier: PictureCustomCell.identifier)
+    }
+    
+    
+    private let orderHeaderView = ShoppingTableHeaderView()
+    
+    func configureTableView() {
+//        myShoppingTableView.backgroundColor = .red
+        //64
+        myShoppingTableView.dataSource = self
+        myShoppingTableView.delegate = self
+    }
+}
+
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+
+extension MyPageViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCustomCell.identifier, for: indexPath) as! PictureCustomCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+    }
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+
+extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return ShoppingHelpType.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ShoppingHelpType(rawValue: section)!.rowCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return orderHeaderView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 64
     }
 }

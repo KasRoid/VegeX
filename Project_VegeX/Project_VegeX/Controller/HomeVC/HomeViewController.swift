@@ -172,7 +172,7 @@ class HomeViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 120
+        tableView.rowHeight = 112
         tableView.isScrollEnabled = false
         tableView.allowsSelection = false
         
@@ -217,9 +217,9 @@ class HomeViewController: UIViewController {
         }
         
         let dailyMissionView = makeDailyMissionView(
-            missionTitle: "1단계",
+            day: "1단계",
             missoinSubTitle: "채식에 대한 오해와 진실",
-            imageName: "saladIcon")
+            imageName: "VegetableBackground")
         homeScrollView.addSubview(dailyMissionView)
         dailyMissionView.snp.makeConstraints {
             $0.top.equalTo(dailyMissionTitleView.snp.bottom).offset(8)
@@ -305,58 +305,66 @@ class HomeViewController: UIViewController {
         return customView
     }
     
-    func makeDailyMissionView(missionTitle: String, missoinSubTitle: String, imageName: String) -> UIView {
+    func makeDailyMissionView(day: String, missoinSubTitle: String, imageName: String) -> UIView {
         let missionView = UIView()
         missionView.layer.cornerRadius = 10
+        missionView.clipsToBounds = true
         missionView.layer.shadowColor = UIColor.lightGray.cgColor
         missionView.layer.shadowOffset = CGSize(width: 0, height: 0)
         missionView.layer.shadowRadius = 5
         missionView.layer.shadowOpacity = 0.5
-        missionView.backgroundColor = .white
         
         
-        let iconImageView = UIImageView(image: UIImage(named: imageName))
-        missionView.addSubview(iconImageView)
-        iconImageView.snp.makeConstraints {
-            $0.width.height.equalTo(64)
-            $0.top.equalToSuperview().offset(28)
-            $0.leading.equalToSuperview().offset(32)
+        let missionImageView = UIImageView(image: UIImage(named: imageName))
+        missionImageView.contentMode = .scaleAspectFill
+        missionView.addSubview(missionImageView)
+        missionImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
+        let alphaView = UIView()
+        alphaView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        missionImageView.addSubview(alphaView)
+        alphaView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        
+        let dayLabel = UILabel()
+        dayLabel.text = day
+        dayLabel.textAlignment = .center
+        dayLabel.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 16)
+        dayLabel.textColor = .white
+        
         let titleLabel = UILabel()
-        titleLabel.text = missionTitle
-        titleLabel.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 20)
-        titleLabel.textColor = .black
+        titleLabel.text = missoinSubTitle
+        titleLabel.textAlignment = .center
+        titleLabel.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 18)
+        titleLabel.textColor = .white
         
-        let subTitleLabel = UILabel()
-        subTitleLabel.text = missoinSubTitle
-        subTitleLabel.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 18)
-        subTitleLabel.textColor = .black
-        
-        let titleStack = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
+        let titleStack = UIStackView(arrangedSubviews: [dayLabel, titleLabel])
         titleStack.axis = .vertical
         titleStack.spacing = 4
-        titleStack.distribution = .fillProportionally
+        titleStack.alignment = .center
         
         missionView.addSubview(titleStack)
         titleStack.snp.makeConstraints {
-            $0.centerY.equalTo(iconImageView)
-            $0.leading.equalTo(iconImageView.snp.trailing).offset(20)
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(24)
         }
         
-        let statusImageView = UIImageView(image: UIImage(named: "processing"))
+        let statusButton = UIButton(type: .system)
+        statusButton.setTitle("시작하기", for: .normal)
+        statusButton.setTitleColor(.white, for: .normal)
+        statusButton.titleLabel?.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 14)
+        statusButton.layer.borderColor = UIColor.white.cgColor
+        statusButton.layer.borderWidth = 1.0
+        statusButton.layer.cornerRadius = 28 / 2
         
-        missionView.addSubview(statusImageView)
-        statusImageView.snp.makeConstraints {
-            $0.width.equalTo(45)
-            $0.height.equalTo(20)
-            $0.top.equalToSuperview().offset(12)
-            $0.trailing.equalToSuperview().offset(-12)
+        missionView.addSubview(statusButton)
+        statusButton.snp.makeConstraints {
+            $0.width.equalTo(80)
+            $0.height.equalTo(28)
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(titleStack.snp.bottom).offset(12)
         }
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMissionEvent))
-        missionView.addGestureRecognizer(tapGesture)
-        missionView.isUserInteractionEnabled = true
         
         return missionView
     }

@@ -37,7 +37,10 @@ class MainTabBarController: UITabBarController {
             image: UIImage(named: "store"),
             selectedImage: nil)
         
-        let myPageController = MyPageViewController()
+//        let myPageController = MyPageViewController()
+//        let myPageController = MissionPictureCheckViewController()
+//        let myPageController = MissionCompleteViewController()
+        let myPageController = ChallengeMissionViewController()
         myPageController.tabBarItem = UITabBarItem(
             title: "마이페이지",
             image: UIImage(named: "mypage"),

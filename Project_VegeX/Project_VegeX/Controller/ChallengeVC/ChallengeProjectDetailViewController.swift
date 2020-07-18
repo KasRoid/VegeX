@@ -11,9 +11,12 @@ import UIKit
 class ChallengeProjectDetailViewController: UIViewController {
 
     // MARK: - Properties
-    let scrollView = UIScrollView()
     lazy var backButton = UIBarButtonItem(image: UIImage(named: "NewBackButton"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
+
+    let scrollView = UIScrollView()
+    let contentView = UIView()
     
+    let stackView = UIStackView()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -23,6 +26,7 @@ class ChallengeProjectDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: contentView.frame.height)
     }
     
     
@@ -30,6 +34,8 @@ class ChallengeProjectDetailViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .green
         setNavigationController()
+        setScrollView()
+        setStackView()
         setConstraints()
     }
     
@@ -44,14 +50,32 @@ class ChallengeProjectDetailViewController: UIViewController {
         navigationItem.leftBarButtonItem = backButton
     }
     
+    private func setScrollView() {
+        
+    }
+    
+    private func setStackView() {
+        stackView.alignment = .center
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 5
+    }
+    
     private func setConstraints() {
         [scrollView].forEach {
             view.addSubview($0)
         }
+        scrollView.addSubview(contentView)
         
         scrollView.backgroundColor = .white
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        contentView.backgroundColor = .green
+        contentView.snp.makeConstraints {
+            $0.width.equalTo(view.frame.width)
+            $0.height.equalTo(view.frame.height * 2)
         }
     }
     

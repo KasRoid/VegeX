@@ -127,7 +127,7 @@ class TutorialListupCell: UITableViewCell {
     func configure() {
         guard let tutorial = tutorial else { return }
         let viewModel = TutorialViewModel(tutorial: tutorial)
-        dayLabel.text = viewModel.dayText
+        dayLabel.text = viewModel.formatterDayText
         missionTitleLabel.text = tutorial.title
         missionSubTitleLabel.text = viewModel.missionText
         checkStatusImageView.image = viewModel.checkImage

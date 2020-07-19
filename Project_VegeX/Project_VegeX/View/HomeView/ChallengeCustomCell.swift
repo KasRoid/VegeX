@@ -20,6 +20,10 @@ class ChallengeCustomCell: UITableViewCell {
     
     weak var delegate: ChallengeCustomCellDelegate?
     
+    var challenge: Challenge? {
+        didSet { configure() }
+    }
+    
     private let chaImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .systemPurple
@@ -121,6 +125,7 @@ class ChallengeCustomCell: UITableViewCell {
         contentsLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.equalTo(chaImageView.snp.trailing).offset(sideDefaultPadding)
+            $0.trailing.equalToSuperview().offset(-16)
         }
         
         let textStack = UIStackView(arrangedSubviews: [categoryLabel, dateLabel])
@@ -134,4 +139,14 @@ class ChallengeCustomCell: UITableViewCell {
         }
     }
     
+    func configure() {
+        guard let challenge = challenge else { return }
+        let viewModel = ChallengeViewModel(challenge: challenge)
+        contentsLabel.text = challenge.title
+        categoryLabel.text = challenge.cycle
+        dateLabel.text = viewModel.dateText
+        chaImageView.image = UIImage(named: "\(challenge.imageName)")
+        
+        alphaView.isHidden = viewModel.isAlphaViewHidden
+    }
 }

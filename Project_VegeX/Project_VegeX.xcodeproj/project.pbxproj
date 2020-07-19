@@ -76,6 +76,8 @@
 		AF8B561F24BD37EB00CF19FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AF8B561E24BD37EB00CF19FF /* SnapKit */; };
 		AF8B562124BD3D9700CF19FF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B562024BD3D9700CF19FF /* HomeViewController.swift */; };
 		AF8B94CB24C3FFEF0048EEFB /* TutorialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B94CA24C3FFEF0048EEFB /* TutorialService.swift */; };
+		AF8B94CD24C4230A0048EEFB /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B94CC24C4230A0048EEFB /* Challenge.swift */; };
+		AF8B94CF24C425210048EEFB /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B94CE24C425210048EEFB /* ChallengeViewModel.swift */; };
 		AFAAB75824C18D3C00711158 /* ProductBrandMoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAB75724C18D3C00711158 /* ProductBrandMoveView.swift */; };
 		AFAAB75A24C1939400711158 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAB75924C1939400711158 /* ProductDetailViewModel.swift */; };
 		AFAAB75C24C1A0B800711158 /* ProductTVFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAB75B24C1A0B800711158 /* ProductTVFooterView.swift */; };
@@ -155,6 +157,8 @@
 		AF89191124C1831D004C7E3D /* ProductAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAmountView.swift; sourceTree = "<group>"; };
 		AF8B562024BD3D9700CF19FF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AF8B94CA24C3FFEF0048EEFB /* TutorialService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialService.swift; sourceTree = "<group>"; };
+		AF8B94CC24C4230A0048EEFB /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		AF8B94CE24C425210048EEFB /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
 		AFAAB75724C18D3C00711158 /* ProductBrandMoveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBrandMoveView.swift; sourceTree = "<group>"; };
 		AFAAB75924C1939400711158 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		AFAAB75B24C1A0B800711158 /* ProductTVFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTVFooterView.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 			children = (
 				426A927324BEDCE200052E8C /* DataBrain.swift */,
 				AF6860C724BED6B200F75407 /* Tutorial.swift */,
+				AF8B94CC24C4230A0048EEFB /* Challenge.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 			children = (
 				AF6860C124BEC22300F75407 /* HomeViewModel.swift */,
 				AF7E3EBE24C02B2700D370A0 /* TutorialViewModel.swift */,
+				AF8B94CE24C425210048EEFB /* ChallengeViewModel.swift */,
 				AFAAB75924C1939400711158 /* ProductDetailViewModel.swift */,
 				AF819E0F24C31E6C00EEFD00 /* ShoppingViewModel.swift */,
 			);
@@ -499,6 +505,7 @@
 				42F8C99E24C01C1F008EE1B9 /* TutorialDetailViewController.swift in Sources */,
 				AF819E0424C2C29700EEFD00 /* ProfileView.swift in Sources */,
 				AF689E1724C213D1007E3526 /* TutorialMakeButton.swift in Sources */,
+				AF8B94CD24C4230A0048EEFB /* Challenge.swift in Sources */,
 				AFAAB75C24C1A0B800711158 /* ProductTVFooterView.swift in Sources */,
 				AF84A16F24C0B0B60026DC0B /* TutorialMissionViewController.swift in Sources */,
 				AF7E3EBF24C02B2700D370A0 /* TutorialViewModel.swift in Sources */,
@@ -538,6 +545,7 @@
 				426A926E24BEB81600052E8C /* TripleMenuBarView.swift in Sources */,
 				42F9DF8C24C1BD550093404C /* StoreMainBrandView.swift in Sources */,
 				42F9DF8424C13A180093404C /* StoreMainMenuView.swift in Sources */,
+				AF8B94CF24C425210048EEFB /* ChallengeViewModel.swift in Sources */,
 				AF89190C24C140F1004C7E3D /* ProductDetailViewController.swift in Sources */,
 				42D8F3B324C08BD200FC055A /* StoreHomeViewController.swift in Sources */,
 				AFAAB75E24C1A79400711158 /* ReviewCustomCell.swift in Sources */,

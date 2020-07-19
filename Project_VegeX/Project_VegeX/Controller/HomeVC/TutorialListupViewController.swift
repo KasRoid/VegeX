@@ -19,7 +19,7 @@ class TutorialListupViewController: UIViewController {
     
     private let introduceLabel: UILabel = {
         let label = UILabel()
-        label.text = SaveData.shared.tutorialIntroduceText
+        label.text = TutorialSaveData.shared.tutorialIntroduceText
         label.numberOfLines = 0
         label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 12)
         label.textColor = .vegeIntroTextColor
@@ -90,10 +90,10 @@ class TutorialListupViewController: UIViewController {
     // MARK: - API
     
     func fetchTutorials() {
-        tutorials = SaveData.shared.tutorialList
+        tutorials = TutorialSaveData.shared.tutorialList
         
         tutorials.forEach {
-            finishCount += $0.isFinish ? 1 : 0
+            finishCount += $0.status == .finish ? 1 : 0
         }
         tableView.reloadData()
     }
@@ -154,7 +154,6 @@ class TutorialListupViewController: UIViewController {
             action: #selector(handleDismiss))
         navigationItem.leftBarButtonItem?.tintColor = .black
     }
-    
 }
 
 extension TutorialListupViewController: UITableViewDataSource {

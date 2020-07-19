@@ -12,5 +12,6 @@ struct Tutorial {
     let day: Int
     let title: String
     let mission: String
-    let isFinish: Bool
+    let point: Int
+    var status: TutorialStatus
 }

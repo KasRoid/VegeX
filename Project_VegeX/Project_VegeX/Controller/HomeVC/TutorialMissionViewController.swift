@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol TutorialMissionViewControllerDelegate: class {
+    func handlePopController()
+}
+
 class TutorialMissionViewController: UIViewController {
     
     // MARK: - Properties
+    
+    weak var delegate: TutorialMissionViewControllerDelegate?
     
     private let missionView: UIView = {
         let view = UIView()
@@ -113,10 +119,29 @@ SNS를 잘 하지 않는다면
         configureUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            UIView.animate(withDuration: 0.3) {
+                self.missionView.transform = .identity
+            }
+        }
+    }
+    
     // MARK: - Seletors
     
     @objc func clickedConfirmEvent(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        var presentTutorial: Tutorial!
+        TutorialService.shared.getPresentTutorial { tutorial in
+            presentTutorial = tutorial
+        }
+        presentTutorial.status = .ongoing
+        TutorialService.shared.setTutorial(to: presentTutorial, status: .ongoing)
+        
+        dismiss(animated: true) {
+            self.delegate?.handlePopController()
+        }
     }
     
     // MARK: - Helpers
@@ -124,11 +149,14 @@ SNS를 잘 하지 않는다면
     func configureUI() {
         view.backgroundColor = UIColor(white: 0, alpha: 0.7)
         
+        let viewHeight: CGFloat = 542
+        
         view.addSubview(missionView)
         missionView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(542)
+            $0.height.equalTo(viewHeight)
         }
+        missionView.transform = CGAffineTransform(translationX: 0, y: viewHeight)
         
         missionView.addSubview(smallMissionTitleLabel)
         smallMissionTitleLabel.snp.makeConstraints {

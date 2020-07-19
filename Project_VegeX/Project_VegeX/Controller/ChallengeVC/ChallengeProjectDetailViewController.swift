@@ -65,6 +65,7 @@ class ChallengeProjectDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         scrollView.contentSize = CGSize(width: view.frame.width, height: contentView.frame.height)
+        navigationController?.hidesBarsOnSwipe = false
     }
     
     

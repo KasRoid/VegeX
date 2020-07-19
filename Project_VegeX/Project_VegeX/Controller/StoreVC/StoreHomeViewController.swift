@@ -83,6 +83,7 @@ class StoreHomeViewController: UIViewController {
             $0.leading.trailing.equalTo(safeArea)
         }
         
+        storeHomeView.delegate = self
         storeHomeView.snp.makeConstraints {
             $0.top.equalTo(storeMenuBar.snp.bottom).offset(15)
             $0.leading.equalToSuperview()
@@ -90,6 +91,7 @@ class StoreHomeViewController: UIViewController {
             $0.width.equalToSuperview()
         }
         
+        storeMainView.delegate = self
         storeMainView.snp.makeConstraints {
             $0.top.equalTo(storeMenuBar.snp.bottom).offset(15)
             $0.leading.equalToSuperview()
@@ -116,5 +118,19 @@ extension StoreHomeViewController: StoreMenuBarViewDelegate {
         default:
             break
         }
+    }
+}
+
+extension StoreHomeViewController: StoreHomeMenuViewDelegate {
+    func handleDidSelect() {
+        let controller = ProductDetailViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+extension StoreHomeViewController: StoreMainMenuViewDelegate {
+    func handleBrandNew() {
+        let contoller = StoreViewController()
+        navigationController?.pushViewController(contoller, animated: true)
     }
 }

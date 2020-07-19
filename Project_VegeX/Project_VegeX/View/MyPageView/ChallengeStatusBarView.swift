@@ -47,6 +47,9 @@ class ChallengeStatusBarView: UIView {
             makeStackView(with: completeLabel, string: "진행 완료 챌린지"),
             lineView2,
             makeStackView(with: pointLabel, string: "포인트")])
+        attentionLabel.text = "7"
+        completeLabel.text = "10"
+        pointLabel.text = "5000"
         amountStack.axis = .horizontal
         amountStack.alignment = .center
         amountStack.distribution = .equalSpacing

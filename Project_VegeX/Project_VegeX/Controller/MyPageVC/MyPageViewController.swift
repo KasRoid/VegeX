@@ -21,7 +21,7 @@ class MyPageViewController: UIViewController {
     
     // Custom View
     
-    private let topMenuBar = StoreMenuBarView()
+    private let topMenuBar = MyProfileMenuBar()
     private let profileView = ProfileView()
     private let challengeStatusBarView = ChallengeStatusBarView()
     
@@ -105,13 +105,17 @@ class MyPageViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = .white
         
+        topMenuBar.delegate = self
         view.addSubview(topMenuBar)
         topMenuBar.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(44)
         }
         
+        configureHomeView()
         configureShppingView()
+        
+        myShoppingScrollView.isHidden = true
     }
     
     func configureShppingView() {
@@ -337,5 +341,17 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 64
+    }
+}
+
+extension MyPageViewController: MyProfileMenuBarDelegate {
+    func didSelectMenu(menu: String) {
+        if menu == "Profile" {
+            myProfileScrollView.isHidden = false
+            myShoppingScrollView.isHidden = true
+        } else {
+            myProfileScrollView.isHidden = true
+            myShoppingScrollView.isHidden = false
+        }
     }
 }

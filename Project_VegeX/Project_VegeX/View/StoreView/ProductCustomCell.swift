@@ -14,6 +14,10 @@ class ProductCustomCell: UICollectionViewCell {
     
     static let identifer = "ProductCustomCell"
     
+    var brandProduct: BrandProduct? {
+        didSet { configure() }
+    }
+    
     private let productImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "secretgardenpaletteflowerbed"))
         imageView.contentMode = .scaleAspectFill
@@ -154,5 +158,13 @@ class ProductCustomCell: UICollectionViewCell {
         stack.spacing = 4
         stack.distribution = .fillProportionally
         return stack
+    }
+    
+    func configure() {
+        guard let brandProduct = brandProduct else { return }
+        productImageView.image = UIImage(named: brandProduct.imageName)
+        productPriceLabel.text = brandProduct.price
+        heartLabel.text = "\(brandProduct.heartCount)"
+        commentLabel.text = "\(brandProduct.commentCount)"
     }
 }

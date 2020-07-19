@@ -13,6 +13,7 @@ struct ChallengeViewModel {
     
     var dateText: String{
         switch challenge.status {
+        case .finish: fallthrough
         case .prepare: fallthrough
         case .processing:
             return "\(challenge.date) 달성률 : \(challenge.rate)%"
@@ -23,6 +24,7 @@ struct ChallengeViewModel {
     
     var isAlphaViewHidden: Bool {
         switch challenge.status {
+        case .finish: fallthrough
         case .prepare: fallthrough
         case .processing: return false
         case .popular: return true
@@ -34,14 +36,13 @@ struct ChallengeSaveData {
     static var shared = ChallengeSaveData()
     private init() { }
     
-    let proccessingData = [
+    var proccessingData = [
         Challenge(title: "[러쉬]포장지 없는 고체샴푸 사용하기",
                   cycle: "매일", date: "2020.07.19~07.26", rate: 20,
                   imageName: "01_gochesampoo", status: .processing),
         Challenge(title: "페이크미트 햄버거 맛집 도장깨기",
                   cycle: "주 1회", date: "2020.07.19~07.26", rate: 10,
-                  imageName: "02_fakehamburger", status: .processing)
-    ]
+                  imageName: "02_fakehamburger", status: .processing)]
     
     let popularData = [
         Challenge(title: "[스타벅스] 비건 커스텀 음료 5잔 마시고 별2배 적립",
@@ -58,6 +59,5 @@ struct ChallengeSaveData {
                   imageName: "04_cu", status: .popular),
         Challenge(title: "[연두] 연두 에센스 사용해서 요리하기",
                   cycle: "주간 - 주2회", date: "2020.07.19~07.27", rate: 0,
-                  imageName: "05_yeondoo", status: .popular)
-    ]
+                  imageName: "05_yeondoo", status: .popular)]
 }

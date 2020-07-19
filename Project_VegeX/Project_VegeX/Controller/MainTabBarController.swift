@@ -38,9 +38,6 @@ class MainTabBarController: UITabBarController {
             selectedImage: nil)
         
         let myPageController = MyPageViewController()
-//        let myPageController = MissionPictureCheckViewController()
-//        let myPageController = MissionCompleteViewController()
-//        let myPageController = ChallengeMissionViewController()
         let naviMyPage = UINavigationController(rootViewController: myPageController)
         naviMyPage.tabBarItem = UITabBarItem(
             title: "마이페이지",

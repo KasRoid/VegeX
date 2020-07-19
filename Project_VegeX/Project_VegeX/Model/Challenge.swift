@@ -12,6 +12,7 @@ enum ChallengeStatus {
     case prepare
     case processing
     case popular
+    case finish
 }
 
 struct Challenge {

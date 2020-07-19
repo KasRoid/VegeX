@@ -49,7 +49,7 @@ class TutorialDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureUI()
-        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.hidesBarsOnSwipe = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -59,6 +59,7 @@ class TutorialDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNavigationController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,13 +87,13 @@ class TutorialDetailViewController: UIViewController {
     private func setNavigationController() {
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.tintColor = .vegeTextBlack
-        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.barTintColor = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.layoutIfNeeded()
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = backButton
+        navigationController?.navigationBar.layoutIfNeeded()
     }
     
     private func setPropertyAttributes() {
@@ -291,6 +292,10 @@ extension TutorialDetailViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
     }
 }

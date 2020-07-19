@@ -62,6 +62,11 @@ class ChallengeProjectDetailViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationController()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //        scrollView.contentSize = CGSize(width: view.frame.width, height: contentView.frame.height)
@@ -73,7 +78,6 @@ class ChallengeProjectDetailViewController: UIViewController {
     // MARK: - UI
     private func configureUI() {
         view.backgroundColor = .white
-        setNavigationController()
         setStackView()
         setPropertyAttributes()
         setConstraints()

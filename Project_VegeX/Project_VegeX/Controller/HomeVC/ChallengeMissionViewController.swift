@@ -45,7 +45,7 @@ class ChallengeMissionViewController: UIViewController {
         return label
     }()
     
-    private let challengeButton = TutorialMakeButton(type: .system, buttonType: .green, text: "도전")
+    private let challengeButton = TutorialMakeButton(type: .system, buttonType: .green, text: "도전💪")
     
     // MARK: - LifeCycle
     
@@ -83,12 +83,12 @@ class ChallengeMissionViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = UIColor(white: 0, alpha: 0.7)
         
-        let viewHeight: CGFloat = 232
+        let viewHeight: CGFloat = 280
         
         view.addSubview(missionView)
         missionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(view.snp.bottom)
             $0.height.equalTo(viewHeight)
         }
         missionView.transform = CGAffineTransform(translationX: 0, y: viewHeight)

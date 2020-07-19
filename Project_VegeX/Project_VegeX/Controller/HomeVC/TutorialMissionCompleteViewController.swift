@@ -94,7 +94,7 @@ class TutorialMissionCompleteViewController: UIViewController {
     // MARK: - Seletors
     
     @objc func handleButtonEvent(_ sender: UIButton) {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Helpers

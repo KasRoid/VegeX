@@ -19,6 +19,9 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private var isProcessingCategory = true {
+        didSet { tableView.reloadData() }
+    }
     private let defaultPadding: CGFloat = 20
     
     private let homeScrollView: UIScrollView = {
@@ -122,10 +125,11 @@ class HomeViewController: UIViewController {
         return label
     }()
     
-    private let chaSegment: CustomSegmentControl = {
+    private lazy var chaSegment: CustomSegmentControl = {
         let cs = CustomSegmentControl()
         cs.backgroundColor = .white
         cs.layer.cornerRadius = 20
+        cs.delegate = self
         return cs
     }()
     
@@ -421,7 +425,9 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return isProcessingCategory ?
+            ChallengeSaveData.shared.proccessingData.count :
+            ChallengeSaveData.shared.popularData.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -433,6 +439,10 @@ extension HomeViewController: UITableViewDataSource {
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
         cell.delegate = self
+        
+        cell.challenge = isProcessingCategory ?
+            ChallengeSaveData.shared.proccessingData[indexPath.section] :
+            ChallengeSaveData.shared.popularData[indexPath.section]
         return cell
     }
 }
@@ -477,6 +487,7 @@ extension HomeViewController: DailyMissionViewDelegate {
         switch tutorial.status {
         case .start:
             let controller = TutorialDetailViewController()
+            controller.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(controller, animated: true)
         case .ongoing:
             certifyShowAlert()
@@ -485,10 +496,13 @@ extension HomeViewController: DailyMissionViewDelegate {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
 
 extension HomeViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
+        var isCompleted = false
+        
         let mediaType = info[.mediaType] as! NSString
         if UTTypeEqual(mediaType, kUTTypeImage) {
             let originalImage = info[.originalImage] as! UIImage
@@ -497,10 +511,27 @@ extension HomeViewController: UIImagePickerControllerDelegate & UINavigationCont
             let selectedImage = editedImage ?? originalImage
 //            imageView.image = selectedImage
             
-            print(info[.mediaMetadata])
-            print(info[.phAsset])
-            print(info)
+            guard let presentTutorial = presentTutorial else { return }
+            TutorialService.shared.setTutorial(to: presentTutorial, status: .finish)
+            TutorialService.shared.getPresentTutorial { tutorial in
+                self.presentTutorial = tutorial
+            }
+            isCompleted = true
         }
-        picker.presentingViewController?.dismiss(animated: true, completion: nil)
+        picker.presentingViewController?.dismiss(animated: true, completion: {
+            guard isCompleted else { return }
+            
+            DispatchQueue.main.async {
+                let controller = TutorialMissionCompleteViewController()
+                controller.hidesBottomBarWhenPushed = true
+                self.present(controller, animated: true)
+            }
+        })
+    }
+}
+
+extension HomeViewController: CustomSegmentControlDelegate {
+    func handleButtonEvent(isLeftButton: Bool) {
+        isProcessingCategory = isLeftButton
     }
 }

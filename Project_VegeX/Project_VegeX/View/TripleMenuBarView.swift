@@ -11,23 +11,26 @@ import UIKit
 class TripleMenuBarView: UIView {
     
     // MARK: - Properties
-    let firstLabelText = "인기"
-    let secondLabelText = "기업과 함께하는"
-    let thirdLabelText = "최신"
+    let firstLabelText = "인기순"
+    let secondLabelText = "브랜드"
+    let thirdLabelText = "최신순"
+    let additionalLength = 35
+    
+    weak var delegate: TripleMenuBarViewDelegate?
     
     lazy var firstLabel: UILabel = {
         let label = UILabel()
         label.text = firstLabelText
-        label.textColor = .vegeTextBlack
-        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 15)
+        label.textColor = .vegeGreen
+        label.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 15)
         return label
     }()
     
     lazy var secondLabel: UILabel = {
         let label = UILabel()
         label.text = secondLabelText
-        label.textColor = .vegeGreen
-        label.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 15)
+        label.textColor = .vegeTextBlack
+        label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 15)
         return label
     }()
     
@@ -94,8 +97,8 @@ class TripleMenuBarView: UIView {
         
         barView.snp.makeConstraints {
             $0.height.equalTo(2)
-            $0.leading.equalTo(self.secondLabel.snp.leading).offset(-8)
-            $0.trailing.equalTo(self.secondLabel.snp.trailing).offset(8)
+            $0.leading.equalTo(self.firstLabel.snp.leading).offset(-additionalLength)
+            $0.trailing.equalTo(self.firstLabel.snp.trailing).offset(additionalLength)
             $0.bottom.equalToSuperview()
         }
         
@@ -148,32 +151,35 @@ class TripleMenuBarView: UIView {
     
     // MARK: - Selectors
     @objc private func handleGesuters(_ sender: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.menuSelected(labelText: sender.name!)
             switch sender.name {
             case self.firstLabelText:
                 self.barView.snp.removeConstraints()
                 self.barView.snp.makeConstraints {
                     $0.height.equalTo(2)
-                    $0.leading.equalTo(self.firstLabel.snp.leading).offset(-8)
-                    $0.trailing.equalTo(self.firstLabel.snp.trailing).offset(8)
+                    $0.leading.equalTo(self.firstLabel.snp.leading).offset(-self.additionalLength)
+                    $0.trailing.equalTo(self.firstLabel.snp.trailing).offset(self.additionalLength)
                     $0.bottom.equalToSuperview()
+                    self.delegate?.menuDidSelected(selectedView: 0)
                 }
             case self.secondLabelText:
                 self.barView.snp.removeConstraints()
                 self.barView.snp.makeConstraints {
                     $0.height.equalTo(2)
-                    $0.leading.equalTo(self.secondLabel.snp.leading).offset(-8)
-                    $0.trailing.equalTo(self.secondLabel.snp.trailing).offset(8)
+                    $0.leading.equalTo(self.secondLabel.snp.leading).offset(-self.additionalLength)
+                    $0.trailing.equalTo(self.secondLabel.snp.trailing).offset(self.additionalLength)
                     $0.bottom.equalToSuperview()
+                    self.delegate?.menuDidSelected(selectedView: 1)
                 }
             case self.thirdLabelText:
                 self.barView.snp.removeConstraints()
                 self.barView.snp.makeConstraints {
                     $0.height.equalTo(2)
-                    $0.leading.equalTo(self.thirdLabel.snp.leading).offset(-8)
-                    $0.trailing.equalTo(self.thirdLabel.snp.trailing).offset(8)
+                    $0.leading.equalTo(self.thirdLabel.snp.leading).offset(-self.additionalLength)
+                    $0.trailing.equalTo(self.thirdLabel.snp.trailing).offset(self.additionalLength)
                     $0.bottom.equalToSuperview()
+                    self.delegate?.menuDidSelected(selectedView: 2)
                 }
             default:
                 fatalError("Wrong Gesture")
@@ -185,3 +191,6 @@ class TripleMenuBarView: UIView {
 }
 
 
+protocol TripleMenuBarViewDelegate: class {
+    func menuDidSelected(selectedView: Int)
+}

@@ -41,6 +41,7 @@ class ChallengeProjectCommentTableViewCell: UITableViewCell {
             $0.numberOfLines = 0
         }
         
+        profileImageView.layer.cornerRadius = 25
         profileImageView.contentMode = .scaleAspectFit
         profileImageView.backgroundColor = .lightGray
         

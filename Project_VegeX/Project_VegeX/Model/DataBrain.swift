@@ -10,16 +10,246 @@ import Foundation
 
 struct DataBrain {
     
-    let challengeTitleVCData: [[String: String]] = [
-        ["Image": "Bicycle", "MissionType": "주간", "MainTitle": "자전거 출퇴근", "Date": "2020.07.13 - 07.29"],
-        ["Image": "LipCare", "MissionType": "주간", "MainTitle": "비건 립밤 쓰기", "Date": "2020.07.13 - 07.29"],
-        ["Image": "Nuts", "MissionType": "주간", "MainTitle": "주5회 견과류 먹기", "Date": "2020.07.13 - 07.29"],
-        ["Image": "VegeDiet", "MissionType": "주간", "MainTitle": "주3회 채식 식단 먹기", "Date": "2020.07.13 - 07.29"],
+    let challengeTitleVCPopularData: [[String: String]] = [
+        ["Image": "01_starbucks", "MissionType": "주간",
+         "MainTitle":
+            """
+            [스타벅스] 비건 커스텀
+            음료 5잔마시고 별2배 적립
+            """,
+         "Date": "2020.07.20~07.31", "like": "125", "comment": "39"],
         
-        ["Image": "Bicycle", "MissionType": "주간", "MainTitle": "자전거 출퇴근", "Date": "2020.07.13 - 07.29"],
-        ["Image": "LipCare", "MissionType": "주간", "MainTitle": "비건 립밤 쓰기", "Date": "2020.07.13 - 07.29"],
-        ["Image": "Nuts", "MissionType": "주간", "MainTitle": "주5회 견과류 먹기", "Date": "2020.07.13 - 07.29"],
-        ["Image": "VegeDiet", "MissionType": "주간", "MainTitle": "주3회 채식 식단 먹기", "Date": "2020.07.13 - 07.29"],
+        ["Image": "02_cass",
+         "MissionType": "주간",
+         "MainTitle":
+            """
+            [카스] 불금에 친구들과
+            비건 맥주 파티
+            """,
+         "Date": "2020.07.19~07.26",
+         "like": "110", "comment": "42"],
+        
+        ["Image": "03_brand", "MissionType": "주간 - 매일",
+         "MainTitle":
+            """
+            1일 1비건 브랜드 찾아보기
+            """,
+         "Date": "2020.07.22~07.29",
+         "like": "80", "comment": "41"],
+        
+        ["Image": "04_cu", "MissionType": "주간 - 주2회",
+         "MainTitle":
+            """
+            [CU편의점] 점심시간
+            비건도시락 챌린지
+            """,
+         "Date": "2020.08.01~08.09", "like": "100", "comment": "34"],
+        
+        ["Image": "05_yeondoo", "MissionType": "주간 - 주2회",
+         "MainTitle":
+            """
+            [연두] 연두 에센스
+            사용해서 요리하기
+            """,
+         "Date": "2020.07.19~07.27", "like": "93", "comment": "21"],
+        
+        ["Image": "06_burger", "MissionType": "주간",
+         "MainTitle":
+            """
+            페이크미트 햄버거
+            맛집 도장깨기
+            """,
+         "Date": "2020.08.01~08.31", "like": "90", "comment": "15"],
+        
+        ["Image": "07_monday", "MissionType": "주간 - 주1회",
+         "MainTitle":
+            """
+            #고기 없는 월요일 1기
+            """,
+         "Date": "2020.07.19~08.16", "like": "63", "comment": "41"],
+        
+        ["Image": "08_ohnutty", "MissionType": "매일",
+         "MainTitle":
+            """
+            [오넛티] 아침마다
+            아몬드우유 마시기
+            """,
+         "Date": "2020.07.19~07.25", "like": "63", "comment": "26"],
+        
+        ["Image": "09_festival", "MissionType": "주간",
+         "MainTitle":
+            """
+            [비건 페스티벌] 비건영화
+            상영회 예고편 구경하기
+            """,
+         "Date": "2020.07.18~07.28", "like": "56", "comment": "12"],
+        
+        ["Image": "10_yogurt", "MissionType": "주간",
+         "MainTitle":
+            """
+            두유캐슈넛 요거트 만들기
+            """,
+         "Date": "2020.07.19~07.26", "like": "40", "comment": "12"],
+    ]
+    
+    let challengeTitleVCBrandData: [[String: String]] = [
+        ["Image": "01_yeondoo", "MissionType": "주간 - 주2회",
+        "MainTitle":
+           """
+           [연두] 연두 에센스
+            사용해서 요리하기
+           """,
+        "Date": "2020.07.19~07.27", "like": "93", "comment": "21"],
+        
+        ["Image": "02_lotte", "MissionType": "주간 - 주1회",
+        "MainTitle":
+           """
+           [롯데마트] ‘고기 대신’
+            6종 활용해서 밥상 차리기
+           """,
+        "Date": "2020.08.01~08.15", "like": "86", "comment": "22"],
+        
+        ["Image": "03_oliveyoung", "MissionType": "주간",
+        "MainTitle":
+           """
+           [올리브영] 크루얼티프리
+            제품 SNS에 홍보하기
+           """,
+        "Date": "2020.07.20~07.27", "like": "95", "comment": "32"],
+        
+        ["Image": "04_cass", "MissionType": "주간",
+        "MainTitle":
+           """
+           [카스] 불금에 친구들과
+            비건 맥주 파티
+           """,
+        "Date": "2020.07.19~07.26", "like": "110", "comment": "42"],
+        
+        ["Image": "05_ohnutty", "MissionType": "매일",
+        "MainTitle":
+           """
+           [오넛티] 아침마다
+            아몬드우유 마시기
+           """,
+        "Date": "2020.07.19~07.25", "like": "63", "comment": "26"],
+        
+        ["Image": "06_festival", "MissionType": "주간",
+        "MainTitle":
+           """
+           [비건 페스티벌] 비건영화
+            상영회 예고편 구경하기
+           """,
+        "Date": "2020.07.18~07.28", "like": "56", "comment": "12"],
+        
+        ["Image": "07_starbucks", "MissionType": "주간",
+        "MainTitle":
+           """
+           [스타벅스] 비건 커스텀음료
+            5잔마시고 별2배 적립
+           """,
+        "Date": "2020.07.20~07.31", "like": "125", "comment": "39"],
+        
+        ["Image": "08_lemon", "MissionType": "주간 - 주3회",
+        "MainTitle":
+           """
+           [룰루레몬] 일주일 3번,
+            요가로 마음 다스리기
+           """,
+        "Date": "2020.08.01~08.15", "like": "80", "comment": "12"],
+        
+        ["Image": "09_aveda", "MissionType": "매일",
+        "MainTitle":
+           """
+           [아베다] 잠들기 전
+            소이왁스캔들 10분
+           """,
+        "Date": "2020.07.20~07.26", "like": "92", "comment": "26"],
+        
+        ["Image": "10_cu", "MissionType": "주간 - 주2회",
+        "MainTitle":
+           """
+           [CU편의점] 점심시간
+            비건도시락 챌린지
+           """,
+        "Date": "2020.08.01~08.09", "like": "100", "comment": "34"],
+    ]
+    
+    let challengeTitleVCRecentData: [[String: String]] = [
+        ["Image": "01_monday", "MissionType": "주간 - 주1회",
+        "MainTitle":
+           """
+           #고기 없는 월요일 1기
+           """,
+        "Date": "2020.07.19~08.16", "like": "63", "comment": "41"],
+        
+        ["Image": "02_yogurt", "MissionType": "주간",
+        "MainTitle":
+           """
+           두유캐슈넛 요거트 만들기
+           """,
+        "Date": "2020.07.19~07.26", "like": "40", "comment": "12"],
+        
+        ["Image": "03_brand", "MissionType": "주간 - 매일",
+        "MainTitle":
+           """
+           1일 1비건 브랜드 찾아보기
+           """,
+        "Date": "2020.07.22~07.29", "like": "80", "comment": "41"],
+        
+        ["Image": "04_burger", "MissionType": "주간",
+        "MainTitle":
+           """
+           페이크미트 햄버거
+            맛집 도장깨기
+           """,
+        "Date": "2020.08.01~08.31", "like": "90", "comment": "15"],
+        
+        ["Image": "05_study", "MissionType": "주간 - 주2회",
+        "MainTitle":
+           """
+           내가 쓰는 화장품 성분표
+            공부하기
+           """,
+        "Date": "2020.07.25~08.08", "like": "48", "comment": "21"],
+        
+        ["Image": "06_exercise", "MissionType": "주간",
+        "MainTitle":
+           """
+           식단+운동 비건벌크업
+            3주 챌린지
+           """,
+        "Date": "2020.07.20~07.10", "like": "50", "comment": "11"],
+        
+        ["Image": "07_lunchbox", "MissionType": "주간",
+        "MainTitle":
+           """
+           일주일에 3번
+            비건 도시락 싸기
+           """,
+        "Date": "2020.07.27~08.03", "like": "39", "comment": "12"],
+        
+        ["Image": "08_lush", "MissionType": "주간",
+        "MainTitle":
+           """
+           [러쉬]포장지 없는
+            고체샴푸 사용하기
+           """,
+        "Date": "2020.07.19~07.31", "like": "92", "comment": "10"],
+        
+        ["Image": "09_book", "MissionType": "주간 - 매일",
+        "MainTitle":
+           """
+           <아무튼, 비건> 하루에
+            5페이지 읽기
+           """,
+        "Date": "2020.08.01~08.31", "like": "37", "comment": "26"],
+        
+        ["Image": "10_flogging", "MissionType": "주간",
+        "MainTitle":
+           """
+           우리동네 30분 플로깅
+           """,
+        "Date": "2020.07.19~07.26", "like": "32", "comment": "8"],
     ]
     
     let tutorialDetailVCData: [[String: String]] = [
@@ -138,7 +368,7 @@ struct DataBrain {
     ]
     
     let challengeProjectTitleData = ["image": "Dining_Main", "title": "‘고기 대신’ 제품 6종 활용해서 밥상 차리기", "date": "2020.08.01(토) ~ 08.15(토) (2주) | 주1회"]
-    let challengeProjectSubInfoData = ["challenger": "도전자 수", "challengerNumber": "30명", "tree": "함께 심은 나무", "treeNumber": "8그루"]
+    let challengeProjectSubInfoData = ["challenger": "도전자 수", "challengerNumber": "30명", "tree": "롯데마트와 함께 심은 나무", "treeNumber": "8그루+8그루"]
     let challengeProjectButtonData = ["leftButton": "다른 도전자 확인하기", "rightButton": "친구 초대하기"]
     let challengeProjectDetailData = [
         [
@@ -184,7 +414,7 @@ struct DataBrain {
     
     let challengeProjectCommentData = [
         [
-            "image": "",
+            "image": "01hy",
             "name": "김희연",
             "date": "2020.03.13 13:23",
             "comment":
@@ -194,7 +424,7 @@ struct DataBrain {
             """
         ],
         [
-            "image": "",
+            "image": "02dh",
             "name": "윤다혜",
             "date": "2020.03.16 19:53",
             "comment":
@@ -204,7 +434,7 @@ struct DataBrain {
             """
         ],
         [
-            "image": "",
+            "image": "03jh",
             "name": "이지호",
             "date": "2020.04.01 22:26",
             "comment":
@@ -214,7 +444,7 @@ struct DataBrain {
             """
         ],
         [
-            "image": "",
+            "image": "04jw",
             "name": "천지운",
             "date": "2020.04.03 08:31",
             "comment":
@@ -224,7 +454,7 @@ struct DataBrain {
             """
         ],
         [
-            "image": "",
+            "image": "05dy",
             "name": "송도영",
             "date": "2020.04.08 14:33",
             "comment":

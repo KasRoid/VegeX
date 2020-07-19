@@ -52,6 +52,10 @@ class ChallengeProjectDetailViewController: UIViewController {
     let challengeReviewView = ChallengeProjectReviewView()
     let commentTableView = UITableView()
     
+    // Participate Button
+    let participateButton = UIButton()
+    
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +126,7 @@ class ChallengeProjectDetailViewController: UIViewController {
         // Instructions
         instructionSectionDivider.backgroundColor = UIColor(rgb: 0xDADCE0)
         
-        instructionsConditionLabel.text = dataBrain.challengeProjectInstructionConditionInfo[0]
+        instructionsConditionLabel.attributedText = applyAttributesInTextForAnswers(text: dataBrain.challengeProjectInstructionConditionInfo[0], spacing: 5)
         instructionsConditionLabel.textAlignment = .left
         instructionsConditionLabel.textColor = .vegeTextBlack
         instructionsConditionLabel.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 12)
@@ -132,6 +136,13 @@ class ChallengeProjectDetailViewController: UIViewController {
         challengeReviewView.titleLabel.text = "[도전후기]"
         challengeReviewView.numberOfCommentLabel.text = "22+"
         challengeReviewView.commentImageView.image = UIImage(named: "chat")
+        
+        // Participate Button
+        participateButton.setTitle("참가하기", for: .normal)
+        participateButton.setTitleColor(.white, for: .normal)
+        participateButton.titleLabel?.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 18)
+        participateButton.backgroundColor = .vegeLightGreen
+        participateButton.layer.cornerRadius = 30
     }
     
     private func setStackView() {
@@ -149,8 +160,8 @@ class ChallengeProjectDetailViewController: UIViewController {
         [challengerTreeInfoStackView].forEach {
             $0.alignment = .leading
             $0.axis = .horizontal
-            $0.distribution = .fillEqually
-            $0.spacing = 0
+            $0.distribution = .fillProportionally
+            $0.spacing = 50
         }
         [buttonStackView].forEach {
             $0.alignment = .center
@@ -177,12 +188,14 @@ class ChallengeProjectDetailViewController: UIViewController {
         commentTableView.isScrollEnabled = false
         commentTableView.rowHeight = 100
         commentTableView.separatorColor = .clear
+        commentTableView.allowsSelection = false
     }
     
     private func setConstraints() {
         // Add Views
-        
-        view.addSubview(scrollView)
+        [scrollView, participateButton].forEach {
+            view.addSubview($0)
+        }
         scrollView.addSubview(contentView)
         [mainImageView, mainTitleDateStackView, challengerTreeInfoStackView, buttonStackView, instructionStackView, instructionSectionDivider, instructionsConditionLabel, challengeReviewView, commentTableView].forEach {
             contentView.addSubview($0)
@@ -198,12 +211,12 @@ class ChallengeProjectDetailViewController: UIViewController {
         }
         
         contentView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.leading.trailing.equalTo(scrollView)
             $0.width.equalTo(view.frame.width)
             $0.height.equalTo(view.frame.height * 3)
         }
         mainImageView.snp.makeConstraints {
-            $0.top.equalTo(contentView)
+            $0.top.equalTo(contentView).offset(40)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(300)
         }
@@ -267,6 +280,12 @@ class ChallengeProjectDetailViewController: UIViewController {
             $0.leading.trailing.equalTo(mainImageView)
             $0.height.equalTo(500)
         }
+        participateButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(30)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(view.frame.width / 1.3)
+            $0.height.equalTo(view.frame.height / 13)
+        }
     }
     
     
@@ -290,11 +309,11 @@ class ChallengeProjectDetailViewController: UIViewController {
         let data = dataBrain.challengeProjectDetailData
         for index in data.indices {
             let title = UILabel()
-            title.text = data[index]["title"]!
+            title.attributedText = applyAttributesInTextForAnswers(text: data[index]["title"]!, spacing: 5)
             title.font = VegeXFont.AppleSDGothicNeo_SemiBold.fontData(fontSize: 16)
             
             let description = UILabel()
-            description.text = data[index]["description"]!
+            description.attributedText = applyAttributesInTextForAnswers(text: data[index]["description"]!, spacing: 5)
             description.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 14)
             
             [title, description].forEach {
@@ -311,10 +330,20 @@ class ChallengeProjectDetailViewController: UIViewController {
             instructionView.mainTitle.text = dataBrain.challengeProjectInstructionData[index]["title"]
             instructionView.firstImageView.image = UIImage(named: dataBrain.challengeProjectInstructionData[index]["image1"]!)
             instructionView.secondImageView.image = UIImage(named: dataBrain.challengeProjectInstructionData[index]["image2"]!)
-            instructionView.descriptionLabel.text = dataBrain.challengeProjectInstructionData[index]["description"]
+            instructionView.descriptionLabel.attributedText = applyAttributesInTextForAnswers(text: dataBrain.challengeProjectInstructionData[index]["description"]!, spacing: 2)
             
             instructionStackView.addArrangedSubview(instructionView)
         }
+    }
+    
+    private func applyAttributesInTextForAnswers(text: String, spacing: CGFloat) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: text)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = spacing
+        // *** Apply attribute to string ***
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        let _ = [ NSAttributedString.Key.font: VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 16) ]
+        return attributedString
     }
     
     
@@ -335,9 +364,10 @@ extension ChallengeProjectDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = commentTableView.dequeueReusableCell(withIdentifier: ChallengeProjectCommentTableViewCell.identifier, for: indexPath) as? ChallengeProjectCommentTableViewCell else { fatalError() }
+        cell.profileImageView.image = UIImage(named: dataBrain.challengeProjectCommentData[indexPath.row]["image"]!)
         cell.nameLabel.text = dataBrain.challengeProjectCommentData[indexPath.row]["name"]
         cell.dateLabel.text = dataBrain.challengeProjectCommentData[indexPath.row]["date"]
-        cell.commentLabel.text = dataBrain.challengeProjectCommentData[indexPath.row]["comment"]
+        cell.commentLabel.attributedText = applyAttributesInTextForAnswers(text: dataBrain.challengeProjectCommentData[indexPath.row]["comment"]!, spacing: 1)
         return cell
     }
 }

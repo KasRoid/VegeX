@@ -41,7 +41,7 @@ class MissionCompleteViewController: UIViewController {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "2020.07.23"
+        label.text = "2020.07.19"
         label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 18)
         label.textAlignment = .center
         label.textColor = .white
@@ -50,10 +50,23 @@ class MissionCompleteViewController: UIViewController {
     
     private let bottomLabel: UILabel = {
         let label = UILabel()
-        label.text = "윤다혜님,\n오늘도 지구와 함께 더 건강해지셨어요! 🌏"
         label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 16)
-        label.textAlignment = .center
         label.textColor = .vegeTextBlack
+        
+        let attributedString = NSMutableAttributedString(string: "윤다혜님, ")
+        attributedString.append(NSAttributedString(
+            string: "[1.8평]",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.vegeGreen,
+                NSAttributedString.Key.font: VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 16)
+        ]))
+        
+        attributedString.append(NSAttributedString(string: """
+        의 숲을 아끼셨어요.
+        지구와 함께 더 건강해지셨네요! 🌏
+        """))
+        label.attributedText = attributedString
+        label.textAlignment = .center
         label.numberOfLines = 2
         return label
     }()
@@ -118,10 +131,19 @@ class MissionCompleteViewController: UIViewController {
             $0.top.equalTo(confirmImageView.snp.bottom).offset(28)
         }
         
+        confirmButton.addTarget(self, action: #selector(handleConfirm), for: .touchUpInside)
+        
         missionCompleteView.addSubview(confirmButton)
         confirmButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(bottomLabel.snp.bottom).offset(40)
         }
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleConfirm() {
+        ChallengeSaveData.shared.proccessingData[2].status = .finish
+        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
     }
 }

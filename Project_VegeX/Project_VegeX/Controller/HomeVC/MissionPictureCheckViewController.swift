@@ -21,7 +21,7 @@ class MissionPictureCheckViewController: UIViewController {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "2020.07.23"
+        label.text = "2020.07.19"
         label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 18)
         label.textAlignment = .center
         label.textColor = .white
@@ -56,6 +56,9 @@ class MissionPictureCheckViewController: UIViewController {
             $0.trailing.equalToSuperview().offset(-12)
         }
         
+        useButton.addTarget(self, action: #selector(handleUse), for: .touchUpInside)
+        retryButton.addTarget(self, action: #selector(handleRetry), for: .touchUpInside)
+        
         let buttonStack = UIStackView(arrangedSubviews: [useButton, retryButton])
         buttonStack.axis = .vertical
         buttonStack.spacing = 12
@@ -65,6 +68,21 @@ class MissionPictureCheckViewController: UIViewController {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(confirmImageView.snp.bottom).offset(80)
         }
+    }
+    
+    // Selectors
+    
+    @objc func handleUse() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            let controller = MissionCompleteViewController()
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .crossDissolve
+            self.present(controller, animated: false)
+        }
+    }
+    
+    @objc func handleRetry() {
+        
     }
     
 }

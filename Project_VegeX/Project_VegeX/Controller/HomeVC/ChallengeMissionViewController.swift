@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol ChallengeMissionViewControllerDelegate: class {
+    func handleDismissal()
+}
+
 class ChallengeMissionViewController: UIViewController {
     
     // MARK: - Properties
+    
+    weak var delegate: ChallengeMissionViewControllerDelegate?
+    
     private let missionView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -47,10 +54,28 @@ class ChallengeMissionViewController: UIViewController {
         configureUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            UIView.animate(withDuration: 0.3) {
+                self.missionView.transform = .identity
+            }
+        }
+    }
+    
     // MARK: - Seletors
     
-    @objc func clickedConfirmEvent(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    @objc func handleTry(_ sender: UIButton) {
+        dismiss(animated: true, completion: {
+            ChallengeSaveData.shared.proccessingData.insert(Challenge(
+                title: "[롯데마트] ‘고기 대신’ 6종 활용해서 밥상 차리기",
+                cycle: "주간 - 주1회",
+                date: "2020.08.01~08.15",
+                rate: 0,
+                imageName: "02_lotte",
+                status: .processing), at: 0)
+            self.delegate?.handleDismissal()
+        })
     }
     
     // MARK: - Helpers
@@ -58,12 +83,15 @@ class ChallengeMissionViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = UIColor(white: 0, alpha: 0.7)
         
+        let viewHeight: CGFloat = 232
+        
         view.addSubview(missionView)
         missionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            $0.height.equalTo(232)
+            $0.height.equalTo(viewHeight)
         }
+        missionView.transform = CGAffineTransform(translationX: 0, y: viewHeight)
         
         missionView.addSubview(smallMissionTitleLabel)
         smallMissionTitleLabel.snp.makeConstraints {
@@ -82,6 +110,8 @@ class ChallengeMissionViewController: UIViewController {
             $0.top.equalTo(missionLabel.snp.bottom).offset(36)
             $0.centerX.equalToSuperview()
         }
+        
+        challengeButton.addTarget(self, action: #selector(handleTry), for: .touchUpInside)
     }
     
 }

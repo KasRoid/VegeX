@@ -15,7 +15,7 @@ class BasketView: UIView {
     private let basketCountLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.text = "12"
+        label.text = "2"
         label.textAlignment = .center
         label.textColor = .white
         label.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 12)

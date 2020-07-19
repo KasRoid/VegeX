@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol StoreMainMenuViewDelegate: class {
+    func handleBrandNew()
+}
+
 class StoreMainMenuView: UIView {
     
     // MARK: - Properties
+    weak var delegate: StoreMainMenuViewDelegate?
+    
     let mainCategoryView = StoreMainCategoryView()
     let mainBrandView = StoreMainBrandView()
     
@@ -39,10 +45,18 @@ class StoreMainMenuView: UIView {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(120)
         }
+        
+        mainBrandView.delegate = self
         mainBrandView.snp.makeConstraints {
             $0.top.equalTo(mainCategoryView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }        
     }
     
+}
+
+extension StoreMainMenuView: StoreMainBrandViewDelegate {
+    func handleBrandMove() {
+        delegate?.handleBrandNew()
+    }
 }

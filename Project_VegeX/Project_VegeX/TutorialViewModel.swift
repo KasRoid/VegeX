@@ -84,19 +84,19 @@ struct TutorialSaveData {
 그리너님에게 맞는 채식 스타일을 찾게 됩니다!
 """
     var tutorialList = [
-        Tutorial(day: 1, title: "채식에 대한 오해와 진실",
+        Tutorial(imageName: "VegetableBackground", day: 1, title: "채식에 대한 오해와 진실",
                  mission: "채식 인플루언서 1명 팔로우", point: 20, status: .start),
-        Tutorial(day: 2, title: "채식의 타입을 알아보자",
+        Tutorial(imageName: "salmon_picture", day: 2, title: "채식의 타입을 알아보자",
                  mission: "나에게 맞는 채식 한끼 도전", point: 20, status: .start),
-        Tutorial(day: 3, title: "쉽게 구할 수 있는 대체 식재료",
+        Tutorial(imageName: "salmon_picture", day: 3, title: "쉽게 구할 수 있는 대체 식재료",
                  mission: "장바구니에 비건 상품 담기", point: 20, status: .start),
-        Tutorial(day: 4, title: "비건뷰티에 대해서 알아보자",
+        Tutorial(imageName: "salmon_picture", day: 4, title: "비건뷰티에 대해서 알아보자",
                  mission: "내가 쓰는 화장품 분석하기", point: 20, status: .start),
-        Tutorial(day: 5, title: "한국에서 채식을 한다는 것",
+        Tutorial(imageName: "salmon_picture", day: 5, title: "한국에서 채식을 한다는 것",
                  mission: "주변 비건 식당/베이커리 가보기", point: 20, status: .start),
-        Tutorial(day: 6, title: "채식이 지구를 살릴 수 있을까?",
+        Tutorial(imageName: "salmon_picture", day: 6, title: "채식이 지구를 살릴 수 있을까?",
                  mission: "장바구니와 텀블러 사용하기", point: 20, status: .start),
-        Tutorial(day: 7, title: "완전하지 않아도 괜찮아",
+        Tutorial(imageName: "salmon_picture", day: 7, title: "완전하지 않아도 괜찮아",
                  mission: "챌린지 1개 시작하기", point: 20, status: .start)
     ]
 }

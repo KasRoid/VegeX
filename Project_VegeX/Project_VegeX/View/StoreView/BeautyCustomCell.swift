@@ -14,6 +14,10 @@ class BeautyCustomCell: UICollectionViewCell {
     
     static let identifer = "BeautyCustomCell"
     
+    var brandProduct: BrandProduct? {
+        didSet { configure() }
+    }
+    
     private let productImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "lipparadisesheep"))
         imageView.contentMode = .scaleAspectFill
@@ -103,5 +107,12 @@ class BeautyCustomCell: UICollectionViewCell {
             $0.top.equalTo(productNameLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview().offset(8)
         }
+    }
+    
+    func configure() {
+        guard let brandProduct = brandProduct else { return }
+        productImageView.image = UIImage(named: brandProduct.imageName)
+        productNameLabel.text = brandProduct.productName
+        productPriceLabel.text = brandProduct.price
     }
 }

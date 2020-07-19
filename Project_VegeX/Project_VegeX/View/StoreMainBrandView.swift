@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol StoreMainBrandViewDelegate: class {
+    func handleBrandMove()
+}
+
 class StoreMainBrandView: UIView {
     
     // MARK: - Properties
+    var delegate: StoreMainBrandViewDelegate?
+    
     let dataBrain = DataBrain()
     var brands = [String]()
     let categoryLabel = UILabel()
@@ -107,6 +113,16 @@ class StoreMainBrandView: UIView {
             brandObject.snp.makeConstraints {
                 $0.height.equalTo(100)
             }
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMoveBrand))
+            brandObject.addGestureRecognizer(tapGesture)
+            brandObject.isUserInteractionEnabled = true
         }
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleMoveBrand() {
+        delegate?.handleBrandMove()
     }
 }

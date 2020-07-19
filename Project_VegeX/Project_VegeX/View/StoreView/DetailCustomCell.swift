@@ -12,6 +12,10 @@ class DetailCustomCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    var brandProduct: BrandProduct? {
+        didSet { configure() }
+    }
+    
     static let identifier = "DetailCustomCell"
     
     private let productImageView: UIImageView = {
@@ -63,5 +67,11 @@ class DetailCustomCell: UICollectionViewCell {
             $0.top.leading.equalToSuperview().offset(8)
             $0.trailing.bottom.equalToSuperview().offset(-8)
         }
+    }
+    
+    func configure() {
+        guard let brandProduct = brandProduct else { return }
+        productImageView.image = UIImage(named: brandProduct.imageName)
+        titleLabel.text = brandProduct.productName
     }
 }

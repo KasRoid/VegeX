@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChallengeCustomCellDelegate: class {
-    func handleRegister(_ cell: ChallengeCustomCell)
+    func handleRegister()
 }
 
 class ChallengeCustomCell: UITableViewCell {
@@ -28,6 +28,9 @@ class ChallengeCustomCell: UITableViewCell {
         let iv = UIImageView()
         iv.backgroundColor = .systemPurple
         iv.image = UIImage(named: "exampleContents")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleRegister))
+        iv.addGestureRecognizer(tapGesture)
+        iv.isUserInteractionEnabled = true
         return iv
     }()
     
@@ -62,7 +65,7 @@ class ChallengeCustomCell: UITableViewCell {
         }
         button.setImage(UIImage(named: "home_cameraicon"), for: .normal)
         button.tintColor = .white
-        button.addTarget(self, action: #selector(handleRegister(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
         return button
     }()
     
@@ -86,6 +89,10 @@ class ChallengeCustomCell: UITableViewCell {
         view.addSubview(stack)
         stack.snp.makeConstraints { $0.centerX.centerY.equalToSuperview() }
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleRegister))
+        view.addGestureRecognizer(tapGesture)
+        view.isUserInteractionEnabled = true
+        
         return view
     }()
     
@@ -103,8 +110,11 @@ class ChallengeCustomCell: UITableViewCell {
     
     // MARK: - Selectors
     
-    @objc func handleRegister(_ sender: UIButton) {
-        delegate?.handleRegister(self)
+    @objc func handleRegister() {
+        guard let challenge = challenge else { return }
+        if challenge.status == .processing {
+            delegate?.handleRegister()
+        }
     }
     
     // MARK: - Helpers
@@ -148,5 +158,14 @@ class ChallengeCustomCell: UITableViewCell {
         chaImageView.image = UIImage(named: "\(challenge.imageName)")
         
         alphaView.isHidden = viewModel.isAlphaViewHidden
+        
+        switch challenge.status {
+        case .prepare: fallthrough
+        case .processing: fallthrough
+        case .popular: break
+        case .finish:
+            registerLabel.text = "인증완료"
+            registerButton.setImage(UIImage(named: "challenge_check_circle"), for: .normal)
+        }
     }
 }

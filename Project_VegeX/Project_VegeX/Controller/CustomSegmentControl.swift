@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol CustomSegmentControlDelegate: class {
+    func handleButtonEvent(isLeftButton: Bool)
+}
+
 class CustomSegmentControl: UIView {
     
     // MARK: - Properties
+    
+    weak var delegate: CustomSegmentControlDelegate?
     
     private let defaultPadding: CGFloat = 4
     
@@ -132,9 +138,11 @@ class CustomSegmentControl: UIView {
     
     @objc func handleLeftButton() {
         isLeft = true
+        delegate?.handleButtonEvent(isLeftButton: isLeft)
     }
     
     @objc func handleRightButton() {
         isLeft = false
+        delegate?.handleButtonEvent(isLeftButton: isLeft)
     }
 }

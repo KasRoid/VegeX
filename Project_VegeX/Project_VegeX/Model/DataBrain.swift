@@ -278,7 +278,7 @@ struct DataBrain {
             "main_image": "VegunPizza",
             "title":
             """
-            맛있는데 속도 편안한
+            지구의 열을 식혀줄
             비건 피자
             """,
             "description":
@@ -300,23 +300,23 @@ struct DataBrain {
         ],
         
         [
-            "main_image": "TimeLessBeauty",
+            "main_image": "Melixer_Main",
             "title":
             """
-            Timeless Beauty를 추구하는
-            럭셔리 비건 뷰티 디어달리아
+            건강한 피부, 건강한 지구를
+            위한 시작 멜릭서
             """,
             "description":
             """
-            자연유래 성분만을 고집하는 비건 뷰티 브랜드
-            디어달리아의 베스트셀러 제품들을
-            단 2주간 최대 혜택으로 만나보세요.
+            멜릭서는 제품부터 패키징까지, 우리가 가장 잘할
+            수 있는 방법으로 일상 생활에서의 건강한 선택지를
+            만들어가고 있습니다.
             """,
             
-            "product_image_1": "DeerDalia",
-            "product_title_1": "디어달리아",
-            "product_description_1": "블루밍 에디션 스킨 파라다이스 소…",
-            "product_price_1": "32,000",
+            "product_image_1": "Melixer_Product",
+            "product_title_1": "멜릭서",
+            "product_description_1": "비건 밸런싱 토너 150ml",
+            "product_price_1": "12,000",
             
             "product_image_2": "Hersteller",
             "product_title_2": "Hersteller",

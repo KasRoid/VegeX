@@ -20,6 +20,7 @@
 		426A927424BEDCE200052E8C /* DataBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A927324BEDCE200052E8C /* DataBrain.swift */; };
 		4270FEFB24C30F40009C1678 /* ChallengeProjectReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270FEFA24C30F40009C1678 /* ChallengeProjectReviewView.swift */; };
 		4270FEFD24C314F6009C1678 /* ChallengeProjectCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270FEFC24C314F6009C1678 /* ChallengeProjectCommentTableViewCell.swift */; };
+		4270FEFF24C43567009C1678 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270FEFE24C43567009C1678 /* LaunchViewController.swift */; };
 		42C326CA24C1D78500F2C2B5 /* StoreMainBrandObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C326C924C1D78500F2C2B5 /* StoreMainBrandObjectView.swift */; };
 		42C326CD24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C326CC24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift */; };
 		42C326D124C2EE8400F2C2B5 /* ChallengeProjectDetailInstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C326D024C2EE8400F2C2B5 /* ChallengeProjectDetailInstructionView.swift */; };
@@ -102,6 +103,7 @@
 		426A927324BEDCE200052E8C /* DataBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBrain.swift; sourceTree = "<group>"; };
 		4270FEFA24C30F40009C1678 /* ChallengeProjectReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProjectReviewView.swift; sourceTree = "<group>"; };
 		4270FEFC24C314F6009C1678 /* ChallengeProjectCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProjectCommentTableViewCell.swift; sourceTree = "<group>"; };
+		4270FEFE24C43567009C1678 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		42C326C924C1D78500F2C2B5 /* StoreMainBrandObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMainBrandObjectView.swift; sourceTree = "<group>"; };
 		42C326CC24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProjectDetailViewController.swift; sourceTree = "<group>"; };
 		42C326D024C2EE8400F2C2B5 /* ChallengeProjectDetailInstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProjectDetailInstructionView.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				425FEDD924B487BD00F851D2 /* MainTabBarController.swift */,
+				4270FEFE24C43567009C1678 /* LaunchViewController.swift */,
 				AF89190424C13DE1004C7E3D /* HomeVC */,
 				AF89190524C13DF1004C7E3D /* StoreVC */,
 				42C326CB24C1FC9400F2C2B5 /* ChallengeVC */,
@@ -499,6 +502,7 @@
 				42C326CD24C1FCEC00F2C2B5 /* ChallengeProjectDetailViewController.swift in Sources */,
 				AFAAB75824C18D3C00711158 /* ProductBrandMoveView.swift in Sources */,
 				AF819E0A24C301B400EEFD00 /* ShoppingProfileView.swift in Sources */,
+				4270FEFF24C43567009C1678 /* LaunchViewController.swift in Sources */,
 				AF689E1B24C21FBC007E3526 /* ChallengeMissionViewController.swift in Sources */,
 				425FEDDA24B487BD00F851D2 /* MainTabBarController.swift in Sources */,
 				AF6860C824BED6B200F75407 /* Tutorial.swift in Sources */,

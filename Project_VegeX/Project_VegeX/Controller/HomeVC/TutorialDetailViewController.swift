@@ -44,13 +44,16 @@ class TutorialDetailViewController: UIViewController {
         return true
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureUI()
-//        navigationController?.hidesBarsOnSwipe = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,6 +64,7 @@ class TutorialDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationController()
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,14 +91,7 @@ class TutorialDetailViewController: UIViewController {
     
     private func setNavigationController() {
         navigationController?.navigationBar.isHidden = true
-//        navigationController?.navigationBar.tintColor = .vegeTextBlack
-//        navigationController?.navigationBar.barTintColor = .clear
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-//        navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.barStyle = .black
-//        navigationController?.navigationBar.tintColor = .white
-//        navigationItem.leftBarButtonItem = backButton
-//        navigationController?.navigationBar.layoutIfNeeded()
+        navigationController?.navigationBar.barStyle = .black
     }
     
     private func setPropertyAttributes() {
@@ -176,7 +173,7 @@ class TutorialDetailViewController: UIViewController {
         }
         
         backButton.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         

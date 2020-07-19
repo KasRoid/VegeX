@@ -18,6 +18,12 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
+        DispatchQueue.main.async {
+            let launchView = LaunchViewController()
+            launchView.modalPresentationStyle = .fullScreen
+            self.present(launchView, animated: false)
+        }
+        
     }
     
     // MARK: - Helpers

@@ -12,6 +12,7 @@ class StoreHomeViewController: UIViewController {
     
     // MARK: - Properties
     let searchBar = CustomSearchBarView()
+    let bastetView = BasketView()
     let cartImageView = UIImageView()
     let bagImage = UIImage(named: "ShoppingBag")
     
@@ -61,7 +62,7 @@ class StoreHomeViewController: UIViewController {
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
-        [searchBar, cartImageView, storeMenuBar, storeHomeView, storeMainView].forEach {
+        [searchBar, bastetView, storeMenuBar, storeHomeView, storeMainView].forEach {
             view.addSubview($0)
         }
         
@@ -72,10 +73,10 @@ class StoreHomeViewController: UIViewController {
             $0.width.equalTo(view.frame.width / 1.35)
         }
         
-        cartImageView.snp.makeConstraints {
-            $0.top.bottom.equalTo(searchBar)
-            $0.leading.equalTo(searchBar.snp.trailing)
-            $0.trailing.equalTo(safeArea)
+        bastetView.snp.makeConstraints {
+            $0.top.equalTo(searchBar)
+            $0.leading.equalTo(searchBar.snp.trailing).offset(24)
+//            $0.trailing.equalTo(safeArea)
         }
         
         storeMenuBar.snp.makeConstraints {

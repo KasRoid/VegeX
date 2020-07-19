@@ -29,9 +29,9 @@ class ProductDetailViewController: UIViewController {
     
     private let hashTextLabel: UILabel = {
         let label = UILabel()
-        label.text = "#칼렌듈라진정앰플 #진정앰플"
+        label.text = "🐰이 소비를 토끼가 좋아합니다"
         label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 16)
-        label.textColor = .vegeTextBlack
+        label.textColor = .vegeGreen
         label.adjustsFontSizeToFitWidth = true
         return label
     }()

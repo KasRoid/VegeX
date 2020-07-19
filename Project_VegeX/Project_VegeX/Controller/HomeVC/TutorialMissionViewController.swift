@@ -85,7 +85,7 @@ SNS를 잘 하지 않는다면
 
 """))
         
-        attributedString.append(NSAttributedString(string: "비거너스 팀이 추천하는 SNS계정 알아보기>>", attributes: [
+        attributedString.append(NSAttributedString(string: " 느린채식 팀이 추천하는 SNS계정 알아보기>>", attributes: [
             NSAttributedString.Key.foregroundColor: UIColor.vegeGreen,
             NSAttributedString.Key.font: VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 14),
             NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,

@@ -6,6 +6,10 @@
 감사합니다.
 
 ## General Info ##
+
+> [Notion 바로가기](https://www.notion.so/509378ac1fd64a7d8f33ae9c7328fef2)<br>
+> [발표영상 바로가기](https://youtu.be/7g13ISc7dRs)
+
 - 본 "**느린 채식**" TEAM은 기획자 1명, UI/UX 디자이너 2명, iOS 개발자 2명으로 이루어진 팀입니다.
 
 - "**느린 채식**"은 iOS Application으로 구현된 프로젝트이며, Server는 따로 구현하지 않았고
@@ -13,7 +17,4 @@
 
 - 따라서 Application 내에 있는 데이터는 서버를 활용하지 않은 **임시 데이터**를 사용한 점 양해 부탁드립니다.
 
-- 만약 프로젝트에 대한 더 자세한 내용의 확인이 필요하실 경우 **아래 Notion 주소를 참고**하여 주시기 바랍니다.
-
-> [Notion 바로가기](https://www.notion.so/509378ac1fd64a7d8f33ae9c7328fef2)<br>
-> [발표영상 바로가기](https://youtu.be/7g13ISc7dRs)
+- 만약 프로젝트에 대한 더 자세한 내용의 확인이 필요하실 경우 **위 Notion 주소를 참고**하여 주시기 바랍니다.

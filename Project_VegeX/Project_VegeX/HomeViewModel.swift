@@ -42,7 +42,7 @@ struct TutorialSaveData {
 """
     var tutorialList = [
         Tutorial(day: 1, title: "채식에 대한 오해와 진실",
-                 mission: "채식 인플루언서 1명 팔로우", point: 20, status: .ongoing),
+                 mission: "채식 인플루언서 1명 팔로우", point: 20, status: .start),
         Tutorial(day: 2, title: "채식의 타입을 알아보자",
                  mission: "나에게 맞는 채식 한끼 도전", point: 20, status: .start),
         Tutorial(day: 3, title: "쉽게 구할 수 있는 대체 식재료",

@@ -11,7 +11,7 @@ import UIKit
 class ChallengeTitleViewController: UIViewController {
     
     // MARK: - Properties
-    lazy var backButton = UIBarButtonItem(image: UIImage(named: "NewBackButton"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
+    lazy var backButton = UIBarButtonItem(image: UIImage(named: "left-allow"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
     
     let popularCollectionViewData = DataBrain().challengeTitleVCPopularData
     let brandCollectionViewData = DataBrain().challengeTitleVCBrandData
@@ -203,12 +203,9 @@ extension ChallengeTitleViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension ChallengeTitleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 0 {
-            navigationController?.pushViewController(TutorialDetailViewController(), animated: true)
-        }
-        if indexPath.item == 1 {
-            navigationController?.pushViewController(ChallengeProjectDetailViewController(), animated: true)
-        }
+        let nextVC = ChallengeProjectDetailViewController()
+        nextVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

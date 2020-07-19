@@ -12,7 +12,7 @@ class ChallengeProjectDetailViewController: UIViewController {
     
     // MARK: - Properties
     let dataBrain = DataBrain()
-    lazy var backButton = UIBarButtonItem(image: UIImage(named: "NewBackButton"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
+    lazy var backButton = UIBarButtonItem(image: UIImage(named: "left-allow"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
     
     let scrollView = UIScrollView()
     let contentView = UIView()
@@ -64,13 +64,15 @@ class ChallengeProjectDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        scrollView.contentSize = CGSize(width: view.frame.width, height: contentView.frame.height)
+//        scrollView.contentSize = CGSize(width: view.frame.width, height: contentView.frame.height)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: commentTableView.frame.maxY + 50)
         navigationController?.hidesBarsOnSwipe = false
     }
     
     
     // MARK: - UI
     private func configureUI() {
+        view.backgroundColor = .white
         setNavigationController()
         setStackView()
         setPropertyAttributes()
@@ -101,6 +103,7 @@ class ChallengeProjectDetailViewController: UIViewController {
         // Main
         mainImageView.image = UIImage(named: dataBrain.challengeProjectTitleData["image"]!)
         mainImageView.contentMode = .scaleAspectFill
+        mainImageView.clipsToBounds = true
         
         mainTitleLabel.text = dataBrain.challengeProjectTitleData["title"]!
         mainTitleLabel.textColor = .vegeGreen
@@ -143,7 +146,7 @@ class ChallengeProjectDetailViewController: UIViewController {
         participateButton.setTitleColor(.white, for: .normal)
         participateButton.titleLabel?.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 18)
         participateButton.backgroundColor = .vegeLightGreen
-        participateButton.layer.cornerRadius = 30
+        participateButton.layer.cornerRadius = view.frame.height / 26
     }
     
     private func setStackView() {
@@ -217,12 +220,12 @@ class ChallengeProjectDetailViewController: UIViewController {
             $0.height.equalTo(view.frame.height * 3)
         }
         mainImageView.snp.makeConstraints {
-            $0.top.equalTo(contentView).offset(40)
+            $0.top.equalTo(contentView).offset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(300)
         }
         mainTitleDateStackView.snp.makeConstraints {
-            $0.top.equalTo(mainImageView.snp.bottom).offset(40)
+            $0.top.equalTo(mainImageView.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(mainImageView)
             $0.height.equalTo(50)
         }

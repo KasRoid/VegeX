@@ -18,7 +18,7 @@ class TutorialDetailViewController: UIViewController {
     let backgourndFilter = UIView()
     let backgroundImageView = UIImageView()
     
-    lazy var backButton = UIBarButtonItem(image: UIImage(named: "NewBackButton"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
+    lazy var backButton = UIBarButtonItem(image: UIImage(named: "left-allow"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
     
     let categoryLabel = UILabel()
     let titleLabel = UILabel()

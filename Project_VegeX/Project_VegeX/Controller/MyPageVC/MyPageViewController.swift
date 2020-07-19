@@ -37,6 +37,30 @@ class MyPageViewController: UIViewController {
     
     private let myShoppingTableView = UITableView()
     
+    private let orderHeaderView: ShoppingTableHeaderView = {
+        let hv = ShoppingTableHeaderView()
+        hv.headerType = ShoppingHelpType.order
+        return hv
+    }()
+    
+    private let cancelHeaderView: ShoppingTableHeaderView = {
+        let hv = ShoppingTableHeaderView()
+        hv.headerType = ShoppingHelpType.cancel
+        return hv
+    }()
+    
+    private let activeHeaderView: ShoppingTableHeaderView = {
+        let hv = ShoppingTableHeaderView()
+        hv.headerType = ShoppingHelpType.active
+        return hv
+    }()
+    
+    private let helpersHeaderView: ShoppingTableHeaderView = {
+        let hv = ShoppingTableHeaderView()
+        hv.headerType = ShoppingHelpType.helpers
+        return hv
+    }()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -54,16 +78,26 @@ class MyPageViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
         let lastIndexPath = IndexPath(item: 12 - 1, section: 0)
-        guard let attrs = myPictureCollectionView.layoutAttributesForItem(at: lastIndexPath) else { return }
+        guard let collectionViewAttrs = myPictureCollectionView.layoutAttributesForItem(at: lastIndexPath) else { return }
         myPictureCollectionView.snp.updateConstraints {
-            $0.height.equalTo(attrs.frame.maxY + 8)
+            $0.height.equalTo(collectionViewAttrs.frame.maxY + 8)
+        }
+        
+        
+        let lastRowIndex = ShoppingCategoryData.helpersCategory.count - 1
+        let tableViewLastIndexPath = IndexPath(row: lastRowIndex, section: ShoppingHelpType.allCases.count - 1)
+        let heightValue = myShoppingTableView.cellForRow(at: tableViewLastIndexPath)?.frame.maxY
+
+        myShoppingTableView.snp.updateConstraints {
+            $0.height.equalTo(heightValue!)
         }
         view.layoutIfNeeded()
         
         myProfileScrollView.contentSize = CGSize(width: view.frame.width, height: myPictureCollectionView.frame.maxY + 40)
         
-        myShoppingScrollView.contentSize = CGSize(width: view.frame.width, height: 1000)
+        myShoppingScrollView.contentSize = CGSize(width: view.frame.width, height: myShoppingTableView.frame.maxY + shoppingStatusView.frame.maxY + 120)
     }
     
     // MARK: - Helpers
@@ -81,7 +115,7 @@ class MyPageViewController: UIViewController {
     }
     
     func configureShppingView() {
-//        myShoppingScrollView.showsVerticalScrollIndicator = false
+        myShoppingScrollView.showsVerticalScrollIndicator = false
         myShoppingScrollView.backgroundColor = .white
         view.addSubview(myShoppingScrollView)
         myShoppingScrollView.snp.makeConstraints {
@@ -110,7 +144,8 @@ class MyPageViewController: UIViewController {
         myShoppingScrollView.addSubview(grayView)
         grayView.snp.makeConstraints {
             $0.top.equalTo(shoppingStatusView.snp.bottom).offset(36)
-            $0.leading.trailing.width.height.equalToSuperview()
+            $0.leading.trailing.width.equalToSuperview()
+            $0.height.equalTo(1000)
         }
         
         grayView.addSubview(myShoppingTableView)
@@ -214,14 +249,14 @@ class MyPageViewController: UIViewController {
         myPictureCollectionView.register(PictureCustomCell.self, forCellWithReuseIdentifier: PictureCustomCell.identifier)
     }
     
-    
-    private let orderHeaderView = ShoppingTableHeaderView()
-    
     func configureTableView() {
-//        myShoppingTableView.backgroundColor = .red
-        //64
+        myShoppingTableView.backgroundColor = .clear
+        myShoppingTableView.isScrollEnabled = false
         myShoppingTableView.dataSource = self
         myShoppingTableView.delegate = self
+        
+        myShoppingTableView.register(ShoppingStatusCustomCell.self, forCellReuseIdentifier: ShoppingStatusCustomCell.identifier)
+        myShoppingTableView.register(ShoppingListCustomCell.self, forCellReuseIdentifier: ShoppingListCustomCell.identifier)
     }
 }
 
@@ -262,11 +297,42 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        switch ShoppingHelpType(rawValue: indexPath.section)! {
+        case .order:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingStatusCustomCell.identifier, for: indexPath) as! ShoppingStatusCustomCell
+            cell.shoppingType = .order
+            return cell
+        case .cancel:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingStatusCustomCell.identifier, for: indexPath) as! ShoppingStatusCustomCell
+            cell.shoppingType = .cancel
+            return cell
+        case .active:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingListCustomCell.identifier, for: indexPath) as! ShoppingListCustomCell
+            cell.name = ShoppingCategoryData.activeCategory[indexPath.row]
+            return cell
+        case .helpers:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingListCustomCell.identifier, for: indexPath) as! ShoppingListCustomCell
+            cell.name = ShoppingCategoryData.helpersCategory[indexPath.row]
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return orderHeaderView
+        switch ShoppingHelpType(rawValue: section)! {
+        case .order: return orderHeaderView
+        case .cancel: return cancelHeaderView
+        case .active: return activeHeaderView
+        case .helpers: return helpersHeaderView
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch ShoppingHelpType(rawValue: indexPath.section)! {
+        case .order: return 54
+        case .cancel: return 54
+        case .active: return 50
+        case .helpers: return 50
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

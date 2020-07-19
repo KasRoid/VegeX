@@ -71,13 +71,13 @@ class TutorialCustomCell: UICollectionViewCell {
     // MARK: - Helpers
     
     func configure() {
-        guard let tutorial = tutorial else { return }
+//        guard let tutorial = tutorial else { return }
 //        titleLabel.text = tutorial.title
 //        subTitleLabel.text = tutorial.subTitle
 //        tutorialImageView.image = UIImage(named: tutorial.imageName)
         
-        checkImageView.image = tutorial.isFinish ?
-            UIImage(named: "checkcircle") : UIImage(named: "circle")
+//        checkImageView.image = tutorial.isFinish ?
+//            UIImage(named: "checkcircle") : UIImage(named: "circle")
     }
     
     func configureUI() {

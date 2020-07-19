@@ -98,6 +98,7 @@ class TutorialDetailViewController: UIViewController {
     private func setPropertyAttributes() {
         backgroundImageView.image = backgroundImage
         backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.clipsToBounds = true
         backgourndFilter.backgroundColor = UIColor(white: 0, alpha: 0.6)
         
         categoryLabel.textColor = .white
@@ -276,6 +277,11 @@ class TutorialDetailViewController: UIViewController {
     }
     
     @objc private func handleStartButton(_ sender: UIButton) {
+        let controller = TutorialMissionViewController()
+        controller.delegate = self
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        present(controller, animated: true)
     }
 }
 
@@ -286,5 +292,13 @@ extension TutorialDetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
+    }
+}
+
+extension TutorialDetailViewController: TutorialMissionViewControllerDelegate {
+    func handlePopController() {
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

@@ -88,7 +88,7 @@
 		423CFD0924C118A500133A86 /* CustomSearchBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBarTextField.swift; sourceTree = "<group>"; };
 		423CFD0B24C11D7600133A86 /* CustomSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBarView.swift; sourceTree = "<group>"; };
 		423CFD0D24C11F7200133A86 /* StoreMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMenuBarView.swift; sourceTree = "<group>"; };
-		425FEDD224B487BD00F851D2 /* Project_VegeX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_VegeX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		425FEDD224B487BD00F851D2 /* 느린채식.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "느린채식.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		425FEDD524B487BD00F851D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		425FEDD724B487BD00F851D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		425FEDD924B487BD00F851D2 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		425FEDD324B487BD00F851D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				425FEDD224B487BD00F851D2 /* Project_VegeX.app */,
+				425FEDD224B487BD00F851D2 /* 느린채식.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -421,7 +421,7 @@
 				AF8B561E24BD37EB00CF19FF /* SnapKit */,
 			);
 			productName = Project_VegeX;
-			productReference = 425FEDD224B487BD00F851D2 /* Project_VegeX.app */;
+			productReference = 425FEDD224B487BD00F851D2 /* 느린채식.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -693,7 +693,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.KasRoid.Project-VegeX";
-				PRODUCT_NAME = Project_VegeX;
+				PRODUCT_NAME = "느린채식";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -713,7 +713,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.KasRoid.Project-VegeX";
-				PRODUCT_NAME = Project_VegeX;
+				PRODUCT_NAME = "느린채식";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

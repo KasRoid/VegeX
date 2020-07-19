@@ -15,10 +15,11 @@ class TutorialDetailViewController: UIViewController {
     let dataBrain = DataBrain()
     
     let backgroundImage = UIImage(named: "VegetableBackground")
+    let backButtonImage = UIImage(named: "left-allow")?.withTintColor(.white)
     let backgourndFilter = UIView()
     let backgroundImageView = UIImageView()
     
-    lazy var backButton = UIBarButtonItem(image: UIImage(named: "left-allow"), style: .plain, target: self, action: #selector(handleBackButton(_:)))
+    let backButton = UIButton()
     
     let categoryLabel = UILabel()
     let titleLabel = UILabel()
@@ -85,15 +86,15 @@ class TutorialDetailViewController: UIViewController {
     }
     
     private func setNavigationController() {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.tintColor = .vegeTextBlack
-        navigationController?.navigationBar.barTintColor = .clear
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.tintColor = .white
-        navigationItem.leftBarButtonItem = backButton
-        navigationController?.navigationBar.layoutIfNeeded()
+        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.tintColor = .vegeTextBlack
+//        navigationController?.navigationBar.barTintColor = .clear
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.barStyle = .black
+//        navigationController?.navigationBar.tintColor = .white
+//        navigationItem.leftBarButtonItem = backButton
+//        navigationController?.navigationBar.layoutIfNeeded()
     }
     
     private func setPropertyAttributes() {
@@ -134,6 +135,10 @@ class TutorialDetailViewController: UIViewController {
         startButton.backgroundColor = UIColor(rgb: 0x71A08A)
         startButton.layer.cornerRadius = view.frame.height / 25
         startButton.addTarget(self, action: #selector(handleStartButton(_:)), for: .touchUpInside)
+        
+        backButton.setImage(backButtonImage, for: .normal)
+        backButton.tintColor = .white
+        backButton.addTarget(self, action: #selector(handleBackButton(_:)), for: .touchUpInside)
     }
     
     private func setScrollView() {
@@ -142,7 +147,7 @@ class TutorialDetailViewController: UIViewController {
     
     private func setConstraints() {
         // Add Views
-        [backgroundImageView, scrollView].forEach {
+        [backgroundImageView, scrollView, backButton].forEach {
             view.addSubview($0)
         }
         [backgourndFilter, categoryLabel, titleLabel, dayLabel].forEach {
@@ -168,6 +173,11 @@ class TutorialDetailViewController: UIViewController {
         }
         backgourndFilter.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
         categoryLabel.snp.makeConstraints {
@@ -273,7 +283,7 @@ class TutorialDetailViewController: UIViewController {
     
     
     // MARK: - Selectors
-    @objc private func handleBackButton(_ sender: UIBarButtonItem) {
+    @objc private func handleBackButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     

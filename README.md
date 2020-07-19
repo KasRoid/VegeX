@@ -15,5 +15,5 @@
 
 - 만약 프로젝트에 대한 더 자세한 내용의 확인이 필요하실 경우 **아래 Notion 주소를 참고**하여 주시기 바랍니다.
 
-> [Notion 바로가기](https://www.notion.so/509378ac1fd64a7d8f33ae9c7328fef2)
+> [Notion 바로가기](https://www.notion.so/509378ac1fd64a7d8f33ae9c7328fef2)<br>
 > [발표영상 바로가기](https://youtu.be/7g13ISc7dRs)

@@ -13,6 +13,12 @@ class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
+    private var presentTutorial: Tutorial? {
+        didSet {
+            dailyMissionView.tutorial = presentTutorial
+        }
+    }
+    
     private let defaultPadding: CGFloat = 20
     
     private let homeScrollView: UIScrollView = {
@@ -20,6 +26,10 @@ class HomeViewController: UIViewController {
         sv.backgroundColor = UIColor(rgb: 0xF1F2F4)
         return sv
     }()
+    
+    // Custom View
+    
+    private let dailyMissionView = DailyMissionView()
     
     private let mainIconImageView: UIImageView = {
         let iv = UIImageView()
@@ -132,6 +142,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavi()
+        fetchTutorialData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -140,6 +151,14 @@ class HomeViewController: UIViewController {
         homeScrollView.contentSize = CGSize(
             width: view.frame.width,
             height: tableView.frame.maxY + 20)
+    }
+    
+    // MARK: - API
+    
+    func fetchTutorialData() {
+        TutorialService.shared.getPresentTutorial { tutorial in
+            self.presentTutorial = tutorial
+        }
     }
     
     // MARK: - Selectors
@@ -216,10 +235,7 @@ class HomeViewController: UIViewController {
             $0.height.equalTo(20)
         }
         
-        let dailyMissionView = makeDailyMissionView(
-            day: "1단계",
-            missoinSubTitle: "채식에 대한 오해와 진실",
-            imageName: "VegetableBackground")
+        dailyMissionView.delegate = self
         homeScrollView.addSubview(dailyMissionView)
         dailyMissionView.snp.makeConstraints {
             $0.top.equalTo(dailyMissionTitleView.snp.bottom).offset(8)
@@ -228,8 +244,7 @@ class HomeViewController: UIViewController {
             $0.height.equalTo(120)
         }
         
-        
-        let challengeTitleView = makeHeaderView(titleText: "프로젝트",
+        let challengeTitleView = makeHeaderView(titleText: "챌린지",
                                                 detailLabel: challengeLabel,
                                                 subTitleText: "사람들과 함께 건강해져요")
         homeScrollView.addSubview(challengeTitleView)
@@ -368,6 +383,38 @@ class HomeViewController: UIViewController {
         
         return missionView
     }
+    
+    private lazy var imagePicker : UIImagePickerController = {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        return imagePicker
+    }()
+    
+    func certifyShowAlert() {
+        let certifyAlert = UIAlertController(title: "인증에 필요한 사진을 촬영하거나 가져오세요.", message: nil, preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "카메라로 촬영하기", style: .default) { ACTION in
+            guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
+            self.imagePicker.sourceType = .camera
+            self.imagePicker.mediaTypes = [kUTTypeImage] as [String]
+            self.present(self.imagePicker, animated: true)
+        }
+        
+        let albumAction = UIAlertAction(title: "앨범에서 가져오기", style: .default) { ACTION in
+            self.imagePicker.sourceType = .photoLibrary
+            self.imagePicker.mediaTypes = [kUTTypeImage] as [String]
+            self.present(self.imagePicker, animated: true)
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        certifyAlert.addAction(cameraAction)
+        certifyAlert.addAction(albumAction)
+        certifyAlert.addAction(cancelAction)
+        
+        present(certifyAlert, animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -419,5 +466,41 @@ extension HomeViewController: ChallengeCustomCellDelegate {
         }
         
         present(imagePicker, animated: true)
+    }
+}
+
+// MARK: - DailyMissionViewDelegate
+
+extension HomeViewController: DailyMissionViewDelegate {
+    func handleStatusEvent() {
+        guard let tutorial = presentTutorial else { return }
+        switch tutorial.status {
+        case .start:
+            let controller = TutorialDetailViewController()
+            navigationController?.pushViewController(controller, animated: true)
+        case .ongoing:
+            certifyShowAlert()
+        case .finish: break
+        }
+    }
+}
+
+
+extension HomeViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        let mediaType = info[.mediaType] as! NSString
+        if UTTypeEqual(mediaType, kUTTypeImage) {
+            let originalImage = info[.originalImage] as! UIImage
+            let editedImage = info[.editedImage] as? UIImage
+
+            let selectedImage = editedImage ?? originalImage
+//            imageView.image = selectedImage
+            
+            print(info[.mediaMetadata])
+            print(info[.phAsset])
+            print(info)
+        }
+        picker.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

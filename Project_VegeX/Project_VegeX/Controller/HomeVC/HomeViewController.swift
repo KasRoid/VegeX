@@ -22,6 +22,8 @@ class HomeViewController: UIViewController {
     private var isProcessingCategory = true {
         didSet { tableView.reloadData() }
     }
+    private var isTutorialCamera = true
+    
     private let defaultPadding: CGFloat = 20
     
     private let homeScrollView: UIScrollView = {
@@ -39,13 +41,13 @@ class HomeViewController: UIViewController {
         iv.snp.makeConstraints {
             $0.width.height.equalTo(52)
         }
-        iv.image = UIImage(named: "leaf")
+        iv.image = UIImage(named: "02dh")
         return iv
     }()
     
     private let myNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "천지운 님, 반가워요!"
+        label.text = "윤다혜 님, 반가워요!"
         label.textColor = UIColor(rgb: 0x156941)
         label.font = VegeXFont.AppleSDGothicNeo_Regular.fontData(fontSize: 16)
         return label
@@ -163,6 +165,7 @@ class HomeViewController: UIViewController {
         TutorialService.shared.getPresentTutorial { tutorial in
             self.presentTutorial = tutorial
         }
+        tableView.reloadData()
     }
     
     // MARK: - Selectors
@@ -464,18 +467,9 @@ extension HomeViewController: UITableViewDelegate {
 // MARK: - ChallengeCustomCellDelegate
 
 extension HomeViewController: ChallengeCustomCellDelegate {
-    func handleRegister(_ cell: ChallengeCustomCell) {
-        let imagePicker = UIImagePickerController()
-        
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
-        imagePicker.sourceType = .camera
-        imagePicker.mediaTypes = [kUTTypeImage] as [String]
-        
-        if UIImagePickerController.isFlashAvailable(for: .rear) {
-            imagePicker.cameraFlashMode = .auto
-        }
-        
-        present(imagePicker, animated: true)
+    func handleRegister() {
+        isTutorialCamera = false
+        certifyShowAlert()
     }
 }
 
@@ -490,6 +484,7 @@ extension HomeViewController: DailyMissionViewDelegate {
             controller.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(controller, animated: true)
         case .ongoing:
+            isTutorialCamera = true
             certifyShowAlert()
         case .finish: break
         }
@@ -502,31 +497,53 @@ extension HomeViewController: UIImagePickerControllerDelegate & UINavigationCont
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
         var isCompleted = false
-        
-        let mediaType = info[.mediaType] as! NSString
-        if UTTypeEqual(mediaType, kUTTypeImage) {
-            let originalImage = info[.originalImage] as! UIImage
-            let editedImage = info[.editedImage] as? UIImage
-
-            let selectedImage = editedImage ?? originalImage
-//            imageView.image = selectedImage
-            
-            guard let presentTutorial = presentTutorial else { return }
-            TutorialService.shared.setTutorial(to: presentTutorial, status: .finish)
-            TutorialService.shared.getPresentTutorial { tutorial in
-                self.presentTutorial = tutorial
+        if isTutorialCamera {
+            let mediaType = info[.mediaType] as! NSString
+            if UTTypeEqual(mediaType, kUTTypeImage) {
+                let originalImage = info[.originalImage] as! UIImage
+                let editedImage = info[.editedImage] as? UIImage
+                
+                let selectedImage = editedImage ?? originalImage
+//                imageView.image = selectedImage
+                
+                guard let presentTutorial = presentTutorial else { return }
+                TutorialService.shared.setTutorial(to: presentTutorial, status: .finish)
+                TutorialService.shared.getPresentTutorial { tutorial in
+                    self.presentTutorial = tutorial
+                }
+                isCompleted = true
             }
-            isCompleted = true
+            picker.presentingViewController?.dismiss(animated: true, completion: {
+                guard isCompleted else { return }
+                
+                DispatchQueue.main.async {
+                    let controller = TutorialMissionCompleteViewController()
+                    controller.hidesBottomBarWhenPushed = true
+                    self.present(controller, animated: true)
+                }
+            })
+        } else {
+            let mediaType = info[.mediaType] as! NSString
+            if UTTypeEqual(mediaType, kUTTypeImage) {
+                let originalImage = info[.originalImage] as! UIImage
+                let editedImage = info[.editedImage] as? UIImage
+                
+                let selectedImage = editedImage ?? originalImage
+//                imageView.image = selectedImage
+                
+                isCompleted = true
+            }
+            picker.presentingViewController?.dismiss(animated: true, completion: {
+                guard isCompleted else { return }
+                
+                DispatchQueue.main.async {
+                    let controller = MissionPictureCheckViewController()
+                    controller.hidesBottomBarWhenPushed = true
+                    controller.modalPresentationStyle = .fullScreen
+                    self.present(controller, animated: true)
+                }
+            })
         }
-        picker.presentingViewController?.dismiss(animated: true, completion: {
-            guard isCompleted else { return }
-            
-            DispatchQueue.main.async {
-                let controller = TutorialMissionCompleteViewController()
-                controller.hidesBottomBarWhenPushed = true
-                self.present(controller, animated: true)
-            }
-        })
     }
 }
 

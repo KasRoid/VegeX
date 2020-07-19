@@ -127,6 +127,8 @@ class DailyMissionView: UIView {
         statusButton.setTitle(viewModel.buttonText, for: .normal)
         statusButton.setTitleColor(viewModel.buttonColor[0], for: .normal)
         statusButton.backgroundColor = viewModel.buttonColor[1]
+        
+        missionImageView.image = UIImage(named: tutorial.imageName)
     }
     
     // MARK: - Selectors

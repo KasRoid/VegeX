@@ -79,6 +79,7 @@
 		AF8B94CB24C3FFEF0048EEFB /* TutorialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B94CA24C3FFEF0048EEFB /* TutorialService.swift */; };
 		AF8B94CD24C4230A0048EEFB /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B94CC24C4230A0048EEFB /* Challenge.swift */; };
 		AF8B94CF24C425210048EEFB /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B94CE24C425210048EEFB /* ChallengeViewModel.swift */; };
+		AF8B94D124C442560048EEFB /* MyProfileMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B94D024C442560048EEFB /* MyProfileMenuBar.swift */; };
 		AFAAB75824C18D3C00711158 /* ProductBrandMoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAB75724C18D3C00711158 /* ProductBrandMoveView.swift */; };
 		AFAAB75A24C1939400711158 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAB75924C1939400711158 /* ProductDetailViewModel.swift */; };
 		AFAAB75C24C1A0B800711158 /* ProductTVFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAB75B24C1A0B800711158 /* ProductTVFooterView.swift */; };
@@ -161,6 +162,7 @@
 		AF8B94CA24C3FFEF0048EEFB /* TutorialService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialService.swift; sourceTree = "<group>"; };
 		AF8B94CC24C4230A0048EEFB /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		AF8B94CE24C425210048EEFB /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
+		AF8B94D024C442560048EEFB /* MyProfileMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileMenuBar.swift; sourceTree = "<group>"; };
 		AFAAB75724C18D3C00711158 /* ProductBrandMoveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBrandMoveView.swift; sourceTree = "<group>"; };
 		AFAAB75924C1939400711158 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		AFAAB75B24C1A0B800711158 /* ProductTVFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTVFooterView.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				AF819E0D24C31C9900EEFD00 /* ShoppingTableHeaderView.swift */,
 				AF819E1124C32F1800EEFD00 /* ShoppingStatusCustomCell.swift */,
 				AF819E1324C32F2800EEFD00 /* ShoppingListCustomCell.swift */,
+				AF8B94D024C442560048EEFB /* MyProfileMenuBar.swift */,
 			);
 			path = MyPageView;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				AF689E1724C213D1007E3526 /* TutorialMakeButton.swift in Sources */,
 				AF8B94CD24C4230A0048EEFB /* Challenge.swift in Sources */,
 				AFAAB75C24C1A0B800711158 /* ProductTVFooterView.swift in Sources */,
+				AF8B94D124C442560048EEFB /* MyProfileMenuBar.swift in Sources */,
 				AF84A16F24C0B0B60026DC0B /* TutorialMissionViewController.swift in Sources */,
 				AF7E3EBF24C02B2700D370A0 /* TutorialViewModel.swift in Sources */,
 				AF819E0E24C31C9900EEFD00 /* ShoppingTableHeaderView.swift in Sources */,
@@ -698,7 +702,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DX4KVUBK56;
+				DEVELOPMENT_TEAM = ZLCDRXJTXW;
 				INFOPLIST_FILE = Project_VegeX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -718,7 +722,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DX4KVUBK56;
+				DEVELOPMENT_TEAM = ZLCDRXJTXW;
 				INFOPLIST_FILE = Project_VegeX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

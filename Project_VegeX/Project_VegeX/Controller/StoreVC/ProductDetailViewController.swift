@@ -212,6 +212,12 @@ class ProductDetailViewController: UIViewController {
         productDetailScrollView.contentSize = CGSize(width: view.frame.width, height: maxYvalue + 100)
     }
     
+    // MARK: Selectors
+    
+    @objc func handleDismissal() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
@@ -370,10 +376,10 @@ class ProductDetailViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "NewBackButton"),
+            image: UIImage(named: "left-allow"),
             style: .plain,
             target: self,
-            action: nil)
+            action: #selector(handleDismissal))
         navigationItem.leftBarButtonItem?.tintColor = .black
         
         let searchBarButton = UIBarButtonItem(
@@ -561,11 +567,12 @@ extension ProductDetailViewController {
 
 extension ProductDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return DearDhaliaData.listProductData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BeautyCustomCell.identifer, for: indexPath) as! BeautyCustomCell
+        cell.brandProduct = DearDhaliaData.listProductData[indexPath.item]
         return cell
     }
     

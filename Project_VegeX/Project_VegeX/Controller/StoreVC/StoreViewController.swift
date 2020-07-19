@@ -170,6 +170,12 @@ class StoreViewController: UIViewController {
         storeDetailScrollView.contentSize = CGSize(width: view.frame.width, height: moreButton.frame.maxY + 116)
     }
     
+    // MARK: - Selectors
+    
+    @objc func handleDismissal() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Helpers
     
     func configureCollectionView() {
@@ -259,10 +265,10 @@ class StoreViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "NewBackButton"),
+            image: UIImage(named: "left-allow"),
             style: .plain,
             target: self,
-            action: nil)
+            action: #selector(handleDismissal))
         navigationItem.leftBarButtonItem?.tintColor = .black
         
         let searchBarButton = UIBarButtonItem(
@@ -284,20 +290,20 @@ class StoreViewController: UIViewController {
 extension StoreViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == detailCollectionView {
-            return 3
+            return DearDhaliaData.detailProductData.count
         } else {
-            return 6
+            return DearDhaliaData.listProductData.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == detailCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCustomCell.identifier, for: indexPath) as! DetailCustomCell
-            
+            cell.brandProduct = DearDhaliaData.detailProductData[indexPath.item]
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCustomCell.identifer, for: indexPath) as! ProductCustomCell
-            
+            cell.brandProduct = DearDhaliaData.listProductData[indexPath.item]
             return cell
         }
     }
@@ -342,26 +348,26 @@ extension StoreViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UICollectionViewDelegate
+struct BrandProduct {
+    let imageName: String
+    let productName: String
+    let price: String
+    let heartCount: Int
+    let commentCount: Int
+}
 
-extension StoreViewController: UICollectionViewDelegate {
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-//
-//        var offset = targetContentOffset.pointee
-//        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-//        var roundedIndex = round(index)
-//        print(roundedIndex)
-//
-//        if scrollView.contentOffset.x > targetContentOffset.pointee.x {
-//            roundedIndex = floor(index)
-//        } else {
-//            roundedIndex = ceil(index)
-//        }
-//        print(roundedIndex)
-//
-//        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
-//        targetContentOffset.pointee = offset
-    }
+struct DearDhaliaData {
+    static let detailProductData = [
+        BrandProduct(imageName: "deardahlia_main1", productName: "위클리 베스트", price: "", heartCount: 0, commentCount: 0),
+        BrandProduct(imageName: "deardahlia_main2", productName: "[NEW] 신상", price: "", heartCount: 0, commentCount: 0),
+        BrandProduct(imageName: "deardahlia_main3", productName: "인기상품", price: "", heartCount: 0, commentCount: 0)
+    ]
+    
+    static let listProductData = [
+        BrandProduct(imageName: "deardahlia_product1", productName: "LIP PARADISE SHEER DEW TINTED LIPSTICK", price: "28,000", heartCount: 50, commentCount: 1),
+        BrandProduct(imageName: "deardahlia_product2", productName: "SENSUOUS MATTE LIP SUIT [8 colors]", price: "26,000", heartCount: 67, commentCount: 2),
+        BrandProduct(imageName: "deardahlia_product3", productName: "FLAWLESS FIT EXPERT CONCEALER", price: "28,000", heartCount: 34, commentCount: 6),
+        BrandProduct(imageName: "deardahlia_product4", productName: "SECRET GARDEN PALETTE FLOWER BED", price: "52,000", heartCount: 120, commentCount: 1),
+        BrandProduct(imageName: "deardahlia_product5", productName: "ALLURE SHINE LUSTROUS LIP PLUMPER", price: "28,000", heartCount: 92, commentCount: 2),
+        BrandProduct(imageName: "deardahlia_product6", productName: "PARADISE DREAM VOLUME &LONG LASH MASCARA", price: "30,000", heartCount: 85, commentCount: 2)]
 }

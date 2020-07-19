@@ -151,6 +151,7 @@ class ChallengeProjectDetailViewController: UIViewController {
         participateButton.titleLabel?.font = VegeXFont.AppleSDGothicNeo_Bold.fontData(fontSize: 18)
         participateButton.backgroundColor = .vegeLightGreen
         participateButton.layer.cornerRadius = view.frame.height / 26
+        participateButton.addTarget(self, action: #selector(handleJoinEvent), for: .touchUpInside)
     }
     
     private func setStackView() {
@@ -360,6 +361,14 @@ class ChallengeProjectDetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func handleJoinEvent() {
+        let controller = ChallengeMissionViewController()
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        controller.delegate = self
+        present(controller, animated: true)
+    }
+    
 }
 
 
@@ -384,4 +393,12 @@ extension ChallengeProjectDetailViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ChallengeProjectDetailViewController: UITableViewDelegate {
     
+}
+
+extension ChallengeProjectDetailViewController: ChallengeMissionViewControllerDelegate {
+    func handleDismissal() {
+        DispatchQueue.main.async {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
 }

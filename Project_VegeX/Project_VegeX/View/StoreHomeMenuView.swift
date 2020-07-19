@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol StoreHomeMenuViewDelegate: class {
+    func handleDidSelect()
+}
+
 class StoreHomeMenuView: UIView {
     
     // MARK: - Properties
+    
+    weak var delegate: StoreHomeMenuViewDelegate?
+    
     let dataBrain = DataBrain()
     
     private let categoryCollectionView: UICollectionView = {
@@ -211,7 +218,7 @@ extension StoreHomeMenuView: UICollectionViewDelegate {
             cell.title.textColor = .vegeGreen
             cell.title.font = VegeXFont.AppleSDGothicNeo_SemiBold.fontData(fontSize: 12)
         case productCollectionView:
-            break
+            delegate?.handleDidSelect()
         default:
             break
         }

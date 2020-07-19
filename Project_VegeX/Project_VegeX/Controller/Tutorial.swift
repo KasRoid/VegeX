@@ -9,6 +9,7 @@
 import Foundation
 
 struct Tutorial {
+    let imageName: String
     let day: Int
     let title: String
     let mission: String

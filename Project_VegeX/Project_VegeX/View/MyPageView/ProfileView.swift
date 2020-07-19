@@ -15,6 +15,7 @@ class ProfileView: UIView {
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .systemGray
+        iv.image = UIImage(named: "02dh")
         return iv
     }()
     

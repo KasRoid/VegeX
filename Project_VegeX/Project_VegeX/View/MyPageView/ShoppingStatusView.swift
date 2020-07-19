@@ -64,6 +64,9 @@ class ShoppingStatusView: UIView {
             makeStackView(image: saveMoneyImageView, with: saveMoneyLabel, string: "적립금"),
             makeStackView(image: pointImageView, with: pointLabel, string: "포인트"),
             makeStackView(image: couponImageView, with: couponLabel, string: "쿠폰")])
+        saveMoneyLabel.text = "4,446"
+        pointLabel.text = "5,000"
+        couponLabel.text = "2"
         amountStack.axis = .horizontal
         amountStack.alignment = .center
         amountStack.distribution = .equalSpacing

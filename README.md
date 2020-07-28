@@ -1,2 +1,14 @@
-# VegeX
-Vege_ProtoType
+# 느린채식
+
+## General Info ##
+- 본 "**느린 채식**" TEAM은 기획자 1명, UI/UX 디자이너 2명, iOS 개발자 2명으로 이루어진 팀입니다.
+
+- "**느린 채식**"은 iOS Application으로 구현된 프로젝트이며, Server는 따로 구현하지 않았고
+    Application이 **어떤 흐름**으로, **어떤 느낌**으로 진행되는지 보여드리기 위해 **View를 집중적으로 구현**하였습니다.
+
+- 따라서 Application 내에 있는 데이터는 서버를 활용하지 않은 **임시 데이터**를 사용한 점 양해 부탁드립니다.
+
+- 만약 프로젝트에 대한 더 자세한 내용의 확인이 필요하실 경우 **아래 Notion 주소를 참고**하여 주시기 바랍니다.
+
+> [Notion 바로가기](https://www.notion.so/509378ac1fd64a7d8f33ae9c7328fef2)
+

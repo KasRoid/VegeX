@@ -48,8 +48,8 @@ class LaunchViewController: UIViewController {
     lazy var formatter: Formatter = {
       let formatter = NumberFormatter()
       formatter.numberStyle = .decimal  // 천 단위로 콤마(,)
-      formatter.minimumFractionDigits = 0  // 최소 소수점 단위
-      formatter.maximumFractionDigits = 3  // 최대 소수점 단위
+//      formatter.minimumFractionDigits = 0  // 최소 소수점 단위
+//      formatter.maximumFractionDigits = 3  // 최대 소수점 단위
       return formatter
     }()
     
